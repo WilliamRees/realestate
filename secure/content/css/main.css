@@ -1,0 +1,149 @@
+#NewListingDropZone {
+  width: 100%;
+  min-height: 200px;
+  padding: 10px;
+  border: 1px solid #CCC;
+  border-radius: 10px;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  padding-bottom: 0;
+}
+#NewListingDropZone #Dropzone-DefaultText {
+  position: absolute;
+  top: 50%;
+  margin-top: -32px;
+  left: 50%;
+  margin-left: -103px;
+}
+#NewListingDropZone .glyphicon-plus {
+  color: #CCC;
+  font-size: 40px;
+}
+/* The total progress gets shown by event listeners */
+#Dropzone-TotalProgress {
+  opacity: 0;
+  transition: opacity 0.3s linear;
+}
+/* Hide the progress bar when finished */
+#Dropzone-Preview .file-row.dz-success .progress {
+  opacity: 0;
+  transition: opacity 0.3s linear;
+}
+/* Hide the delete button initially */
+#Dropzone-Preview .file-row .delete {
+  display: none;
+}
+/* Hide the start and cancel buttons and show the delete button */
+#Dropzone-Preview .file-row.dz-success .start,
+#Dropzone-Preview .file-row.dz-success .cancel {
+  display: none;
+}
+#Dropzone-Preview .file-row.dz-success .delete {
+  display: block;
+}
+#MyDropZone {
+  display: none;
+}
+#Dropzone-Actions {
+  display: inline;
+}
+#Dropzone-Actions .start,
+#Dropzone-Actions .cancel {
+  display: none;
+  float: left;
+}
+.dz-image-preview > div {
+  border: 1px solid #ccc;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  padding: 10px;
+  position: relative;
+  min-height: 240px;
+}
+.dz-image-preview p {
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.dz-image-preview img {
+  margin: 10px auto;
+  display: block;
+  border-radius: 10px;
+  width: 80px;
+  height: 80px;
+}
+.dz-image-preview .cancel,
+.dz-image-preview .remove {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+.dz-image-preview .progress {
+  margin: 0;
+}
+#Notification {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 0 20px 20px 20px;
+  background-color: #FFF;
+}
+#Notification .alert {
+  margin-bottom: 0;
+}
+#EditListing #Dropzone-DefaultText {
+  position: relative;
+  top: 0;
+  margin-top: 0;
+  left: 0;
+  margin-left: 0px;
+}
+#EditListing #Dropzone-DefaultText > span {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  display: block;
+  min-height: 240px;
+  padding: 80px 15px 0 15px;
+}
+.thumbnail {
+  padding-bottom: 55px;
+  position: relative;
+}
+.thumbnail img {
+  width: 100%;
+  height: auto;
+}
+.thumbnail .buttons {
+  position: absolute;
+  bottom: 0;
+}
+label {
+  display: none;
+}
+textarea.form-control {
+  height: 132px;
+}
+.typeahead-field {
+  box-sizing: border-box;
+  width: 100%;
+  padding-right: 60px;
+  position: relative;
+}
+.typeahead-field button[type="submit"] {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.checkbox label {
+  display: block;
+}
+.col-md-4:nth-child(3n + 1) {
+  clear: both;
+}
+#UploadedImages img {
+  width: 80px;
+  height: 80px;
+}

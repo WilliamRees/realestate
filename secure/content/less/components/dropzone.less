@@ -1,0 +1,84 @@
+#NewListingDropZone {
+	width: 100%;
+	min-height: 200px;
+	padding: 10px;
+	border: 1px solid #CCC;
+	border-radius: 10px;
+	text-align: center;
+	cursor: pointer;
+	position:relative;
+	padding-bottom:0;
+	#Dropzone-DefaultText {
+		position: absolute;
+	  	top:50%;
+	  	margin-top:-32px;
+	  	left: 50%;
+	  	margin-left: -103px;
+	}
+	.glyphicon-plus {
+		color: #CCC;
+		font-size: 40px;
+	}
+}
+
+/* The total progress gets shown by event listeners */
+#Dropzone-TotalProgress {
+	opacity: 0;
+	transition: opacity 0.3s linear;
+}
+/* Hide the progress bar when finished */
+#Dropzone-Preview .file-row.dz-success .progress {
+  opacity: 0;
+  transition: opacity 0.3s linear;
+}
+/* Hide the delete button initially */
+#Dropzone-Preview .file-row .delete {
+  display: none;
+}
+/* Hide the start and cancel buttons and show the delete button */
+#Dropzone-Preview .file-row.dz-success .start,
+#Dropzone-Preview .file-row.dz-success .cancel {
+  display: none;
+}
+#Dropzone-Preview .file-row.dz-success .delete {
+  display: block;
+}
+#MyDropZone {
+  display:none;
+}
+#Dropzone-Actions {
+	display:inline;
+	.start, .cancel {
+	  display:none;
+	  float:left;
+	}	
+}
+.dz-image-preview {
+	> div {
+		border: 1px solid #ccc;
+		margin-bottom: 15px;
+		border-radius: 10px;
+		padding:10px;
+		position: relative;
+		min-height: 240px;
+	}
+	p {
+		text-overflow: ellipsis;
+		overflow: hidden;
+	}
+	img {
+		margin: 10px auto;	
+		display: block;		
+		border-radius: 10px;	
+		width: 80px;
+		height: 80px;
+	}
+	.cancel, .remove {
+		position: absolute;
+		top: 10px;
+		right: 10px;
+	}
+	.progress {
+		margin: 0;
+	}
+}

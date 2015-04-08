@@ -1,0 +1,61 @@
+@import "components/dropzone.less";
+@import "components/notification.less";
+@import "views/listing.new.less";
+@import "views/listing.edit.less";
+
+
+
+
+
+
+
+.thumbnail {
+  padding-bottom: 55px;
+  position:relative;
+  img {
+    width:100%;
+    height: auto;
+  }
+  .buttons {
+    position: absolute;
+    bottom: 0;  
+  }
+}
+
+label {
+  display:none;
+}
+textarea.form-control {
+  height: 132px;
+}
+
+
+
+.typeahead-field
+{
+  box-sizing: border-box;
+  width:100%;
+  padding-right:60px;
+  position: relative;
+  button[type="submit"] {
+    position:absolute;
+    right:0;
+    top:0;
+  }
+}
+.checkbox {
+  label {
+    display:block;
+  }
+}
+.col-md-4:nth-child(3n + 1) {
+  clear:both;
+}
+
+
+#UploadedImages {
+  img {
+    width: 80px;
+    height: 80px;
+  }
+}

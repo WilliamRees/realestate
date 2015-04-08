@@ -1,0 +1,78 @@
+-- CREATE NEW DATABASE
+--CREATE DATABASE IF NOT EXISTS RealEstate;
+
+-- SELECT DATABASE FOR THIS SESSION
+USE RealEstate;
+
+-- CREATE NEW USER. UNCOMMENT FOR NEW INSTALL.
+DROP USER 'rewebuser'@'localhost';
+CREATE USER 'rewebuser'@'localhost' IDENTIFIED BY 'rewebuser';
+GRANT INSERT,SELECT,UPDATE,DELETE ON RealEstate.* TO 'rewebuser'@'localhost';
+FLUSH PRIVILEGES;
+
+
+-- CREATE Content table
+DROP TABLE IF EXISTS Content;
+CREATE TABLE Content(
+   Id INT NOT NULL AUTO_INCREMENT,
+   Name VARCHAR(100) NOT NULL,
+   Data VARCHAR(21844) NOT NULL,
+   LastModified TIMESTAMP NOT NULL ON UPDATE CURRENT_TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+   PRIMARY KEY ( Id )
+);
+
+DROP TABLE IF EXISTS members;
+CREATE TABLE members (
+    `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `username` VARCHAR(30) NOT NULL,
+    `email` VARCHAR(50) NOT NULL,
+    `password` CHAR(128) NOT NULL,
+    `salt` CHAR(128) NOT NULL 
+);
+
+DROP TABLE IF EXISTS LoginAttempts;
+CREATE TABLE LoginAttempts (
+    `user_id` INT(11) NOT NULL,
+    `time` VARCHAR(30) NOT NULL
+);
+
+
+
+DROP TABLE IF EXISTS ListingImages;
+DROP TABLE IF EXISTS Listings;
+CREATE TABLE Listings(
+  Id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  Address VARCHAR(200) NOT NULL,
+  City VARCHAR(50) NOT NULL,
+  Province VARCHAR(50) NOT NULL,
+  Country VARCHAR (200) NOT NULL,
+  Description VARCHAR(21844) NOT NULL,
+  Price NUMERIC(15,2) NOT NULL,
+);
+
+CREATE TABLE ListingImages (
+  Id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  ListingId INT NOT NULL,
+  FOREIGN KEY (ListingId) 
+        REFERENCES Listings(Id)
+        ON DELETE CASCADE,
+  Name VARCHAR(200) NOT NULL
+);
+
+
+
+-- SEED DB
+INSERT INTO Content (Name, Data)
+VALUES ('Node1', 'test');
+
+INSERT INTO Content (Name, Data)
+VALUES ('Node2', '<h1>Heading 1</h1>');
+
+
+
+
+
+
+
+
+
