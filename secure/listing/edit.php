@@ -143,6 +143,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 						    </div>
 						  </div>
 			        </div>
+			        <div class="col-md-3 dz-image-preview listing-image" id="ListingImageTemplate">
+						<div>
+							<div>
+								<img src="" />
+							</div>
+						    <div>
+						        <p class="name" data-dz-name><?php echo($img); ?></p>
+						    </div>
+						    <div>
+				    			<button data-listing-image-remove-target="<?php echo("#Img" . $i) ?>" data-listing-id="<?php echo($listing->Id); ?>" data-listing-image-remove="<?php echo($img); ?>" class="btn btn-warning remove">
+					          		<i class="glyphicon glyphicon-trash"></i>
+						      	</button>
+						    </div>
+					    </div>
+				  	</div>
 						<div class="files row" id="Dropzone-Preview">
 						<?php
 								for ($i = 0; $i < sizeOf($listing->Images); $i++) {

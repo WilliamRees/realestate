@@ -945,16 +945,20 @@ re.views.secure.listing = (function($) {
 			};
 
 			myDropzone.on('success', function(file, xhr){
-				console.log(file);
 				var filename = file.name;
-				var $template = $('.listing-image').last().clone();
+				var $template = $('#ListingImageTemplate').clone();
 				$template.attr('id', (parseInt($template.attr('id')) + 1));
 				$template.find('img').attr('src', SITE_ROOT + '/uploads/' + filename);
 				$template.find('.name').html(filename);
 				$button = $template.find('button');
 				$button.attr('data-listing-image-remove-target', '#' + (parseInt($template.attr('id')) + 1));
 				$button.attr('data-listing-image-remove', filename);
-				$('.listing-image').last().after($template);
+				if ($('.listing-image').last().length > 0) {
+					$('.listing-image').last().after($template);	
+				} else {
+					$('#Dropzone-DefaultText').before($template);
+				}
+				
 				myDropzone.removeFile(file);
 			});
 		}
