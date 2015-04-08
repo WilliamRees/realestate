@@ -779,7 +779,7 @@ re.views.secure.listing = (function($) {
 				previewNode.parentNode.removeChild(previewNode);
 
 				myDropzone = new Dropzone("div#NewListingDropZone", { 
-					url: "http://172.16.158.129/VMLamp/real-estate/api/listing/images.php",
+					url: SITE_ROOT + "/api/listing/images.php",
 					paramName: 'file',
 				    addRemoveLinks: false,
 				    accept: accept,
@@ -815,7 +815,6 @@ re.views.secure.listing = (function($) {
 						if (response.Success) {
 							if (myDropzone.files.length > 0) {
 								myDropzone.on('error', function(file) {
-									alert('error');
 									uploadStatus = "error";
 									myDropzone.off('error');
 								});
