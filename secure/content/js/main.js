@@ -929,14 +929,14 @@ re.views.secure.listing = (function($) {
 										if (uploadStatus !== "error") {
 											myDropzone.removeAllFiles();			
 										}
-										re.notification.show("#Notification", '<strong>Success!</strong> ' + response.Data.Address + ' was created', 'alert-success', false);
+										re.notification.show("#Notification", '<strong>Success!</strong> ' + response.Data.Address + ' was created', 'alert-success', true, false);
 									}, 500);
 									
 								});	
 							} else {
 								setTimeout(function(){
 									l.stop();
-									re.notification.show("#Notification", '<strong>Success!</strong> ' + response.Data.Address + ' was created', 'alert-success', false);
+									re.notification.show("#Notification", '<strong>Success!</strong> ' + response.Data.Address + ' was created', 'alert-success', true, false);
 								}, 500);
 							}
 						}
