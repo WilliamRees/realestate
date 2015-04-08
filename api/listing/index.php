@@ -12,7 +12,10 @@
 			$listing->TaxYear = $_POST['TaxYear'];
 			$listing->Taxes = $_POST['Taxes'];
 			$listing->BuildingAge = $_POST['BuildingAge'];
-			
+			$listing->Published = ($_POST['Published'] == "true") ? 1 : 0;
+			$listing->Sold = ($_POST['Sold'] == "true") ? 1 : 0;
+			$listing->New = ($_POST['New'] == "true") ? 1 : 0;
+
 			if ($listing->save()) {
 				$result = true;
 			}
@@ -41,7 +44,10 @@
 			$listing->Taxes = $put['Taxes'];
 			$listing->BuildingAge = $put['BuildingAge'];
 			$listing->Id = $put['Id'];
-			
+			$listing->Published = ($put['Published'] == "true") ? 1 : 0;
+			$listing->Sold = ($put['Sold'] == "true") ? 1 : 0;
+			$listing->New = ($put['New'] == "true") ? 1 : 0;
+
 			if ($listing->update()) {
 				$result = true;
 			}

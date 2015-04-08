@@ -509,7 +509,10 @@ re.views.secure.listing = (function($) {
 			  	TaxYear: $('#TaxYear').val(),
 			  	Taxes: $('#Taxes').val(),
 			  	BuildingAge: $('#BuildingAge').val(),
-			  	Id: $('#ListingId').val()
+			  	Id: $('#ListingId').val(),
+			  	Published: $('#Published').prop('checked'),
+			  	New: $('#New').prop('checked'),
+			  	Sold: $('#Sold').prop('checked')
 		  	};
 	  		console.log(data);
 		  	return data;
