@@ -20,6 +20,9 @@ class Listing {
 	public $New;
 	public $Sold;
 	public $Published;
+	public $Latitude;
+	public $Longitude;
+	public $CreatedDate;
 
 	function __construct($address, $city, $province, $country, $description, $price, $bedrooms, $bathrooms, $livingSpace) 
 	{
@@ -42,6 +45,9 @@ class Listing {
 		$this->New = true;
 		$this->Sold = false;
 		$this->Published = false;
+		$this->Latitude = null;
+		$this->Longitude = null;
+		$this->CreatedDate = null;
 
 		$this->isValid();
 	}
@@ -49,9 +55,9 @@ class Listing {
 	public function save() {
 		$conn = self::conn();
 		$result = null;
-		if($stmt = $conn->prepare("INSERT INTO Listings (Address, City, Province, Country, Description, Price, PropertyType, Bedrooms, Bathrooms, LivingSpace, LandSize, TaxYear, Taxes, BuildingAge, New, Sold, Published) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)")) {
+		if($stmt = $conn->prepare("INSERT INTO Listings (Address, City, Province, Country, Description, Price, PropertyType, Bedrooms, Bathrooms, LivingSpace, LandSize, TaxYear, Taxes, BuildingAge, New, Sold, Published, Latitude, Longitude) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)")) {
 			//$this->bindParams($stmt);
-			$stmt->bind_param("sssssdssiiiidiiii", 
+			$stmt->bind_param("sssssdssiiiidiiiiii", 
 			$this->Address, 
 			$this->City, 
 			$this->Province, 
@@ -68,7 +74,9 @@ class Listing {
 			$this->BuildingAge,
 			$this->New,
 			$this->Sold,
-			$this->Published);
+			$this->Published,
+			$this->Latitude,
+			$this->Longitude);
 	        if($stmt->execute())
 	        {
 	        	$this->Id = mysqli_stmt_insert_id($stmt);
@@ -88,7 +96,7 @@ class Listing {
 		$conn = self::conn();
 		$result;
 		
-		if($stmt = $conn->prepare("UPDATE Listings SET Address = ?, City = ?, Province = ?, Country = ?, Description = ?, Price = ?, PropertyType = ?, Bedrooms = ?, Bathrooms = ?, LivingSpace = ?, LandSize = ?, TaxYear = ?, Taxes = ?, BuildingAge = ?, New = ?, Sold = ?, Published = ? WHERE Id = " . $this->Id)) {
+		if($stmt = $conn->prepare("UPDATE Listings SET Address = ?, City = ?, Province = ?, Country = ?, Description = ?, Price = ?, PropertyType = ?, Bedrooms = ?, Bathrooms = ?, LivingSpace = ?, LandSize = ?, TaxYear = ?, Taxes = ?, BuildingAge = ?, New = ?, Sold = ?, Published = ?, Latitude = ?, Longitude = ? WHERE Id = " . $this->Id)) {
 			$this->bindParams($stmt);
 
 	        if($stmt->execute())
@@ -181,17 +189,17 @@ class Listing {
 		$listings = array();
 
 		if (isset($page, $pageSize)) {
-			$sqlCommand = ($published) ? "SELECT Id, Address, City, Province, Country, Description, Price, PropertyType, Bedrooms, Bathrooms, LivingSpace, LandSize, TaxYear, Taxes, BuildingAge, New, Sold, Published FROM Listings WHERE Published = 1 ORDER BY Id DESC LIMIT ?, ?" :
-			 "SELECT Id, Address, City, Province, Country, Description, Price, PropertyType, Bedrooms, Bathrooms, LivingSpace, LandSize, TaxYear, Taxes, BuildingAge, New, Sold, Published FROM Listings LIMIT ?, ? ORDER BY Id DESC";
+			$sqlCommand = ($published) ? "SELECT Id, Address, City, Province, Country, Description, Price, PropertyType, Bedrooms, Bathrooms, LivingSpace, LandSize, TaxYear, Taxes, BuildingAge, New, Sold, Published, Latitude, Longitude, Created FROM Listings WHERE Published = 1 ORDER BY Id DESC LIMIT ?, ?" :
+			 "SELECT Id, Address, City, Province, Country, Description, Price, PropertyType, Bedrooms, Bathrooms, LivingSpace, LandSize, TaxYear, Taxes, BuildingAge, New, Sold, Published, Latitude, Longitude, Created FROM Listings LIMIT ?, ? ORDER BY Id DESC";
 			if ($stmt = $conn->prepare($sqlCommand)) {
 				$stmt->bind_param("ii", $page, $pageSize);
 			}
 		} else {
-			$sqlCommand = "SELECT Id, Address, City, Province, Country, Description, Price, PropertyType, Bedrooms, Bathrooms, LivingSpace, LandSize, TaxYear, Taxes, BuildingAge, New, Sold, Published FROM Listings WHERE Id > ? ORDER BY Id DESC";
+			$sqlCommand = "SELECT Id, Address, City, Province, Country, Description, Price, PropertyType, Bedrooms, Bathrooms, LivingSpace, LandSize, TaxYear, Taxes, BuildingAge, New, Sold, Published, Latitude, Longitude, Created FROM Listings WHERE Id > ? ORDER BY Id DESC";
 			echo($published);
 			if (isset($published)) {
 				echo('getting only published listings.');
-				$sqlCommand = "SELECT Id, Address, City, Province, Country, Description, Price, PropertyType, Bedrooms, Bathrooms, LivingSpace, LandSize, TaxYear, Taxes, BuildingAge, New, Sold, Published FROM Listings WHERE Id > ? AND Published = " . $published . " ORDER BY Id DESC";
+				$sqlCommand = "SELECT Id, Address, City, Province, Country, Description, Price, PropertyType, Bedrooms, Bathrooms, LivingSpace, LandSize, TaxYear, Taxes, BuildingAge, New, Sold, Published, Latitude, Longitude, Created FROM Listings WHERE Id > ? AND Published = " . $published . " ORDER BY Id DESC";
 			}
 			$stmt = $conn->prepare($sqlCommand);
 			$startId = 0;
@@ -209,7 +217,7 @@ class Listing {
 	public static function getListingById($id) {
 		$conn = self::conn();
 		$listing = null;
-		if($stmt = $conn->prepare("SELECT Id, Address, City, Province, Country, Description, Price, PropertyType, Bedrooms, Bathrooms, LivingSpace, LandSize, TaxYear, Taxes, BuildingAge, New, Sold, Published FROM Listings WHERE Id = ?")) {
+		if($stmt = $conn->prepare("SELECT Id, Address, City, Province, Country, Description, Price, PropertyType, Bedrooms, Bathrooms, LivingSpace, LandSize, TaxYear, Taxes, BuildingAge, New, Sold, Published, Latitude, Longitude, Created FROM Listings WHERE Id = ?")) {
 			
 		    $stmt->bind_param("i", $id);
 	        $listings = Listing::queryListings($stmt);
@@ -222,7 +230,7 @@ class Listing {
 
 	public static function searchListings($searchText) {
 		$conn = self::conn();
-		$sqlCommand = "SELECT Id, Address, City, Province, Country, Description, Price, PropertyType, Bedrooms, Bathrooms, LivingSpace, LandSize, TaxYear, Taxes, BuildingAge, New, Sold, Published FROM Listings WHERE Address LIKE ?";
+		$sqlCommand = "SELECT Id, Address, City, Province, Country, Description, Price, PropertyType, Bedrooms, Bathrooms, LivingSpace, LandSize, TaxYear, Taxes, BuildingAge, New, Sold, Published, Latitude, Longitude, Created FROM Listings WHERE Address LIKE ?";
 		$listings = array();
 		$searchText = '%' . $searchText . '%';
 		if ($stmt = $conn->prepare($sqlCommand)) {
@@ -237,7 +245,7 @@ class Listing {
 	private static function queryListings(&$stmt) {
 		$listings = array();
 		$stmt->execute();
-		$stmt->bind_result($Id, $Address, $City, $Province, $Country, $Description, $Price, $PropertyType, $Bedrooms, $Bathrooms, $LivingSpace, $LandSize, $TaxYear, $Taxes, $BuildingAge, $New, $Sold, $Published);
+		$stmt->bind_result($Id, $Address, $City, $Province, $Country, $Description, $Price, $PropertyType, $Bedrooms, $Bathrooms, $LivingSpace, $LandSize, $TaxYear, $Taxes, $BuildingAge, $New, $Sold, $Published, $Latitude, $Longitude, $Created);
 		while ($row = $stmt->fetch()) {
 			$listing = new Listing($Address, $City, $Province, $Country, $Description, $Price);
 	    	$listing->Id = $Id;
@@ -252,6 +260,9 @@ class Listing {
 			$listing->New = $New;
 			$listing->Sold = $Sold;
 			$listing->Published = $Published;
+			$listing->Latitude = $Latitude;
+			$listing->Longitude = $Longitude;
+			$listing->CreatedDate = $Created;
 
 			$conn = self::conn();
 			$images = $conn->query("SELECT Name FROM ListingImages WHERE ListingId = " . $listing->Id);
@@ -341,7 +352,7 @@ class Listing {
 	}
 
 	private function bindParams(&$stmt) {
-		$stmt->bind_param("sssssdssiiiidiiii", 
+		$stmt->bind_param("sssssdssiiiidiiiiii", 
 			$this->Address, 
 			$this->City, 
 			$this->Province, 
@@ -358,7 +369,9 @@ class Listing {
 			$this->BuildingAge,
 			$this->New,
 			$this->Sold,
-			$this->Published);
+			$this->Published,
+			$this->Latitude,
+			$this->Longitude);
 	}
 
 	private static function conn() {

@@ -1,9 +1,9 @@
-CREATE DATABASE RealEstate;
+--  CREATE DATABASE RealEstate;
 
 USE RealEstate;
 
 -- CREATE NEW USER. UNCOMMENT FOR NEW INSTALL.
--- DROP USER 'rewebuser'@'localhost';
+DROP USER 'rewebuser'@'localhost';
 
 CREATE USER 'rewebuser'@'localhost' IDENTIFIED BY 'rewebuser';
 GRANT INSERT,SELECT,UPDATE,DELETE ON RealEstate.* TO 'rewebuser'@'localhost';
@@ -19,22 +19,22 @@ CREATE TABLE Content(
    PRIMARY KEY ( Id )
 );
 
-DROP TABLE IF EXISTS members;
-DROP TABLE IF EXISTS members;
-CREATE TABLE members (
-   `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-   `username` VARCHAR(30) NOT NULL,
-   `email` VARCHAR(50) NOT NULL,
-   `password` CHAR(128) NOT NULL,
-   `salt` CHAR(128) NOT NULL 
-);
+-- DROP TABLE IF EXISTS members;
+-- DROP TABLE IF EXISTS members;
+-- CREATE TABLE members (
+--   `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+--   `username` VARCHAR(30) NOT NULL,
+--   `email` VARCHAR(50) NOT NULL,
+--   `password` CHAR(128) NOT NULL,
+--   `salt` CHAR(128) NOT NULL 
+-- );
 
-DROP TABLE IF EXISTS LoginAttempts;
-DROP TABLE IF EXISTS LoginAttempts;
-CREATE TABLE LoginAttempts (
-   `user_id` INT(11) NOT NULL,
-   `time` VARCHAR(30) NOT NULL
-);
+-- DROP TABLE IF EXISTS LoginAttempts;
+-- DROP TABLE IF EXISTS LoginAttempts;
+-- CREATE TABLE LoginAttempts (
+--   `user_id` INT(11) NOT NULL,
+--   `time` VARCHAR(30) NOT NULL
+-- );
 
 DROP TABLE IF EXISTS ListingImages;
 DROP TABLE IF EXISTS Listings;
@@ -57,7 +57,9 @@ CREATE TABLE Listings (
   BuildingAge INT NULL,
   New BIT NULL,
   Sold BIT NULL,
-  Published BIT NULL
+  Published BIT NULL,
+  Latitude Double NULL,
+  Longitude Double NULL
 );
 
 CREATE TABLE ListingImages (
@@ -66,5 +68,6 @@ CREATE TABLE ListingImages (
   FOREIGN KEY (ListingId) 
         REFERENCES Listings(Id)
         ON DELETE CASCADE,
-  Name VARCHAR(200) NOT NULL
+  Name VARCHAR(200) NOT NULL,
+  Featured BIT NULL
 );

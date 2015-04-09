@@ -103,6 +103,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 					<input type="number" id="BuildingAge" name="BuildingAge" placeholder="Building Age" class="form-control" 
 					value="<?php echo($listing->BuildingAge); ?>"/>
 				</div>
+				<div class="form-group">
+					<label for="BuildingAge">Latitude</label>
+					<input type="number" id="Latitude" name="Latitude" placeholder="Latitude" class="form-control" 
+					value="<?php echo($listing->Latitude); ?>"/>
+				</div>
+				<div class="form-group">
+					<label for="BuildingAge">Lonitude</label>
+					<input type="number" id="Lonitude" name="Lonitude" placeholder="Lonitude" class="form-control" 
+					value="<?php echo($listing->Longitude); ?>"/>
+				</div>
 				<div class="form-inline">
 					<div class="checkbox">
 						<label for="New">New

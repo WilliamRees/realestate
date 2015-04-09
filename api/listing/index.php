@@ -15,6 +15,8 @@
 			$listing->Published = ($_POST['Published'] == "true") ? 1 : 0;
 			$listing->Sold = ($_POST['Sold'] == "true") ? 1 : 0;
 			$listing->New = ($_POST['New'] == "true") ? 1 : 0;
+			$listing->Latitude = $_POST['Latitude'];
+			$listing->Longitude = $_POST['Longitude'];
 
 			if ($listing->save()) {
 				$result = true;
@@ -47,7 +49,9 @@
 			$listing->Published = ($put['Published'] == "true") ? 1 : 0;
 			$listing->Sold = ($put['Sold'] == "true") ? 1 : 0;
 			$listing->New = ($put['New'] == "true") ? 1 : 0;
-
+			$listing->Latitude = $put['Latitude'];
+			$listing->Longitude = $put['Longitude'];
+			
 			if ($listing->update()) {
 				$result = true;
 			}
