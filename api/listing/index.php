@@ -17,6 +17,7 @@
 			$listing->New = ($_POST['New'] == "true") ? 1 : 0;
 			$listing->Latitude = $_POST['Latitude'];
 			$listing->Longitude = $_POST['Longitude'];
+			$listing->Featured = $_POST['Featured'] ? 1 : 0;;
 
 			if ($listing->save()) {
 				$result = true;
@@ -51,6 +52,7 @@
 			$listing->New = ($put['New'] == "true") ? 1 : 0;
 			$listing->Latitude = $put['Latitude'];
 			$listing->Longitude = $put['Longitude'];
+			$listing->Featured = $put['Featured'] ? 1 : 0;;
 			
 			if ($listing->update()) {
 				$result = true;

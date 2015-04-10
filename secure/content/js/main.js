@@ -514,7 +514,8 @@ re.views.secure.listing = (function($) {
 			  	New: $('#New').prop('checked'),
 			  	Sold: $('#Sold').prop('checked'),
 			  	Latitude: $('#Latitude').val(),
-			  	Longitude: $('#Lonitude').val()
+			  	Longitude: $('#Lonitude').val(),
+			  	Featured: $('#Featured').prop('checked')
 		  	};
 	  		console.log(data);
 		  	return data;

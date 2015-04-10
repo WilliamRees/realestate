@@ -86,6 +86,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 									<input type="hidden" name="status" value="published">
 								</div>
 							</form>
+							<form class="form-inline pull-left">
+								<div class="checkbox">
+									<label for="Featured">
+										Featured
+										<input type="checkbox" id="Featured" <?php echo(($listing->Featured == 1) ? "checked=\"checked\"" : ""); ?>>
+									</label>
+									<input type="hidden" name="id" value="<?php echo($listing->Id); ?>" />
+									<input type="hidden" name="status" value="featured">
+								</div>
+							</form>
 						</div>
 						<img class="lazy" data-original="<?php echo(SITE_ROOT . "uploads/" . $listing->Images[0]) ?>" alt="...">
 						<div class="caption">

@@ -19,6 +19,10 @@
 				$result = Listing::setSoldStatus($_GET["id"], $_GET["value"]);
 			}
 
+			if ($_GET["status"] == "featured") {
+				$result = Listing::setFeaturedStatus($_GET["id"], $_GET["value"]);
+			}
+
 			if ($result) {
 				$result = new ApiResult(true, '');
 				//$result->Data = [
@@ -43,4 +47,3 @@
 		}
 	} 
 ?>
-working!!!

@@ -130,6 +130,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 							<input type="checkbox" id="Published" name="Published" <?php echo(($listing->Published) ? "checked='checked'" : "")  ?> />
 						</label>
 					</div>
+					<div class="checkbox">
+						<label for="Featured">Featured
+							<input type="checkbox" id="Featured" name="Featured" <?php echo(($listing->Featured) ? "checked='checked'" : "")  ?> />
+						</label>
+					</div>
 				</div>
 			</div>
 			<div class="col-md-12">
