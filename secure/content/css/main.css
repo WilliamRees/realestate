@@ -1,3 +1,9 @@
+.dropzone label.radio-button {
+  display: none;
+}
+.dropzone.featured label.radio-button {
+  display: block;
+}
 #NewListingDropZone {
   width: 100%;
   min-height: 200px;
@@ -94,6 +100,28 @@
 #Notification .alert {
   margin-bottom: 0;
 }
+#ErrorSummary {
+  display: none;
+  opacity: 0;
+}
+#ErrorSummary.show {
+  display: block;
+  -webkit-transition: opacity 1s ease-in-out;
+  -moz-transition: opacity 1s ease-in-out;
+  -ms-transition: opacity 1s ease-in-out;
+  -o-transition: opacity 1s ease-in-out;
+  transition: opacity 1s ease-in-out;
+  opacity: 1;
+}
+label {
+  display: none;
+}
+textarea.form-control {
+  height: 132px;
+}
+label.radio-button {
+  display: block;
+}
 #ListingImageTemplate {
   display: none;
 }
@@ -122,12 +150,6 @@
 .thumbnail .buttons {
   position: absolute;
   bottom: 0;
-}
-label {
-  display: none;
-}
-textarea.form-control {
-  height: 132px;
 }
 .typeahead-field {
   box-sizing: border-box;

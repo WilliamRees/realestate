@@ -211,6 +211,7 @@ re.utilities = (function($) {
 		  		if (response.Success) {
 		  			deferred.resolve(response);	
 		  		} else {
+		  			handelFailer(response);
 		  			deferred.reject(response.Errors);
 		  		}
 		  	},
@@ -233,6 +234,7 @@ re.utilities = (function($) {
 	  				handleSuccess(response, options);
 		  			deferred.resolve(response);	
 		  		} else {
+		  			handelFailer(response);
 		  			deferred.reject(response.Errors);
 		  		}
 		  	},
@@ -255,6 +257,7 @@ re.utilities = (function($) {
 	  				handleSuccess(response, options);
 		  			deferred.resolve(response);	
 		  		} else {
+		  			handelFailer(response);
 		  			deferred.reject(response.Errors);
 		  		}
 		  	},
@@ -275,6 +278,7 @@ re.utilities = (function($) {
 		  		if (response.Success) {
 		  			deferred.resolve(response);	
 		  		} else {
+		  			handelFailer(response);
 		  			deferred.reject(response.Errors);
 		  		}
 		  	},
@@ -294,8 +298,29 @@ re.utilities = (function($) {
 		}			
 	}
 
+	function handelFailer(response) {
+		window.tempResponse = response;
+		$errorSummary = $("#ErrorSummary");
+		$errorSummaryInner = $("#ErrorSummary .inner");
+
+		if (response.Errors.length == 1) {
+			$errorSummaryInner.empty().html(response.Errors[0]);
+			$errorSummary.removeClass('show');
+			$errorSummary.addClass('show');
+
+			window.scrollTo(0,0);
+
+		} else if (response.Errors.length > 1) {
+			response.Errors.forEach(function (item) {
+
+			});
+		}
+
+		window.scrollTo(0, $errorSummary.offset().top - 20);
+	}
+
 	function redirectToErrorView() {
-		//window.location.href = SITE_ROOT + '/error.php';
+		window.location.href = SITE_ROOT + '/error.php';
 	}
 
 	return {
@@ -515,9 +540,10 @@ re.views.secure.listing = (function($) {
 			  	Sold: $('#Sold').prop('checked'),
 			  	Latitude: $('#Latitude').val(),
 			  	Longitude: $('#Lonitude').val(),
-			  	Featured: $('#Featured').prop('checked')
+			  	Featured: $('#Featured').prop('checked'),
+			  	FeaturedImage: $('input[name="FeaturedImage"]:checked').data('image-name')
 		  	};
-	  		console.log(data);
+
 		  	return data;
 		},
 		dropzone: {
@@ -565,6 +591,11 @@ re.views.secure.listing = (function($) {
 					deferred.resolve(dropzone);	
 					
 				});
+
+				if ($("#Featured").prop('checked')) {
+					$('div#NewListingDropZone').addClass('featured');
+				}
+
 				return deferred.promise();
 			},
 			prossesDropzone: function (dropzone, id) {
@@ -572,6 +603,12 @@ re.views.secure.listing = (function($) {
 
 		  			dropzone.on("sending", function (file, xhr, formData) {
 						formData.append("ListingId", id);
+						var $previewElement = $(file.previewElement);
+						if ($('#Featured').prop('checked') && $previewElement.find('input[name="FeaturedImage"]').prop('checked')){
+							formData.append("FeaturedImage", true);
+						} else {
+							formData.append("FeaturedImage", false);
+						}
 					});
 
 		  			dropzone.options.autoProcessQueue = true;
@@ -599,6 +636,14 @@ re.views.secure.listing = (function($) {
 				dropzone.on('removedfile', function (file) {
 					if (dropzone.files.length === 0) {
 						$('#Dropzone-DefaultText').show();
+					}
+				});
+
+				$('#Featured').on('change', function(){
+					if ($('#Featured').prop('checked')) {
+						$('div#NewListingDropZone').addClass('featured');	
+					} else {
+						$('div#NewListingDropZone').removeClass('featured');
 					}
 				});
 			}
@@ -702,7 +747,7 @@ re.views.secure.listing = (function($) {
 						var deferred = $.Deferred();
 						if (response.Success) {
 							var listing = response.Data;
-
+							console.log(listing);
 							var errors = [];
 							for (var property in listing) {
 							    if (listing.hasOwnProperty(property)) {
@@ -711,7 +756,7 @@ re.views.secure.listing = (function($) {
 							        	if (listing[property].length === 0) {
 							        		errors.push(property);
 							        	}
-							        } else {
+							        } else if (property !== "FeaturedImage") {
 							        	if (listing[property] === null || listing[property].length === 0) {
 							        		errors.push(property);
 							        	}
@@ -753,6 +798,7 @@ re.views.secure.listing = (function($) {
 						return deferred.promise();
 					})
 					.done(function() {
+						$this.prop('checked', !$this.prop('checked'));
 						re.api.listing.statuses(status, value, id);		
 					});
 				} else {
@@ -943,6 +989,12 @@ re.views.secure.listing = (function($) {
 								}, 500);
 							}
 						}
+					})
+					.fail(function(response) {
+						setTimeout(function(){
+							l.stop();
+							re.notification.show("#Notification", '<strong>Success!</strong> ' + response.Data.Address + ' was created', 'alert-success', true, false);
+						}, 500);
 					});
 				}
 			};

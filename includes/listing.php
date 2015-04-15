@@ -24,6 +24,7 @@ class Listing {
 	public $Longitude;
 	public $CreatedDate;
 	public $Featured;
+	public $FeaturedImage;
 
 	function __construct($address, $city, $province, $country, $description, $price, $bedrooms, $bathrooms, $livingSpace) 
 	{
@@ -49,7 +50,8 @@ class Listing {
 		$this->Latitude = null;
 		$this->Longitude = null;
 		$this->CreatedDate = null;
-		$this->Featured = false;
+		$this->Featured = 0;
+		$this->FeaturedImage = null;
 
 		$this->isValid();
 	}
@@ -81,7 +83,6 @@ class Listing {
 			$this->Longitude,
 			$this->Featured);
 
-			var_dump($this);
 	        if($stmt->execute())
 	        {
 	        	$this->Id = mysqli_stmt_insert_id($stmt);
@@ -258,13 +259,15 @@ class Listing {
 			$listing->Featured = $Featured;
 
 			$conn = self::conn();
-			$images = $conn->query("SELECT Name FROM ListingImages WHERE ListingId = " . $listing->Id);
+			$images = $conn->query("SELECT Name FROM ListingImages WHERE ListingId = " . $listing->Id . " AND Featured = 0");
 			$listingImages = array();
 	    	if ($images->num_rows > 0) {
 	    		while($img = $images->fetch_assoc()) {
 	    			array_push($listingImages, $img["Name"]);
 	    		}
 			}
+
+			$listing->getFeaturedImage();
 
 			$listing->Images = $listingImages;
 			array_push($listings, $listing);
@@ -273,6 +276,44 @@ class Listing {
 
 		$stmt->close();
 		return $listings;
+	}
+
+	public function getFeaturedImage () {
+		$conn = self::conn();
+		$result;
+
+		if ($stmt = $conn->prepare("SELECT Name FROM ListingImages WHERE Featured = 1 AND ListingId = ?")) {
+			$stmt->bind_param("i", $this->Id);
+			$result = $stmt->execute();
+			$stmt->bind_result($FeaturedImage);
+			while ($row = $stmt->fetch()) {
+				$this->FeaturedImage = $FeaturedImage;
+			}
+			$stmt->close();
+		}
+
+		$conn->close();
+		return $result;
+	}
+
+	public function setFeaturedImage ($name) {
+		$conn = self::conn();
+		$result;
+
+		if ($stmt = $conn->prepare("UPDATE ListingImages SET Featured = 0 WHERE ListingId = ?")) {
+			$stmt->bind_param("i", $this->Id);
+			$result = $stmt->execute();
+			$stmt->close();
+		}
+
+		if ($result && $stmt = $conn->prepare("UPDATE ListingImages SET Featured = 1 WHERE Name = ? AND ListingId = ?")) {
+			$stmt->bind_param("si", $name, $this->Id);
+			$result = $stmt->execute();
+			$stmt->close();
+		}
+
+		$conn->close();
+		return $result;
 	}
 
 	public static function addImagesById($id, $filename) {
@@ -333,15 +374,6 @@ class Listing {
 	   	$conn->close();
 	   
 	   	return $count;
-	}
-
-	public function getImagesForListing() {
-		echo($this->Id . '<br/>');
-		
-			$conn = self::conn();
-		
-
-		
 	}
 
 	private function bindParams(&$stmt) {

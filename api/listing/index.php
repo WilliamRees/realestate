@@ -17,7 +17,7 @@
 			$listing->New = ($_POST['New'] == "true") ? 1 : 0;
 			$listing->Latitude = $_POST['Latitude'];
 			$listing->Longitude = $_POST['Longitude'];
-			$listing->Featured = $_POST['Featured'] ? 1 : 0;;
+			$listing->Featured = ($_POST['Featured'] == "true") ? 1 : 0;;
 
 			if ($listing->save()) {
 				$result = true;
@@ -39,6 +39,15 @@
 	if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
 		parse_str(file_get_contents("php://input"),$put);
 		$result = false;
+
+		if ($put['Featured'] == 'true' && !isset($put['FeaturedImage'])) {
+			header('Content-Type: application/json');
+			$result = new ApiResult(false, '');
+			$result->Errors = array("You must select a featured image");
+			echo json_encode($result);
+			exit;
+		}
+
 		if (isset($put['Address'], $put['City'], $put['Province'], $put['Description'], $put['Price'])) {
 			$listing = new Listing($put['Address'], $put['City'], $put['Province'], "Canada", $put['Description'], $put['Price'], $put['Bedrooms'], $put['Bathrooms'], $put['LivingSpace']);
 			$listing->PropertyType = $put['PropertyType'];
@@ -52,10 +61,14 @@
 			$listing->New = ($put['New'] == "true") ? 1 : 0;
 			$listing->Latitude = $put['Latitude'];
 			$listing->Longitude = $put['Longitude'];
-			$listing->Featured = $put['Featured'] ? 1 : 0;;
-			
+			$listing->Featured = ($put['Featured'] == 'true') ? 1 : 0;;
+
 			if ($listing->update()) {
 				$result = true;
+			}
+
+			if ($result && $listing->Featured == 1 && isset($put['FeaturedImage'])) {
+				$listing->setFeaturedImage($put['FeaturedImage']);
 			}
 		}
 

@@ -60,7 +60,7 @@ CREATE TABLE Listings (
   Published BIT NULL,
   Latitude Double NULL,
   Longitude Double NULL,
-  Featured BIT NULL
+  Featured BIT NULL DEFAULT 0
 );
 
 CREATE TABLE ListingImages (

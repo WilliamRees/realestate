@@ -5,6 +5,7 @@
 
 	if (isset($_GET["Id"])) {
 		$listing = Listing::getListingById($_GET["Id"]);
+		$featuredImage;
 		if (isset($listing))
 		{
 			
@@ -174,6 +175,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 					    </div>
 				  	</div>
 						<div class="files row" id="Dropzone-Preview">
+						<?php if(isset($listing->FeaturedImage)) : ?>
+							<div class="col-md-3 dz-image-preview listing-image" id="<?php echo("FeaturedImg") ?>">
+								<div>
+									<div>
+										<img src="<?php echo(SITE_ROOT . "uploads/" . $listing->FeaturedImage); ?>" />
+									</div>
+								    <div>
+								    	<label class="radio-button">
+								    		Featured
+								    		<input type="radio" name="FeaturedImage" data-image-name="<?php echo($listing->FeaturedImage); ?>" checked="checked"/>
+								    	</label>
+								        <p class="name" data-dz-name><?php echo($listing->FeaturedImage); ?></p>
+								    </div>
+								    <div>
+
+						    			<button data-listing-image-remove-target="<?php echo("#FeaturedImg") ?>" data-listing-id="<?php echo($listing->Id); ?>" data-listing-image-remove="<?php echo($listing->FeaturedImage); ?>" class="btn btn-warning remove">
+							          		<i class="glyphicon glyphicon-trash"></i>
+								      	</button>
+								    </div>
+							    </div>
+						  	</div>
+						<?php endif; ?>
 						<?php
 								for ($i = 0; $i < sizeOf($listing->Images); $i++) {
 									$img = $listing->Images[$i];
@@ -184,9 +207,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 										<img src="<?php echo(SITE_ROOT . "uploads/" .$img); ?>" />
 									</div>
 								    <div>
+								    	<label class="radio-button">
+								    		Featured
+								    		<input type="radio" name="FeaturedImage" data-image-name="<?php echo($img); ?>" />
+								    	</label>
 								        <p class="name" data-dz-name><?php echo($img); ?></p>
 								    </div>
 								    <div>
+
 						    			<button data-listing-image-remove-target="<?php echo("#Img" . $i) ?>" data-listing-id="<?php echo($listing->Id); ?>" data-listing-image-remove="<?php echo($img); ?>" class="btn btn-warning remove">
 							          		<i class="glyphicon glyphicon-trash"></i>
 								      	</button>

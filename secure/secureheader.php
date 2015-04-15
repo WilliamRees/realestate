@@ -56,3 +56,16 @@ include_once '../../includes/WebSecurity.php';
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+<div class="container">
+  <div class="row">
+  <div class="col-md-12">
+    <div id="ErrorSummary" class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="inner">
+        
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
