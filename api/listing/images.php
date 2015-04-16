@@ -8,7 +8,7 @@
 		$result = false;
 		
 		if (isset($_FILES["file"], $_POST["ListingId"])){
-			$result = ImageHandler::upload("../../uploads/", "file");
+			$result = ImageHandler::upload("../../uploads/", "file", $_POST["ListingId"]);
 			if (gettype($result) != 'string') {
 				ImageHandler::filename("file");
 				Listing::addImagesById($_POST["ListingId"], ImageHandler::filename("file"));

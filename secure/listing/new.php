@@ -94,7 +94,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 				<div class="form-inline">
 					<div class="checkbox">
 						<label for="New">New
-							<input type="checkbox" id="New" name="New" />
+							<input type="checkbox" id="New" name="New" checked="checked" />
 						</label>
 					</div>
 					<div class="checkbox">

@@ -1,0 +1,73 @@
+@import "_normalize";
+@import "_main";
+
+/* ==========================================================================
+   Contact
+   ========================================================================== */
+
+.basic-page {
+    #TopBanner {
+        width: 100%;
+        display: black;
+        overflow: hidden;
+        height: 200px;
+        background: url(../img/87618868.jpg) top center;
+        background-size: 100%;
+        background-attachment: fixed;
+        position: relative;
+        h1 {
+            position: relative;
+            color: @color-white;
+            margin: 0;
+            z-index: 100;
+            text-align: center;
+            margin-top: 60px;
+            text-shadow: 0 3px 5px rgba(0, 0, 0, 0.5);
+        }
+    }
+    .blind {
+        background-color: rgba(0, 0, 0, 0.5);
+        position: absolute;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        z-index: 1;
+    }
+    #ContentBody {
+        overflow-y: hidden;
+        padding-top: 20px;
+        padding-bottom: 100px;
+        .left {
+            overflow: hidden;
+            width: 65%;
+            padding-right: 60px;
+            float: left;
+        }
+        .right {
+            overflow: hidden;
+            width: 35%;
+            float: right;
+        }    
+        h2 {
+            font-size: 250%;
+            margin-bottom: 0;
+        }
+        h3 {
+            margin-top: 40px;
+            font-size: 140%;
+        }
+        p {
+            font-size: 125%;
+        }    
+        .btn-round {
+            margin-right: 30px;
+        }        
+    }
+}
+
+
+
+
+/* ==========================================================================
+   Media Queries
+   ========================================================================== */

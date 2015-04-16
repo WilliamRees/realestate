@@ -1,0 +1,72 @@
+@import "_normalize";
+@import "_main";
+
+/* ==========================================================================
+   Contact
+   ========================================================================== */
+
+#Contact-Page {
+
+    #TopBanner {
+        width: 100%;
+        display: black;
+        overflow: hidden;
+        height: 200px;
+        background: url(../img/87618868.jpg) top center;
+        background-size: 100%;
+        background-attachment: fixed;
+        position: relative;
+        h1 {
+            position: relative;
+            color: @color-white;
+            margin: 0;
+            z-index: 100;
+            text-align: center;
+            margin-top: 60px;
+            text-shadow: 0 3px 5px rgba(0, 0, 0, 0.5);
+        }
+    }
+    .blind {
+        background-color: rgba(0, 0, 0, 0.5);
+        position: absolute;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        z-index: 1;
+    }
+    #ContentBody {
+        overflow-y: hidden;
+        padding-top: 20px;
+        padding-bottom: 30px;
+    }
+    .left {
+        overflow: hidden;
+        width: 50%;
+        padding-right: 40px;
+        float: left;
+        p {
+            font-size: 125%;
+        }
+    }
+
+    .right {
+        overflow: hidden;
+        width: 50%;
+        float: right;
+    }    
+    #f-send {
+        float: right;
+    }
+    #Map {
+        display: block;
+        width: 100%;
+        height: 300px;
+    }    
+}
+
+
+
+
+/* ==========================================================================
+   Media Queries
+   ========================================================================== */

@@ -5,10 +5,11 @@
 		public static function filename($postname) {
 			return $_FILES[$postname]["name"];
 		}
-		public static function upload($uploaddir, $postname) { 
+		public static function upload($uploaddir, $postname, $id) { 
 			try {
+				$date = new DateTime();
 				$target_dir = $uploaddir;
-				$target_file = $target_dir . basename($_FILES[$postname]["name"]);
+				$target_file = $target_dir . basename($id."-".$_FILES[$postname]["name"]);
 				$uploadOk = 1;
 				$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
 				$result = null;

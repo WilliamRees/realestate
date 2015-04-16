@@ -182,17 +182,15 @@ class Listing {
 		$listings = array();
 
 		if (isset($page, $pageSize)) {
-			$sqlCommand = ($published) ? "SELECT Id, Address, City, Province, Country, Description, Price, PropertyType, Bedrooms, Bathrooms, LivingSpace, LandSize, TaxYear, Taxes, BuildingAge, New, Sold, Published, Latitude, Longitude, Created, Featured FROM Listings WHERE Published = 1 ORDER BY Id DESC LIMIT ?, ?" :
-			 "SELECT Id, Address, City, Province, Country, Description, Price, PropertyType, Bedrooms, Bathrooms, LivingSpace, LandSize, TaxYear, Taxes, BuildingAge, New, Sold, Published, Latitude, Longitude, Created, Featured FROM Listings LIMIT ?, ? ORDER BY Id DESC";
+			$sqlCommand = ($published) ? "SELECT Id, Address, City, Province, Country, Description, Price, PropertyType, Bedrooms, Bathrooms, LivingSpace, LandSize, TaxYear, Taxes, BuildingAge, New, Sold, Published, Latitude, Longitude, Created, Featured FROM Listings WHERE Published = 1 ORDER BY New DESC, Created DESC LIMIT ?, ?" :
+			 "SELECT Id, Address, City, Province, Country, Description, Price, PropertyType, Bedrooms, Bathrooms, LivingSpace, LandSize, TaxYear, Taxes, BuildingAge, New, Sold, Published, Latitude, Longitude, Created, Featured FROM Listings LIMIT ?, ? ORDER BY New DESC, Created DESC";
 			if ($stmt = $conn->prepare($sqlCommand)) {
 				$stmt->bind_param("ii", $page, $pageSize);
 			}
 		} else {
-			$sqlCommand = "SELECT Id, Address, City, Province, Country, Description, Price, PropertyType, Bedrooms, Bathrooms, LivingSpace, LandSize, TaxYear, Taxes, BuildingAge, New, Sold, Published, Latitude, Longitude, Created, Featured FROM Listings WHERE Id > ? ORDER BY Id DESC";
-			echo($published);
+			$sqlCommand = "SELECT Id, Address, City, Province, Country, Description, Price, PropertyType, Bedrooms, Bathrooms, LivingSpace, LandSize, TaxYear, Taxes, BuildingAge, New, Sold, Published, Latitude, Longitude, Created, Featured FROM Listings WHERE Id > ? ORDER BY New DESC, Created DESC, Created DESC";
 			if (isset($published)) {
-				echo('getting only published listings.');
-				$sqlCommand = "SELECT Id, Address, City, Province, Country, Description, Price, PropertyType, Bedrooms, Bathrooms, LivingSpace, LandSize, TaxYear, Taxes, BuildingAge, New, Sold, Published, Latitude, Longitude, Created, Featured FROM Listings WHERE Id > ? AND Published = " . $published . " ORDER BY Id DESC";
+				$sqlCommand = "SELECT Id, Address, City, Province, Country, Description, Price, PropertyType, Bedrooms, Bathrooms, LivingSpace, LandSize, TaxYear, Taxes, BuildingAge, New, Sold, Published, Latitude, Longitude, Created, Featured FROM Listings WHERE Id > ? AND Published = " . $published . " ORDER BY New DESC, Created DESC";
 			}
 			$stmt = $conn->prepare($sqlCommand);
 			$startId = 0;
@@ -205,6 +203,38 @@ class Listing {
 
 		$conn->close();
 		return $listings;
+	}
+
+	public static function getFeaturedListings () {
+		$conn = self::conn();
+		$featuredlistings = array();
+		$sqlCommand = "SELECT Id, Address, City, Province, Country, Description, Price, PropertyType, Bedrooms, Bathrooms, LivingSpace, LandSize, TaxYear, Taxes, BuildingAge, New, Sold, Published, Latitude, Longitude, Created, Featured FROM Listings WHERE Featured = 1 AND Published = 1 ORDER BY New DESC, Created DESC";
+		$listings = $conn->query($sqlCommand);
+		
+    	if ($listings->num_rows > 0) {
+    		while($listing = $listings->fetch_assoc()) {
+    			$tempListing = new Listing($listing["Address"], $listing["City"], $listing["Province"], $listing["Country"], $listing["Description"], $listing["Price"], $listing["Bedrooms"], $listing["Bathrooms"], $listing["LivingSpace"]);
+    			$tempListing->Id = $listing["Id"];
+				$tempListing->PropertyType = $listing["PropertyType"];
+				$tempListing->LandSize = $listing["LandSize"];
+				$tempListing->TaxYear = $listing["TaxYear"];
+				$tempListing->Taxes = $listing["Taxes"];
+				$tempListing->BuildingAge = $listing["BuildingAge"];
+				$tempListing->New = $listing["New"];
+				$tempListing->Sold = $listing["Sold"];
+				$tempListing->Published = $listing["Published"];
+				$tempListing->Latitude = $listing["Latitude"];
+				$tempListing->Longitude = $listing["Longitude"];
+				$tempListing->CreatedDate = $listing["Created"];
+				$tempListing->Featured = $listing["Featured"];
+				$tempListing->FeaturedImage = $listing["FeaturedImage"];
+				$tempListing->getFeaturedImage();
+    			array_push($featuredlistings, $tempListing);
+    		}
+		}
+
+		$conn->close();
+		return $featuredlistings;
 	}
 
 	public static function getListingById($id) {
@@ -271,7 +301,7 @@ class Listing {
 
 			$listing->Images = $listingImages;
 			array_push($listings, $listing);
-			
+			$conn->close();
 		}
 
 		$stmt->close();
@@ -319,7 +349,7 @@ class Listing {
 	public static function addImagesById($id, $filename) {
 		$conn = self::conn();
 		$result;
-
+		$filename = $id."-".$filename;
 		if ($stmt = $conn->prepare("INSERT INTO ListingImages (ListingId, Name) VALUES(?, ?)")) {
 			$stmt->bind_param("is", $id, $filename);
 			$result = $stmt->execute();
