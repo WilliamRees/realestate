@@ -79,6 +79,9 @@
                     ?>
                     <li class="<?php echo($new ? "new" : ""); ?>">
                         <a href="#">
+                            <?php if ($listing->Sold): ?>
+                            <span class="sold-sign">SOLD</span>
+                            <?php endif; ?>    
                             <img src="<?php echo(SITE_ROOT . "uploads/" . $listing->Images[0]) ?>">
                         </a>
                         <p class="price">$<?php echo(number_format($listing->Price, 0, '.', ',')); ?></p>
