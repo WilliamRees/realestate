@@ -67,7 +67,7 @@
                     <?php
                     } 
                     ?>
-                    <li><a href="#TODO">></a></li>
+                    <li><a href="<?php echo SITE_ROOT . 'featured_listings.php?page=' . ($i) . "#FeatList-Listings" ?>">></a></li>
                 </ul>
                 <?php endif; ?>
 
@@ -94,16 +94,16 @@
                 </ul>
 
                 <?php if ($totalListings/$pageSize > 1): ?>
-                <ul class="pagination">
+                <ul class="pagination bottom">
                     <?php
                     for ($i = 0; $i < ($totalListings/$pageSize); $i++) {
                         $listing = $listings[$i];
                     ?>
-                        <li><a class="<?php echo(($page == $i) ? "active" : ""); ?>" href="<?php echo(SITE_ROOT . 'listings.php?page=' . ($i + 1)); ?>"><?php echo($i + 1); ?></a></li>
+                        <li><a class="<?php echo(($page == $i) ? "active" : ""); ?>" href="<?php echo(SITE_ROOT . 'featured_listings.php?page=' . ($i + 1) . "#FeatList-Listings"); ?>"><?php echo($i + 1); ?></a></li>
                     <?php
                     } 
                     ?>
-                    <li><a href="#TODO">></a></li>
+                    <li><a href="<?php echo SITE_ROOT . 'featured_listings.php?page=' . ($i) . "#FeatList-Listings" ?>">></a></li>
                 </ul>
                 <?php endif; ?>
 
