@@ -39,79 +39,78 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 			<div class="col-md-6">
 				<div class="form-group">
 					<label for="Address">Address</label>
-					<input type="text" id="Address" name="Address" placeholder="*Address" required class="form-control" 
+					<input type="text" id="Address" name="Address" required class="form-control" 
 					value="<?php echo($listing->Address); ?>"/>
 				</div>
 				<div class="form-group">
 					<label for="City">City</label>
-					<input type="text" id="City" name="City" placeholder="*City" required class="form-control" 
+					<input type="text" id="City" name="City" required class="form-control" 
 					value="<?php echo($listing->City); ?>"/>
 				</div>
 				<div class="form-group">
 					<label for="Province">Province</label>
-					<input type="text" id="Province" name="Province" placeholder="*Province" required class="form-control" 
+					<input type="text" id="Province" name="Province" required class="form-control" 
 					value="<?php echo($listing->Province); ?>"/>
 				</div>
 				<div class="form-group">
 					<label for="Description">Description</label>
-					<textarea type="text" id="Description" name="Description" placeholder="*Description" required class="form-control"><?php echo($listing->Description); ?></textarea>
+					<textarea type="text" id="Description" name="Description"required class="form-control"><?php echo($listing->Description); ?></textarea>
 				</div>
 				<div class="form-group">
 					<label for="Price">Price</label>
-					<input type="number" id="Price" name="Price" placeholder="*Price" required class="form-control" 
+					<input type="number" id="Price" name="Price" required class="form-control" 
 					value="<?php echo($listing->Price); ?>"/>
 				</div>
 				<div class="form-group">
 					<label for="PropertyType">Property Type</label>
-					<input type="text" id="PropertyType" name="PropertyType" placeholder="Property Type" class="form-control" 
+					<input type="text" id="PropertyType" name="PropertyType" class="form-control" 
 					value="<?php echo($listing->PropertyType); ?>"/>
+				</div>
+				<div class="form-group">
+					<label for="Bedrooms">Bedrooms</label>
+					<input id="Bedrooms" name="Bedrooms" class="form-control" 
+					value="<?php echo($listing->Bedrooms); ?>"/>
 				</div>
 			</div>
 			<div class="col-md-6">
-				
-				<div class="form-group">
-					<label for="Bedrooms">Bedrooms</label>
-					<input id="Bedrooms" name="Bedrooms" placeholder="Bedrooms" class="form-control" 
-					value="<?php echo($listing->Bedrooms); ?>"/>
-				</div>
 				<div class="form-group">
 					<label for="Bathrooms">Bathrooms</label>
-					<input type="number" id="Bathrooms" name="Bathrooms" placeholder="Bathrooms" class="form-control" 
+					<input type="number" id="Bathrooms" name="Bathrooms" class="form-control" 
 					value="<?php echo($listing->Bathrooms); ?>"/>
 				</div>
 				<div class="form-group">
 					<label for="LivingSpace">Living Space</label>
-					<input type="number" id="LivingSpace" name="LivingSpace" placeholder="Living Space" class="form-control" 
+					<input type="number" id="LivingSpace" name="LivingSpace" class="form-control" 
 					value="<?php echo($listing->LivingSpace); ?>"/>
 				</div>
 				<div class="form-group">
 					<label for="LandSize">Land Size</label>
-					<input type="number" id="LandSize" name="LandSize" placeholder="Land Size" class="form-control" 
+					<input type="number" id="LandSize" name="LandSize" class="form-control" 
 					value="<?php echo($listing->LandSize); ?>"/>
 				</div>
 				<div class="form-group">
 					<label for="TaxYear">Tax Year</label>
-					<input type="number" id="TaxYear" name="TaxYear" placeholder="Tax Year" class="form-control" 
+					<input type="number" id="TaxYear" name="TaxYear" class="form-control" 
 					value="<?php echo($listing->TaxYear); ?>"/>
 				</div>
 				<div class="form-group">
 					<label for="Taxes">Taxes</label>
-					<input type="number" id="Taxes" name="Taxes" placeholder="Taxes" class="form-control" 
+					<input type="number" id="Taxes" name="Taxes" class="form-control" 
 					value="<?php echo($listing->Taxes); ?>"/>
 				</div>
 				<div class="form-group">
 					<label for="BuildingAge">Building Age</label>
-					<input type="number" id="BuildingAge" name="BuildingAge" placeholder="Building Age" class="form-control" 
+					<input type="number" id="BuildingAge" name="BuildingAge" class="form-control" 
 					value="<?php echo($listing->BuildingAge); ?>"/>
 				</div>
 				<div class="form-group">
 					<label for="BuildingAge">Latitude</label>
-					<input type="number" id="Latitude" name="Latitude" placeholder="Latitude" class="form-control" 
+					<input type="number" id="Latitude" name="Latitude" class="form-control" 
 					value="<?php echo($listing->Latitude); ?>"/>
 				</div>
 				<div class="form-group">
 					<label for="BuildingAge">Lonitude</label>
-					<input type="number" id="Lonitude" name="Lonitude" placeholder="Lonitude" class="form-control" 
+					<input type="number" id="Lonitude" name="Lonitude" class="form-control" 
 					value="<?php echo($listing->Longitude); ?>"/>
 				</div>
 				<div class="form-inline">

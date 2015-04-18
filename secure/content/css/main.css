@@ -113,11 +113,8 @@
   transition: opacity 1s ease-in-out;
   opacity: 1;
 }
-label {
-  display: none;
-}
 textarea.form-control {
-  height: 132px;
+  height: 178px;
 }
 label.radio-button {
   display: block;
