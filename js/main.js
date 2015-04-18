@@ -105,6 +105,7 @@ mustafazia.shared = {
                 'user_name'     : $('input[name=f-name]').val(), 
                 'user_email'    : $('input[name=f-email]').val(), 
                 'user_phone'    : $('input[name=f-phone]').val(),
+                'prop_id'       : $('input[name=f-propid]').val(),
                 'msg'           : $('textarea[name=f-message]').val()
             };
             $.post('email.php', post_data, function(response){  

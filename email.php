@@ -17,6 +17,7 @@ if($_POST)
     $user_name      = filter_var($_POST["user_name"], FILTER_SANITIZE_STRING);
     $user_email     = filter_var($_POST["user_email"], FILTER_SANITIZE_EMAIL);
     $user_phone     = filter_var($_POST["user_phone"], FILTER_SANITIZE_STRING);
+    $prop_id        = filter_var($_POST["prop_id"], FILTER_SANITIZE_STRING);
     $message        = filter_var($_POST["msg"], FILTER_SANITIZE_STRING);
     
     //additional php validation
@@ -38,15 +39,14 @@ if($_POST)
     }
     
     //subject
-    $subject = "Contact from LetsCross.com - ".$user_name;
+    $subject = "Contact from MustafaZia.com - ".$user_name." - ".$prop_id;
 
     //email body
     $message_body = $message."\r\n\r\nFrom : ".$user_name."\r\nEmail : ".$user_email;
     
     //proceed with PHP email.
-    $headers = 'From: '.$user_name.'' . "\r\n" .
-    'Reply-To: '.$user_email.'' . "\r\n" .
-    'X-Mailer: PHP/' . phpversion();
+    $headers = 'From: '.$user_email.'' . "\r\n" .
+    'Reply-To: '.$user_email.'' . "\r\n";
     
     $send_mail = mail($to_email, $subject, $message_body, $headers);
     
