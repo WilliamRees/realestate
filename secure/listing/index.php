@@ -76,6 +76,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 									<input type="hidden" name="status" value="published">
 								</div>
 							</form>
+							<form class="form-inline pull-right">
+								<div>
+									<label for="Priority">
+										Priority
+									</label>
+									<input type="number" id="Priority" required value="<?php echo($listing->Priority) ?>" />
+									<input type="hidden" name="id" value="<?php echo($listing->Id); ?>" />
+									<input type="hidden" name="status" value="priority">
+								</div>
+							</form>
 						</div>
 						<img class="lazy" data-original="<?php echo(SITE_ROOT . "uploads/" . $listing->Images[0]) ?>" alt="...">
 						<div class="caption">

@@ -5,12 +5,9 @@
 
 	if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 		$result = false;
+
 		if (isset($_GET["status"], $_GET["value"], $_GET["id"]))
 		{
-			if ($_GET["status"] == "new") {
-				$result = Listing::setNewStatus($_GET["id"], $_GET["value"]);
-			}
-
 			if ($_GET["status"] == "published") {
 				$result = Listing::setPublishedStatus($_GET["id"], $_GET["value"]);
 			}
@@ -21,6 +18,10 @@
 
 			if ($_GET["status"] == "featured") {
 				$result = Listing::setFeaturedStatus($_GET["id"], $_GET["value"]);
+			}
+
+			if ($_GET['status'] == "priority") {
+				$result = Listing::setPriorityStatus($_GET["id"], $_GET["value"]);
 			}
 
 			if ($result) {

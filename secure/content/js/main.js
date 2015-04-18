@@ -730,13 +730,19 @@ re.views.secure.listing = (function($) {
 					});
 			});
 
-			$('#StatusForms form input[type="checkbox"]').on('change', function(e) {
+			$('#StatusForms form input').on('change', function(e) {
 				var $this = $(this);
 				var $form = $this.parents('form');
 				
 				var status = $form.find('input[name="status"]').val();
 				var id = $form.find('input[name="id"]').val();
-				var value = $this.prop("checked") ? 1 : 0;
+				var value = null;
+				if ($this.is(":checkbox")) {
+					value = $this.prop("checked") ? 1 : 0;	
+				} else if ($this.attr('type') === "number") {
+					value = $this.val();	
+				}
+				
 				
 				if (status === "published" && value === 1) {
 					$this.prop('checked', false);
@@ -802,7 +808,7 @@ re.views.secure.listing = (function($) {
 						$this.prop('checked', !$this.prop('checked'));
 						re.api.listing.statuses(status, value, id);		
 					});
-				} else {
+				} else if (value !== null) {
 					re.api.listing.statuses(status, value, id);	
 				}
 
