@@ -333,6 +333,10 @@ footer {
         transition: all 200ms ease-in;
         border-bottom: 2px solid lighten(@color-light-gray, 10%);
         border-radius: 3px;
+        &.off {
+            color: @color-light-gray;
+            background-color: lighten(@color-light-gray, 10%);            
+        }
         &:focus {
             outline: none;
             background-color: white;
@@ -354,23 +358,20 @@ footer {
     }
     #FormError {
         display: none;
-        position: absolute;
-        top: 30px;
-        right: 0;
         p {
             color: #A30000;
             font-size: 100%;
             margin: 0;
-            height: 30px;
-            padding: 5px 25px 0 0;
             display: block;      
         }
     }
     #FormSuccess {
         display: none;
+        h4 {
+            margin: 20px 0 10px 0;
+        }
         p {
             margin: 0;
-            font-size: 80%;
         }
     }
     .error {

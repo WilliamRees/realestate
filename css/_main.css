@@ -311,6 +311,12 @@ footer p {
   border-bottom: 2px solid #ebebeb;
   border-radius: 3px;
 }
+.form-wrapper input[type="text"].off,
+.form-wrapper input[type="email"].off,
+.form-wrapper textarea.off {
+  color: #d1d1d1;
+  background-color: #ebebeb;
+}
 .form-wrapper input[type="text"]:focus,
 .form-wrapper input[type="email"]:focus,
 .form-wrapper textarea:focus {
@@ -333,24 +339,21 @@ footer p {
 }
 .form-wrapper #FormError {
   display: none;
-  position: absolute;
-  top: 30px;
-  right: 0;
 }
 .form-wrapper #FormError p {
   color: #A30000;
   font-size: 100%;
   margin: 0;
-  height: 30px;
-  padding: 5px 25px 0 0;
   display: block;
 }
 .form-wrapper #FormSuccess {
   display: none;
 }
+.form-wrapper #FormSuccess h4 {
+  margin: 20px 0 10px 0;
+}
 .form-wrapper #FormSuccess p {
   margin: 0;
-  font-size: 80%;
 }
 .form-wrapper .error input[type="text"],
 .form-wrapper .error input[type="email"],

@@ -96,7 +96,7 @@ mustafazia.shared = {
             }   
         });
 
-        $("form input[required=true], form textarea[required=true]").keyup(function() { 
+        $("form input[data-required=true], form textarea[data-required=true]").keyup(function() { 
             $(this).parent("div").removeClass("error");
         });
 
@@ -104,15 +104,17 @@ mustafazia.shared = {
             post_data = {
                 'user_name'     : $('input[name=f-name]').val(), 
                 'user_email'    : $('input[name=f-email]').val(), 
+                'user_phone'    : $('input[name=f-phone]').val(),
                 'msg'           : $('textarea[name=f-message]').val()
             };
             $.post('email.php', post_data, function(response){  
                 if(response.type == 'error'){ //load json data from server and output message     
                     $("#FormError").html(response.text).show();
-                }else{
+                } else {
                     $("#FormError").hide();
                     $("#f-send").hide();
                     $("#FormSuccess").html(response.text).show();
+                    $("form input[data-required=true], form textarea[data-required=true]").addClass("off").attr("disabled", "disabled");                    
                 }
             }, 'json');
         }
@@ -228,6 +230,7 @@ mustafazia.listings = {
 
 mustafazia.contact = {
     init : function () {
+        mustafazia.shared.formLabels();
         mustafazia.shared.googleMaps();
 
         // bind send button to email form
