@@ -11,9 +11,6 @@
     $totalListings = Listing::count(true);
 
     $featuredListings = Listing::getFeaturedListings();
-    echo("<pre>");
-    print_r($listings);
-    echo("</pre>");
 ?>
 <!doctype html>
 <html class="no-js" lang="en">
