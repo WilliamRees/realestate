@@ -27,7 +27,7 @@ include_once '../../includes/WebSecurity.php';
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Brand</a>
+      <a class="navbar-brand" href="http://www.mustafazia.com">MustafaZia.com</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
