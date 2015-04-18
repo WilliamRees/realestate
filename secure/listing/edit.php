@@ -84,7 +84,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 					value="<?php echo($listing->LivingSpace); ?>"/>
 				</div>
 				<div class="form-group">
-					<label for="LandSize">Land Size</label>
+					<label for="LandSize">Lot Size</label>
 					<input type="number" id="LandSize" name="LandSize" class="form-control" 
 					value="<?php echo($listing->LandSize); ?>"/>
 				</div>

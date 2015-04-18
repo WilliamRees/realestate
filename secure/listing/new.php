@@ -63,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 					<input type="number" id="LivingSpace" name="LivingSpace" class="form-control" />
 				</div>
 				<div class="form-group">
-					<label for="LandSize">Land Size</label>
+					<label for="LandSize">Lot Size</label>
 					<input type="number" id="LandSize" name="LandSize" class="form-control" />
 				</div>
 				<div class="form-group">
