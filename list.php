@@ -74,8 +74,10 @@
                         ?>                         
                     </div>
 
-
-                    <a href="#TODO" class="btn-round btn-vt">Virtual Tour</a>
+                    <?php if(isset($listing->VirtualTour) && strlen($listing->VirtualTour) > 0) : ?>
+                        <a href="<?php echo($listing->VirtualTour) ?>" class="btn-round btn-vt">Virtual Tour</a>        
+                    <?php endif; ?>
+                    
                     <a href="#TODO" class="btn-round btn-mc">Mortgage Calculator</a>
 
                     <h3>Property Description</h3>
