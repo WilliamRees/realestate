@@ -43,7 +43,7 @@
                 <div class="blind">
                     <h3><?php echo $featuredListing->Address ?></h3>
                     <p><?php echo $featuredListing->Description ?></p>
-                    <a href="list.php" class="btn">See More Information</a>
+                    <a href="<?php echo SITE_ROOT . "list.php?Id=" . $featuredListing->Id ?>" class="btn">See More Information</a>
                 </div>
                 </div>
             </div>
@@ -78,7 +78,7 @@
                         $new = ($listing->New) ? true : (date("Y-m-d", strtotime($listing->CreatedDate. ' + 5 days')) > date("Y-m-d")) ? true : false;
                     ?>
                     <li class="<?php echo($new ? "new" : ""); ?>">
-                        <a href="#">
+                        <a href="<?php echo SITE_ROOT . "list.php?Id=" . $listing->Id ?>">
                             <?php if ($listing->Sold): ?>
                             <span class="sold-sign">SOLD</span>
                             <?php endif; ?>    

@@ -700,7 +700,7 @@ re.views.secure.listing = (function($) {
 					var searchText = $('#ListingSearchInput').val();
 					$('.thumbnail').each(function(){
 						var $this = $(this);
-						if ($this.data('address').indexOf(searchText) > -1) {
+						if ($this.data('address').toString().indexOf(searchText) > -1) {
 							$this.parent().show();
 						} else {
 							$this.parent().hide();
