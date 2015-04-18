@@ -109,7 +109,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 					value="<?php echo($listing->Latitude); ?>"/>
 				</div>
 				<div class="form-group">
-					<label for="BuildingAge">Lonitude</label>
+					<label for="BuildingAge">Longitude</label>
 					<input type="number" id="Lonitude" name="Lonitude" class="form-control" 
 					value="<?php echo($listing->Longitude); ?>"/>
 				</div>
