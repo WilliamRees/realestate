@@ -37,8 +37,8 @@ include_once '../../includes/WebSecurity.php';
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Listings <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="<?php echo(SITE_ROOT . 'secure/Listing'); ?>">All</a></li>
-            <li><a href="<?php echo(SITE_ROOT . 'secure/Listing/new.php') ?>">New</a></li>
+            <li><a href="<?php echo(SITE_ROOT . 'secure/listing'); ?>">All</a></li>
+            <li><a href="<?php echo(SITE_ROOT . 'secure/listing/new.php') ?>">New</a></li>
           </ul>
         </li>
         <li class="dropdown">
