@@ -25,6 +25,8 @@ class Listing {
 	public $FeaturedImage;
 	public $PublishedDate;
 	public $Priority;
+	public $ShortDescription;
+	public $VirtualTour;
 
 	function __construct($address, $city, $province, $country, $description, $price, $bedrooms, $bathrooms, $livingSpace) 
 	{
@@ -53,6 +55,8 @@ class Listing {
 		$this->FeaturedImage = null;
 		$this->PublishedDate = null;
 		$this->Priority = 0;
+		$this->ShortDescription = null;
+		$this->VirtualTour = null;
 
 		$this->isValid();
 	}
@@ -60,9 +64,9 @@ class Listing {
 	public function save() {
 		$conn = self::conn();
 		$result = null;
-		if($stmt = $conn->prepare("INSERT INTO Listings (Address, City, Province, Country, Description, Price, PropertyType, Bedrooms, Bathrooms, LivingSpace, LandSize, TaxYear, Taxes, BuildingAge, Sold, Published, Latitude, Longitude, Featured) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)")) {
+		if($stmt = $conn->prepare("INSERT INTO Listings (Address, City, Province, Country, Description, Price, PropertyType, Bedrooms, Bathrooms, LivingSpace, LandSize, TaxYear, Taxes, BuildingAge, Sold, Published, Latitude, Longitude, Featured, ShortDescription, VirtualTour) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)")) {
 			//$this->bindParams($stmt);
-			$stmt->bind_param("sssssdssiiiidiiiiii", 
+			$stmt->bind_param("sssssdssiiiidiiiiiiss", 
 			$this->Address, 
 			$this->City, 
 			$this->Province, 
@@ -81,7 +85,9 @@ class Listing {
 			$this->Published,
 			$this->Latitude,
 			$this->Longitude,
-			$this->Featured);
+			$this->Featured,
+			$this->ShortDescription,
+			$this->VirtualTour);
 
 	        if($stmt->execute())
 	        {
@@ -101,7 +107,7 @@ class Listing {
 	public function update() {
 		$conn = self::conn();
 		$result;
-		if($stmt = $conn->prepare("UPDATE Listings SET Address = ?, City = ?, Province = ?, Country = ?, Description = ?, Price = ?, PropertyType = ?, Bedrooms = ?, Bathrooms = ?, LivingSpace = ?, LandSize = ?, TaxYear = ?, Taxes = ?, BuildingAge = ?, Sold = ?, Published = ?, Latitude = ?, Longitude = ?, Featured = ? WHERE Id = " . $this->Id)) {
+		if($stmt = $conn->prepare("UPDATE Listings SET Address = ?, City = ?, Province = ?, Country = ?, Description = ?, Price = ?, PropertyType = ?, Bedrooms = ?, Bathrooms = ?, LivingSpace = ?, LandSize = ?, TaxYear = ?, Taxes = ?, BuildingAge = ?, Sold = ?, Published = ?, Latitude = ?, Longitude = ?, Featured = ?, ShortDescription = ?, VirtualTour = ? WHERE Id = " . $this->Id)) {
 			$this->bindParams($stmt);
 
 	        if($stmt->execute())
@@ -181,15 +187,15 @@ class Listing {
 		$listings = array();
 
 		if (isset($page, $pageSize)) {
-			$sqlCommand = ($published) ? "SELECT Id, Address, City, Province, Country, Description, Price, PropertyType, Bedrooms, Bathrooms, LivingSpace, LandSize, TaxYear, Taxes, BuildingAge, Sold, Published, Latitude, Longitude, Created, Featured, Priority, PublishedDate FROM Listings WHERE Published = 1 ORDER BY Priority ASC, PublishedDate DESC LIMIT ?, ?" :
-			 "SELECT Id, Address, City, Province, Country, Description, Price, PropertyType, Bedrooms, Bathrooms, LivingSpace, LandSize, TaxYear, Taxes, BuildingAge, Sold, Published, Latitude, Longitude, Created, Featured, Priority, PublishedDate FROM Listings LIMIT ?, ? ORDER BY Created DESC";
+			$sqlCommand = ($published) ? "SELECT Id, Address, City, Province, Country, Description, Price, PropertyType, Bedrooms, Bathrooms, LivingSpace, LandSize, TaxYear, Taxes, BuildingAge, Sold, Published, Latitude, Longitude, Created, Featured, Priority, PublishedDate, ShortDescription, VirtualTour FROM Listings WHERE Published = 1 ORDER BY Priority ASC, PublishedDate DESC LIMIT ?, ?" :
+			 "SELECT Id, Address, City, Province, Country, Description, Price, PropertyType, Bedrooms, Bathrooms, LivingSpace, LandSize, TaxYear, Taxes, BuildingAge, Sold, Published, Latitude, Longitude, Created, Featured, Priority, PublishedDate, ShortDescription, VirtualTour FROM Listings LIMIT ?, ? ORDER BY Created DESC";
 			if ($stmt = $conn->prepare($sqlCommand)) {
 				$stmt->bind_param("ii", $page, $pageSize);
 			}
 		} else {
-			$sqlCommand = "SELECT Id, Address, City, Province, Country, Description, Price, PropertyType, Bedrooms, Bathrooms, LivingSpace, LandSize, TaxYear, Taxes, BuildingAge, Sold, Published, Latitude, Longitude, Created, Featured, Priority, PublishedDate FROM Listings WHERE Id > ? ORDER BY Created DESC";
+			$sqlCommand = "SELECT Id, Address, City, Province, Country, Description, Price, PropertyType, Bedrooms, Bathrooms, LivingSpace, LandSize, TaxYear, Taxes, BuildingAge, Sold, Published, Latitude, Longitude, Created, Featured, Priority, PublishedDate, ShortDescription, VirtualTour FROM Listings WHERE Id > ? ORDER BY Created DESC";
 			if (isset($published)) {
-				$sqlCommand = "SELECT Id, Address, City, Province, Country, Description, Price, PropertyType, Bedrooms, Bathrooms, LivingSpace, LandSize, TaxYear, Taxes, BuildingAge, Sold, Published, Latitude, Longitude, Created, Featured, Priority, PublishedDate FROM Listings WHERE Id > ? AND Published = " . $published . " ORDER BY Priority ASC, PublishedDate DESC";
+				$sqlCommand = "SELECT Id, Address, City, Province, Country, Description, Price, PropertyType, Bedrooms, Bathrooms, LivingSpace, LandSize, TaxYear, Taxes, BuildingAge, Sold, Published, Latitude, Longitude, Created, Featured, Priority, PublishedDate, ShortDescription, VirtualTour FROM Listings WHERE Id > ? AND Published = " . $published . " ORDER BY Priority ASC, PublishedDate DESC";
 			}
 			$stmt = $conn->prepare($sqlCommand);
 			$startId = 0;
@@ -207,7 +213,7 @@ class Listing {
 	public static function getFeaturedListings () {
 		$conn = self::conn();
 		$featuredlistings = array();
-		$sqlCommand = "SELECT Id, Address, City, Province, Country, Description, Price, PropertyType, Bedrooms, Bathrooms, LivingSpace, LandSize, TaxYear, Taxes, BuildingAge, Sold, Published, Latitude, Longitude, Created, Featured, Priority, PublishedDate FROM Listings WHERE Featured = 1 AND Published = 1 ORDER BY Priority ASC, PublishedDate DESC";
+		$sqlCommand = "SELECT Id, Address, City, Province, Country, Description, Price, PropertyType, Bedrooms, Bathrooms, LivingSpace, LandSize, TaxYear, Taxes, BuildingAge, Sold, Published, Latitude, Longitude, Created, Featured, Priority, PublishedDate, ShortDescription, VirtualTour FROM Listings WHERE Featured = 1 AND Published = 1 ORDER BY Priority ASC, PublishedDate DESC";
 		$listings = $conn->query($sqlCommand);
 		
     	if ($listings->num_rows > 0) {
@@ -228,6 +234,8 @@ class Listing {
 				$tempListing->FeaturedImage = $listing["FeaturedImage"];
 				$tempListing->Priority = $listing["Priority"];
 				$tempListing->PublishedDate = $listing["PublishedDate"];
+				$tempListing->ShortDescription = $listing["ShortDescription"];
+				$tempListing->VirtualTour = $listing["VirtualTour"];
 				$tempListing->getFeaturedImage();
     			array_push($featuredlistings, $tempListing);
     		}
@@ -240,7 +248,7 @@ class Listing {
 	public static function getListingById($id) {
 		$conn = self::conn();
 		$listing = null;
-		if($stmt = $conn->prepare("SELECT Id, Address, City, Province, Country, Description, Price, PropertyType, Bedrooms, Bathrooms, LivingSpace, LandSize, TaxYear, Taxes, BuildingAge, Sold, Published, Latitude, Longitude, Created, Featured, Priority, PublishedDate FROM Listings WHERE Id = ?")) {
+		if($stmt = $conn->prepare("SELECT Id, Address, City, Province, Country, Description, Price, PropertyType, Bedrooms, Bathrooms, LivingSpace, LandSize, TaxYear, Taxes, BuildingAge, Sold, Published, Latitude, Longitude, Created, Featured, Priority, PublishedDate, ShortDescription, VirtualTour FROM Listings WHERE Id = ?")) {
 			
 		    $stmt->bind_param("i", $id);
 	        $listings = Listing::queryListings($stmt);
@@ -253,7 +261,7 @@ class Listing {
 
 	public static function searchListings($searchText) {
 		$conn = self::conn();
-		$sqlCommand = "SELECT Id, Address, City, Province, Country, Description, Price, PropertyType, Bedrooms, Bathrooms, LivingSpace, LandSize, TaxYear, Taxes, BuildingAge, Sold, Published, Latitude, Longitude, Created, Featured, Priority, PublishedDate FROM Listings WHERE Address LIKE ?";
+		$sqlCommand = "SELECT Id, Address, City, Province, Country, Description, Price, PropertyType, Bedrooms, Bathrooms, LivingSpace, LandSize, TaxYear, Taxes, BuildingAge, Sold, Published, Latitude, Longitude, Created, Featured, Priority, PublishedDate, ShortDescription, VirtualTour FROM Listings WHERE Address LIKE ?";
 		$listings = array();
 		$searchText = '%' . $searchText . '%';
 		if ($stmt = $conn->prepare($sqlCommand)) {
@@ -268,7 +276,7 @@ class Listing {
 	private static function queryListings(&$stmt) {
 		$listings = array();
 		$stmt->execute();
-		$stmt->bind_result($Id, $Address, $City, $Province, $Country, $Description, $Price, $PropertyType, $Bedrooms, $Bathrooms, $LivingSpace, $LandSize, $TaxYear, $Taxes, $BuildingAge, $Sold, $Published, $Latitude, $Longitude, $Created, $Featured, $Priority, $PublishedDate);
+		$stmt->bind_result($Id, $Address, $City, $Province, $Country, $Description, $Price, $PropertyType, $Bedrooms, $Bathrooms, $LivingSpace, $LandSize, $TaxYear, $Taxes, $BuildingAge, $Sold, $Published, $Latitude, $Longitude, $Created, $Featured, $Priority, $PublishedDate, $ShortDescription, $VirtualTour);
 		while ($row = $stmt->fetch()) {
 			$listing = new Listing($Address, $City, $Province, $Country, $Description, $Price);
 	    	$listing->Id = $Id;
@@ -288,6 +296,8 @@ class Listing {
 			$listing->Featured = $Featured;
 			$listing->Priority = $Priority;
 			$listing->PublishedDate = $PublishedDate;
+			$listing->ShortDescription = $ShortDescription;
+			$listing->VirtualTour = $VirtualTour;
 
 			$conn = self::conn();
 			$images = $conn->query("SELECT Name FROM ListingImages WHERE ListingId = " . $listing->Id . " AND Featured = 0");
@@ -408,7 +418,7 @@ class Listing {
 	}
 
 	private function bindParams(&$stmt) {
-		$stmt->bind_param("sssssdssiiiidiiiiii", 
+		$stmt->bind_param("sssssdssiiiidiiiiiiss", 
 			$this->Address, 
 			$this->City, 
 			$this->Province, 
@@ -427,7 +437,9 @@ class Listing {
 			$this->Published,
 			$this->Latitude,
 			$this->Longitude,
-			$this->Featured);
+			$this->Featured,
+			$this->ShortDescription,
+			$this->VirtualTour);
 	}
 
 	private static function conn() {

@@ -17,8 +17,6 @@
 		header("Location: " . SITE_ROOT . '/error.php');
 		exit;	
 	}
-
-	
 ?>
 
 <?php  
@@ -112,6 +110,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 					<label for="BuildingAge">Longitude</label>
 					<input type="number" id="Lonitude" name="Lonitude" class="form-control" 
 					value="<?php echo($listing->Longitude); ?>"/>
+				</div>
+				<div class="form-group">
+					<label for="ShortDescription">Short Description</label>
+					<textarea id="ShortDescription" name="ShortDescription" class="form-control"><?php echo ($listing->ShortDescription); ?></textarea>
+				</div>
+				<div class="form-group">
+					<label for="VirtualTour">Virtual Tour</label>
+					<input type="text" id="VirtualTour" name="VirtualTour" class="form-control"
+					value="<?php echo ($listing->VirtualTour); ?>" />
 				</div>
 				<div class="form-inline">
 					<div class="checkbox">

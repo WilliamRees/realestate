@@ -542,7 +542,9 @@ re.views.secure.listing = (function($) {
 			  	Latitude: $('#Latitude').val(),
 			  	Longitude: $('#Lonitude').val(),
 			  	Featured: $('#Featured').prop('checked'),
-			  	FeaturedImage: $('input[name="FeaturedImage"]:checked').data('image-name')
+			  	FeaturedImage: $('input[name="FeaturedImage"]:checked').data('image-name'),
+			  	ShortDescription: $("#ShortDescription").val(),
+			  	VirtualTour: $("#VirtualTour").val()
 		  	};
 
 		  	return data;

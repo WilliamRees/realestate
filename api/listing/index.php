@@ -37,7 +37,9 @@
 			$listing->Sold = ($_POST['Sold'] == "true") ? 1 : 0;
 			$listing->Latitude = $_POST['Latitude'];
 			$listing->Longitude = $_POST['Longitude'];
-			$listing->Featured = ($_POST['Featured'] == "true") ? 1 : 0;;
+			$listing->Featured = ($_POST['Featured'] == "true") ? 1 : 0;
+			$listing->ShortDescription = $_POST['ShortDescription'];
+			$listing->VirtualTour = $_POST['VirtualTour'];
 			if (isset($_POST['Id'])) {
 				$listing->Id = $_POST['Id'];
 			}

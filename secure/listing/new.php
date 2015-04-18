@@ -83,8 +83,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 					<input type="number" id="Latitude" name="Latitude" class="form-control" />
 				</div>
 				<div class="form-group">
-					<label for="BuildingAge">Lonitude</label>
+					<label for="BuildingAge">Longitude</label>
 					<input type="number" id="Lonitude" name="Lonitude" class="form-control" />
+				</div>
+				<div class="form-group">
+					<label for="ShortDescription">Short Description</label>
+					<textarea id="ShortDescription" name="ShortDescription" class="form-control"></textarea>
+				</div>
+				<div class="form-group">
+					<label for="VirtualTour">Virtual Tour</label>
+					<input type="text" id="VirtualTour" name="VirtualTour" class="form-control" />
 				</div>
 				<div class="form-inline">				
 					<div class="checkbox">
