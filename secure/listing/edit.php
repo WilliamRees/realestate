@@ -116,11 +116,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 				</div>
 				<div class="form-inline">
 					<div class="checkbox">
-						<label for="New">New
-							<input type="checkbox" id="New" name="New" <?php echo(($listing->New) ? "checked='checked'" : "")  ?> />
-						</label>
-					</div>
-					<div class="checkbox">
 						<label for="Sold">Sold
 							<input type="checkbox" id="Sold" name="Sold" <?php echo(($listing->Sold) ? "checked='checked'" : "")  ?> />
 						</label>

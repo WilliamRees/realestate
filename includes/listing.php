@@ -17,14 +17,14 @@ class Listing {
 	public $TaxYear;
 	public $Taxes;
 	public $BuildingAge;
-	public $New;
 	public $Sold;
 	public $Published;
 	public $Latitude;
 	public $Longitude;
-	public $CreatedDate;
 	public $Featured;
 	public $FeaturedImage;
+	public $PublishedDate;
+	public $Priority;
 
 	function __construct($address, $city, $province, $country, $description, $price, $bedrooms, $bathrooms, $livingSpace) 
 	{
@@ -44,7 +44,6 @@ class Listing {
 		$this->TaxYear = null;
 		$this->Taxes = null;
 		$this->BuildingAge = null;
-		$this->New = true;
 		$this->Sold = false;
 		$this->Published = false;
 		$this->Latitude = null;
@@ -52,6 +51,8 @@ class Listing {
 		$this->CreatedDate = null;
 		$this->Featured = 0;
 		$this->FeaturedImage = null;
+		$this->PublishedDate = null;
+		$this->Priority = 0;
 
 		$this->isValid();
 	}
@@ -59,9 +60,9 @@ class Listing {
 	public function save() {
 		$conn = self::conn();
 		$result = null;
-		if($stmt = $conn->prepare("INSERT INTO Listings (Address, City, Province, Country, Description, Price, PropertyType, Bedrooms, Bathrooms, LivingSpace, LandSize, TaxYear, Taxes, BuildingAge, New, Sold, Published, Latitude, Longitude, Featured) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)")) {
+		if($stmt = $conn->prepare("INSERT INTO Listings (Address, City, Province, Country, Description, Price, PropertyType, Bedrooms, Bathrooms, LivingSpace, LandSize, TaxYear, Taxes, BuildingAge, Sold, Published, Latitude, Longitude, Featured) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)")) {
 			//$this->bindParams($stmt);
-			$stmt->bind_param("sssssdssiiiidiiiiiii", 
+			$stmt->bind_param("sssssdssiiiidiiiiii", 
 			$this->Address, 
 			$this->City, 
 			$this->Province, 
@@ -76,7 +77,6 @@ class Listing {
 			$this->TaxYear,
 			$this->Taxes,
 			$this->BuildingAge,
-			$this->New,
 			$this->Sold,
 			$this->Published,
 			$this->Latitude,
@@ -101,8 +101,7 @@ class Listing {
 	public function update() {
 		$conn = self::conn();
 		$result;
-		
-		if($stmt = $conn->prepare("UPDATE Listings SET Address = ?, City = ?, Province = ?, Country = ?, Description = ?, Price = ?, PropertyType = ?, Bedrooms = ?, Bathrooms = ?, LivingSpace = ?, LandSize = ?, TaxYear = ?, Taxes = ?, BuildingAge = ?, New = ?, Sold = ?, Published = ?, Latitude = ?, Longitude = ?, Featured = ? WHERE Id = " . $this->Id)) {
+		if($stmt = $conn->prepare("UPDATE Listings SET Address = ?, City = ?, Province = ?, Country = ?, Description = ?, Price = ?, PropertyType = ?, Bedrooms = ?, Bathrooms = ?, LivingSpace = ?, LandSize = ?, TaxYear = ?, Taxes = ?, BuildingAge = ?, Sold = ?, Published = ?, Latitude = ?, Longitude = ?, Featured = ? WHERE Id = " . $this->Id)) {
 			$this->bindParams($stmt);
 
 	        if($stmt->execute())
@@ -140,13 +139,8 @@ class Listing {
 		return $result;
 	}
 
-	public static function setNewStatus($id, $status) {
-		$sqlCommand = "UPDATE Listings SET New = ? WHERE Id = ?";
-		return self::setStatus($sqlCommand, $id, $status);
-	}
-
 	public static function setPublishedStatus($id, $status) {
-		$sqlCommand = "UPDATE Listings SET Published = ? WHERE Id = ?";
+		$sqlCommand = "UPDATE Listings SET Published = ?, PublishedDate = \"".date("Y-m-d")."\" WHERE Id = ?";
 		return self::setStatus($sqlCommand, $id, $status);
 	}
 
@@ -157,6 +151,11 @@ class Listing {
 
 	public static function setFeaturedStatus($id, $status) {
 		$sqlCommand = "UPDATE Listings SET Featured = ? WHERE Id = ?";
+		return self::setStatus($sqlCommand, $id, $status);
+	}
+
+	public static function setPriorityStatus($id, $status) {
+		$sqlCommand = "UPDATE Listings SET Priority = ? WHERE Id = ?";
 		return self::setStatus($sqlCommand, $id, $status);
 	}
 
@@ -182,15 +181,15 @@ class Listing {
 		$listings = array();
 
 		if (isset($page, $pageSize)) {
-			$sqlCommand = ($published) ? "SELECT Id, Address, City, Province, Country, Description, Price, PropertyType, Bedrooms, Bathrooms, LivingSpace, LandSize, TaxYear, Taxes, BuildingAge, New, Sold, Published, Latitude, Longitude, Created, Featured FROM Listings WHERE Published = 1 ORDER BY New DESC, Created DESC LIMIT ?, ?" :
-			 "SELECT Id, Address, City, Province, Country, Description, Price, PropertyType, Bedrooms, Bathrooms, LivingSpace, LandSize, TaxYear, Taxes, BuildingAge, New, Sold, Published, Latitude, Longitude, Created, Featured FROM Listings LIMIT ?, ? ORDER BY New DESC, Created DESC";
+			$sqlCommand = ($published) ? "SELECT Id, Address, City, Province, Country, Description, Price, PropertyType, Bedrooms, Bathrooms, LivingSpace, LandSize, TaxYear, Taxes, BuildingAge, Sold, Published, Latitude, Longitude, Created, Featured, Priority, PublishedDate FROM Listings WHERE Published = 1 ORDER BY Priority ASC, PublishedDate DESC LIMIT ?, ?" :
+			 "SELECT Id, Address, City, Province, Country, Description, Price, PropertyType, Bedrooms, Bathrooms, LivingSpace, LandSize, TaxYear, Taxes, BuildingAge, Sold, Published, Latitude, Longitude, Created, Featured, Priority, PublishedDate FROM Listings LIMIT ?, ? ORDER BY Created DESC";
 			if ($stmt = $conn->prepare($sqlCommand)) {
 				$stmt->bind_param("ii", $page, $pageSize);
 			}
 		} else {
-			$sqlCommand = "SELECT Id, Address, City, Province, Country, Description, Price, PropertyType, Bedrooms, Bathrooms, LivingSpace, LandSize, TaxYear, Taxes, BuildingAge, New, Sold, Published, Latitude, Longitude, Created, Featured FROM Listings WHERE Id > ? ORDER BY New DESC, Created DESC, Created DESC";
+			$sqlCommand = "SELECT Id, Address, City, Province, Country, Description, Price, PropertyType, Bedrooms, Bathrooms, LivingSpace, LandSize, TaxYear, Taxes, BuildingAge, Sold, Published, Latitude, Longitude, Created, Featured, Priority, PublishedDate FROM Listings WHERE Id > ? ORDER BY Created DESC";
 			if (isset($published)) {
-				$sqlCommand = "SELECT Id, Address, City, Province, Country, Description, Price, PropertyType, Bedrooms, Bathrooms, LivingSpace, LandSize, TaxYear, Taxes, BuildingAge, New, Sold, Published, Latitude, Longitude, Created, Featured FROM Listings WHERE Id > ? AND Published = " . $published . " ORDER BY New DESC, Created DESC";
+				$sqlCommand = "SELECT Id, Address, City, Province, Country, Description, Price, PropertyType, Bedrooms, Bathrooms, LivingSpace, LandSize, TaxYear, Taxes, BuildingAge, Sold, Published, Latitude, Longitude, Created, Featured, Priority, PublishedDate FROM Listings WHERE Id > ? AND Published = " . $published . " ORDER BY Priority ASC, PublishedDate DESC";
 			}
 			$stmt = $conn->prepare($sqlCommand);
 			$startId = 0;
@@ -208,7 +207,7 @@ class Listing {
 	public static function getFeaturedListings () {
 		$conn = self::conn();
 		$featuredlistings = array();
-		$sqlCommand = "SELECT Id, Address, City, Province, Country, Description, Price, PropertyType, Bedrooms, Bathrooms, LivingSpace, LandSize, TaxYear, Taxes, BuildingAge, New, Sold, Published, Latitude, Longitude, Created, Featured FROM Listings WHERE Featured = 1 AND Published = 1 ORDER BY New DESC, Created DESC";
+		$sqlCommand = "SELECT Id, Address, City, Province, Country, Description, Price, PropertyType, Bedrooms, Bathrooms, LivingSpace, LandSize, TaxYear, Taxes, BuildingAge, Sold, Published, Latitude, Longitude, Created, Featured, Priority, PublishedDate FROM Listings WHERE Featured = 1 AND Published = 1 ORDER BY Priority ASC, PublishedDate DESC";
 		$listings = $conn->query($sqlCommand);
 		
     	if ($listings->num_rows > 0) {
@@ -220,7 +219,6 @@ class Listing {
 				$tempListing->TaxYear = $listing["TaxYear"];
 				$tempListing->Taxes = $listing["Taxes"];
 				$tempListing->BuildingAge = $listing["BuildingAge"];
-				$tempListing->New = $listing["New"];
 				$tempListing->Sold = $listing["Sold"];
 				$tempListing->Published = $listing["Published"];
 				$tempListing->Latitude = $listing["Latitude"];
@@ -228,6 +226,8 @@ class Listing {
 				$tempListing->CreatedDate = $listing["Created"];
 				$tempListing->Featured = $listing["Featured"];
 				$tempListing->FeaturedImage = $listing["FeaturedImage"];
+				$tempListing->Priority = $listing["Priority"];
+				$tempListing->PublishedDate = $listing["PublishedDate"];
 				$tempListing->getFeaturedImage();
     			array_push($featuredlistings, $tempListing);
     		}
@@ -240,7 +240,7 @@ class Listing {
 	public static function getListingById($id) {
 		$conn = self::conn();
 		$listing = null;
-		if($stmt = $conn->prepare("SELECT Id, Address, City, Province, Country, Description, Price, PropertyType, Bedrooms, Bathrooms, LivingSpace, LandSize, TaxYear, Taxes, BuildingAge, New, Sold, Published, Latitude, Longitude, Created, Featured FROM Listings WHERE Id = ?")) {
+		if($stmt = $conn->prepare("SELECT Id, Address, City, Province, Country, Description, Price, PropertyType, Bedrooms, Bathrooms, LivingSpace, LandSize, TaxYear, Taxes, BuildingAge, Sold, Published, Latitude, Longitude, Created, Featured, Priority, PublishedDate FROM Listings WHERE Id = ?")) {
 			
 		    $stmt->bind_param("i", $id);
 	        $listings = Listing::queryListings($stmt);
@@ -253,7 +253,7 @@ class Listing {
 
 	public static function searchListings($searchText) {
 		$conn = self::conn();
-		$sqlCommand = "SELECT Id, Address, City, Province, Country, Description, Price, PropertyType, Bedrooms, Bathrooms, LivingSpace, LandSize, TaxYear, Taxes, BuildingAge, New, Sold, Published, Latitude, Longitude, Created, Featured FROM Listings WHERE Address LIKE ?";
+		$sqlCommand = "SELECT Id, Address, City, Province, Country, Description, Price, PropertyType, Bedrooms, Bathrooms, LivingSpace, LandSize, TaxYear, Taxes, BuildingAge, Sold, Published, Latitude, Longitude, Created, Featured, Priority, PublishedDate FROM Listings WHERE Address LIKE ?";
 		$listings = array();
 		$searchText = '%' . $searchText . '%';
 		if ($stmt = $conn->prepare($sqlCommand)) {
@@ -268,7 +268,7 @@ class Listing {
 	private static function queryListings(&$stmt) {
 		$listings = array();
 		$stmt->execute();
-		$stmt->bind_result($Id, $Address, $City, $Province, $Country, $Description, $Price, $PropertyType, $Bedrooms, $Bathrooms, $LivingSpace, $LandSize, $TaxYear, $Taxes, $BuildingAge, $New, $Sold, $Published, $Latitude, $Longitude, $Created, $Featured);
+		$stmt->bind_result($Id, $Address, $City, $Province, $Country, $Description, $Price, $PropertyType, $Bedrooms, $Bathrooms, $LivingSpace, $LandSize, $TaxYear, $Taxes, $BuildingAge, $Sold, $Published, $Latitude, $Longitude, $Created, $Featured, $Priority, $PublishedDate);
 		while ($row = $stmt->fetch()) {
 			$listing = new Listing($Address, $City, $Province, $Country, $Description, $Price);
 	    	$listing->Id = $Id;
@@ -280,13 +280,14 @@ class Listing {
 			$listing->TaxYear = $TaxYear;
 			$listing->Taxes = $Taxes;
 			$listing->BuildingAge = $BuildingAge;
-			$listing->New = $New;
 			$listing->Sold = $Sold;
 			$listing->Published = $Published;
 			$listing->Latitude = $Latitude;
 			$listing->Longitude = $Longitude;
 			$listing->CreatedDate = $Created;
 			$listing->Featured = $Featured;
+			$listing->Priority = $Priority;
+			$listing->PublishedDate = $PublishedDate;
 
 			$conn = self::conn();
 			$images = $conn->query("SELECT Name FROM ListingImages WHERE ListingId = " . $listing->Id . " AND Featured = 0");
@@ -407,7 +408,7 @@ class Listing {
 	}
 
 	private function bindParams(&$stmt) {
-		$stmt->bind_param("sssssdssiiiidiiiiiii", 
+		$stmt->bind_param("sssssdssiiiidiiiiii", 
 			$this->Address, 
 			$this->City, 
 			$this->Province, 
@@ -422,7 +423,6 @@ class Listing {
 			$this->TaxYear,
 			$this->Taxes,
 			$this->BuildingAge,
-			$this->New,
 			$this->Sold,
 			$this->Published,
 			$this->Latitude,
@@ -491,10 +491,6 @@ class Listing {
 			throw new Exception('BuildingAge must be greater than or equal to zero');
 		}
 		
-		//Validation for New property
-		if (isset($listing->New) && !is_bool($listing->New)) {
-			throw new Exception('New must be of type bool');
-		}
 
 		//Validation for Sold property
 		if (isset($listing->Sold) && !is_bool($listing->Sold)) {

@@ -3,11 +3,6 @@ include_once '../authorize.php';
 include_once '../../includes/imagehandler.php';
 include_once '../../includes/listing.php';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
-} else if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
-	
-}
 ?>
 
 
@@ -91,12 +86,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 					<label for="BuildingAge">Lonitude</label>
 					<input type="number" id="Lonitude" name="Lonitude" placeholder="Lonitude" class="form-control" />
 				</div>
-				<div class="form-inline">
-					<div class="checkbox">
-						<label for="New">New
-							<input type="checkbox" id="New" name="New" checked="checked" />
-						</label>
-					</div>
+				<div class="form-inline">				
 					<div class="checkbox">
 						<label for="Sold">Sold
 							<input type="checkbox" id="Sold" name="Sold" />

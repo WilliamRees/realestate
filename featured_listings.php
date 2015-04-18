@@ -11,6 +11,9 @@
     $totalListings = Listing::count(true);
 
     $featuredListings = Listing::getFeaturedListings();
+    echo("<pre>");
+    print_r($listings);
+    echo("</pre>");
 ?>
 <!doctype html>
 <html class="no-js" lang="en">
@@ -75,7 +78,7 @@
                     <?php
                     for ($i = 0; $i < sizeOf($listings); $i++) {
                         $listing = $listings[$i];
-                        $new = ($listing->New) ? true : (date("Y-m-d", strtotime($listing->CreatedDate. ' + 5 days')) > date("Y-m-d")) ? true : false;
+                        $new = (date("Y-m-d", strtotime($listing->PublishedDate. ' + 5 days')) > date("Y-m-d")) ? true : false;
                     ?>
                     <li class="<?php echo($new ? "new" : ""); ?>">
                         <a href="<?php echo SITE_ROOT . "list.php?Id=" . $listing->Id ?>">

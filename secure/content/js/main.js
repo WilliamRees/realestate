@@ -247,8 +247,9 @@ re.utilities = (function($) {
 
 	var _put = function (url, data, options) {
 		var deferred = $.Deferred();
+		data.Method = "put";
 		$.ajax({
-		  	type: "PUT",
+		  	type: "POST",
 		  	url: url,
 		  	cache: false,
 		  	data: data,
@@ -270,8 +271,9 @@ re.utilities = (function($) {
 
 	var _delete = function (url, data) {
 		var deferred = $.Deferred();
+		data.Method = "delete";
 		$.ajax({
-		  	type: "DELETE",
+		  	type: "POST",
 		  	url: url,
 		  	data: data,
 		  	success: function (response) {
@@ -320,7 +322,7 @@ re.utilities = (function($) {
 	}
 
 	function redirectToErrorView() {
-		window.location.href = SITE_ROOT + '/error.php';
+		//window.location.href = SITE_ROOT + '/error.php';
 	}
 
 	return {
@@ -536,7 +538,6 @@ re.views.secure.listing = (function($) {
 			  	BuildingAge: $('#BuildingAge').val(),
 			  	Id: $('#ListingId').val(),
 			  	Published: $('#Published').prop('checked'),
-			  	New: $('#New').prop('checked'),
 			  	Sold: $('#Sold').prop('checked'),
 			  	Latitude: $('#Latitude').val(),
 			  	Longitude: $('#Lonitude').val(),

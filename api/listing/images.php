@@ -4,6 +4,24 @@
 	include_once '../../includes/imagehandler.php';
 	include_once '../ApiResult.php';
 
+	if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['Method'] == "delete") {
+		$fileName = $_POST["FileName"];
+		$id = $_POST["Id"];
+
+		if (Listing::deleteImageForListing($id, $fileName)) {
+			$result = new ApiResult(true, '');
+			header('Content-Type: application/json');
+			echo json_encode($result);
+			exit;
+		} else {
+			header($_SERVER['SERVER_PROTOCOL'] . ' 500 Internal Server Error', true, 500);
+			$result = new ApiResult(false, '');
+			$result->Errors = array("There was a problem deleting the image with file name " . $fileName);
+			echo json_encode($result);
+			exit;
+		}
+	}
+
 	if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		$result = false;
 		
@@ -21,22 +39,5 @@
 				exit;
 			}
 		}			
-	} else if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
-		parse_str(file_get_contents("php://input"), $delete_vars);
-		$fileName = $delete_vars["FileName"];
-		$id = $delete_vars["Id"];
-
-		if (Listing::deleteImageForListing($id, $fileName)) {
-			$result = new ApiResult(true, '');
-			header('Content-Type: application/json');
-			echo json_encode($result);
-			exit;
-		} else {
-			header($_SERVER['SERVER_PROTOCOL'] . ' 500 Internal Server Error', true, 500);
-			$result = new ApiResult(false, '');
-			$result->Errors = array("There was a problem deleting the image with file name " . $fileName);
-			echo json_encode($result);
-			exit;
-		}
 	}
 ?>
