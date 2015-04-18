@@ -46,10 +46,10 @@
 		}
 
 		if (isset($_POST['Method']) && $_POST['Method'] == 'put') {
-			if ($_POST['Featured'] == 'true' && !isset($_POST['FeaturedImage'])) {
+			if ($_POST['Featured'] == 'true' && (!isset($_POST['FeaturedImage']) || !isset($_POST['ShortDescription']) || strlen($_POST['ShortDescription']) == 0)) {
 				header('Content-Type: application/json');
 				$result = new ApiResult(false, '');
-				$result->Errors = array("You must select a featured image");
+				$result->Errors = array("You must select a featured image and provide a short description");
 				echo json_encode($result);
 				exit;
 			}

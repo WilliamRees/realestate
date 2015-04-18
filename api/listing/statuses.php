@@ -16,10 +16,6 @@
 				$result = Listing::setSoldStatus($_GET["id"], $_GET["value"]);
 			}
 
-			if ($_GET["status"] == "featured") {
-				$result = Listing::setFeaturedStatus($_GET["id"], $_GET["value"]);
-			}
-
 			if ($_GET['status'] == "priority") {
 				$result = Listing::setPriorityStatus($_GET["id"], $_GET["value"]);
 			}
