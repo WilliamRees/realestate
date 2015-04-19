@@ -7,6 +7,10 @@
 
     $id = $_GET['Id'];
     $listing = Listing::getListingById($id);
+
+    if ($listing == null) {
+        header('Location: ' . SITE_ROOT . "featured_listings.php?status=removed"); 
+    }
     //echo "<pre>";
     //print_r($listing);
     //echo "</pre>";
@@ -110,7 +114,7 @@
 
                         <div id="FormError"></div>
                         <form id="ContactForm">
-                            <input type="hidden" name="f-propid" id="f-propid" value="Property: 123">
+                            <input type="hidden" name="f-propid" id="f-propid" value="Property: <?php echo $listing->Id ?>">
                             <div>
                                 <label for="f-name">Name:*</label>
                                 <input data-required="true" type="text" name="f-name" id="f-name">
