@@ -9,7 +9,7 @@
     $listing = Listing::getListingById($id);
 
     if ($listing == null) {
-        header('Location: ' . SITE_ROOT . "featured_listings.php?status=removed"); 
+        header('Location: ' . SITE_ROOT . "featured_listings.php?status=removed#StatusMessage"); 
     }
     //echo "<pre>";
     //print_r($listing);

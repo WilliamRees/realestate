@@ -54,6 +54,12 @@
             <p>Call Now: <a href="tel:+16478922474">647 892 2474</a></p>
         </div>
 
+        <?php if (isset($_GET["status"]) && $_GET["status"] == "removed"): ?>
+            <div id="StatusMessage">
+                The listing you're looking for has been removed.
+            </div>
+        <?php endif; ?>  
+
         <section id="FeatList-Listings">
             <div class="inner-wrapper">
                 <h2>Featured opportunities you might love</h2>
@@ -70,6 +76,8 @@
                     <li><a href="<?php echo SITE_ROOT . 'featured_listings.php?page=' . ($i) . "#FeatList-Listings" ?>">></a></li>
                 </ul>
                 <?php endif; ?>
+
+
 
                 <ul class="listings">
                     <?php
