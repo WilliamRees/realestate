@@ -1,4 +1,4 @@
---  CREATE DATABASE RealEstate;
+ --  CREATE DATABASE RealEstate;
 
 USE RealEstate;
 

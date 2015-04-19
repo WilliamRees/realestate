@@ -66,7 +66,7 @@ class Listing {
 		$result = null;
 		if($stmt = $conn->prepare("INSERT INTO Listings (Address, City, Province, Country, Description, Price, PropertyType, Bedrooms, Bathrooms, LivingSpace, LandSize, TaxYear, Taxes, BuildingAge, Sold, Published, Latitude, Longitude, Featured, ShortDescription, VirtualTour) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)")) {
 			//$this->bindParams($stmt);
-			$stmt->bind_param("sssssdssiiiidiiiiiiss", 
+			$stmt->bind_param("sssssdssiiiidiiiddiss", 
 			$this->Address, 
 			$this->City, 
 			$this->Province, 
@@ -418,7 +418,7 @@ class Listing {
 	}
 
 	private function bindParams(&$stmt) {
-		$stmt->bind_param("sssssdssiiiidiiiiiiss", 
+		$stmt->bind_param("sssssdssiiiidiiiddiss", 
 			$this->Address, 
 			$this->City, 
 			$this->Province, 
