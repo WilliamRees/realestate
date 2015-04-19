@@ -24,35 +24,50 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 	<div class="row">
 		<form id="NewListing" method="POST">
 			<div class="col-md-6">
-				<div class="form-group">
-					<label for="Address">Address</label>
-					<input type="text" id="Address" name="Address" required class="form-control" />
+				<div class="col-md-12">
+					<div class="form-group">
+						<label for="Address">Address</label>
+						<input type="text" id="Address" name="Address" required class="form-control" />
+					</div>
+					<div class="form-group">
+						<label for="City">City</label>
+						<input type="text" id="City" name="City" required class="form-control" />
+					</div>
+					<div class="form-group">
+						<label for="Province">Province</label>
+						<input type="text" id="Province" name="Province" required class="form-control" />
+					</div>
 				</div>
-				<div class="form-group">
-					<label for="City">City</label>
-					<input type="text" id="City" name="City" required class="form-control" />
+				<div class="col-md-6">
+					<div class="form-group">
+						<label for="Description">Description</label>
+						<textarea type="text" id="Description" name="Description" required class="form-control"></textarea>
+					</div>
 				</div>
-				<div class="form-group">
-					<label for="Province">Province</label>
-					<input type="text" id="Province" name="Province" required class="form-control" />
+				<div class="col-md-6">
+					<div class="form-group">
+						<label for="ShortDescription">Short Description</label>
+						<textarea id="ShortDescription" name="ShortDescription" class="form-control"></textarea>
+					</div>
 				</div>
-				<div class="form-group">
-					<label for="Description">Description</label>
-					<textarea type="text" id="Description" name="Description" required class="form-control"></textarea>
-				</div>
-				<div class="form-group">
-					<label for="Price">Price</label>
-					<input type="number" id="Price" name="Price" required class="form-control" />
-				</div>
-				<div class="form-group">
-					<label for="PropertyType">Property Type</label>
-					<input type="text" id="PropertyType" name="PropertyType" class="form-control" />
-				</div>
-				<div class="form-group">
-					<label for="Bedrooms">Bedrooms</label>
-					<input id="Bedrooms" name="Bedrooms" class="form-control" />
+				<div class="col-md-12">
+					<div class="form-group">
+						<label for="Price">Price</label>
+						<input type="number" id="Price" name="Price" required class="form-control" />
+					</div>
+					<div class="form-group">
+						<label for="PropertyType">Property Type</label>
+						<input type="text" id="PropertyType" name="PropertyType" class="form-control" />
+					</div>
+					<div class="form-group">
+						<label for="Bedrooms">Bedrooms</label>
+						<input id="Bedrooms" name="Bedrooms" class="form-control" />
+					</div>
 				</div>
 			</div>
+			
+			
+			
 			<div class="col-md-6">
 				<div class="form-group">
 					<label for="Bathrooms">Bathrooms</label>
@@ -86,10 +101,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 					<label for="BuildingAge">Longitude</label>
 					<input type="number" id="Lonitude" name="Lonitude" class="form-control" />
 				</div>
-				<div class="form-group">
-					<label for="ShortDescription">Short Description</label>
-					<textarea id="ShortDescription" name="ShortDescription" class="form-control"></textarea>
-				</div>
+				
 				<div class="form-group">
 					<label for="VirtualTour">Virtual Tour</label>
 					<input type="text" id="VirtualTour" name="VirtualTour" class="form-control" />
