@@ -75,7 +75,7 @@
                     <?php
                     for ($i = 0; $i < sizeOf($listings); $i++) {
                         $listing = $listings[$i];
-                        $new = (date("Y-m-d", strtotime($listing->PublishedDate. ' + 5 days')) > date("Y-m-d")) ? true : false;
+                        $new = (date("Y-m-d", strtotime($listing->PublishedDate. ' + 5 days')) > date("Y-m-d")) ? ($listing->Sold == true) ? false : true : false;
                     ?>
                     <li class="<?php echo($new ? "new" : ""); ?>">
                         <a href="<?php echo SITE_ROOT . "list.php?Id=" . $listing->Id ?>">
