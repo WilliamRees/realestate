@@ -24,44 +24,30 @@
             <div class="blind"></div>
 
             <div class="inner-wrapper">
-                <h1>Top Producer<br>5 years in a row</h1>
-                <a href="#HomeCtas" class="btn">See what Mustafa Zia can do for you</a>
-                <a href="#HomeCtas" class="see-more">See More</a>
-            </div>
-            
+                <div class="cms-content" data-nodename="HomeIntro">
+                   <?php CMSUtility::ContentLiteral("HomeIntro"); ?>
+                </div>
+            </div>            
         </section>
 
         <div class="call-bar">
-            <p>Call Now: <a href="tel:+16478922474">647 892 2474</a></p>
+            <div class="cms-content" data-nodename="HomePhonenumber">
+                <?php CMSUtility::ContentLiteral("HomePhonenumber"); ?>
+            </div>
         </div>
 
         <section id="HomeCtas">
-            <div class="inner-wrapper">
-                <ul class="big-ctas">
-                    <li class="cta1"><a href="#TODO"><span></span>Featured Listings</a></li>
-                    <li class="cta2"><a href="#TODO"><span></span>Search Properties</a></li>
-                    <li class="cta3"><a href="#TODO"><span></span>Living in the GTA</a></li>
-                    <li class="cta4"><a href="#TODO"><span></span>What is your Home Worth?</a></li>
-                    <li class="cta5"><a href="#TODO"><span></span>Mortgage Calculator</a></li>
-                </ul>
-                <h3>Additional Resources</h3>
-                <ul class="small-ctas">
-                    <li><a href="#TODO">Buying a Home</a></li>
-                    <li class="dot">.</li>
-                    <li><a href="#TODO">Selling a Home</a></li>
-                    <li class="dot">.</li>
-                    <li><a href="#TODO">Investing in Real Estate</a></li>
-                </ul>
+            <div class="inner-wrapper cms-content" data-nodename="HomeCtas">
+                <?php CMSUtility::ContentLiteral("HomeCtas"); ?>
             </div>
         </section>
 
         <section id="HomeAbout">
             <div class="inner-wrapper clearfix">
                 <div class="left">
-                    <h2>About Mustafa Zia</h2>
-                    <p>This is a placeholder text, Mustafa graduated from University of Toronto with an Honors Joint Specialist Degree in Economics and Political Science. <br>
-                    This is a placeholder text, Mustafa graduated from University of Toronto with an Honors Joint Specialist Degree in Economics and Political Science.</p>
-                    <a class="btn" href="#TODO">Get to know Mustafa Zia</a>
+                    <div class="cms-content" data-nodename="HomeAbout">
+                        <?php CMSUtility::ContentLiteral("HomeAbout"); ?>
+                    </div>
                     <img src="img/awards.png" alt="Mustafa's Awards">
                 </div>
                 <div class="right">
