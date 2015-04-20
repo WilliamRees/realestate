@@ -61,7 +61,29 @@
         }    
         .btn-round {
             margin-right: 30px;
-        }        
+        }      
+        .check-list {
+            list-style: none;
+            padding: 0 0 0 10px;
+            > li {
+                padding: 5px 0 5px 40px;
+                position: relative;
+                &:before {
+                    content: "";
+                    display: block;
+                    overflow: hidden;
+                    background: url(../img/sprite.png) -28px -458px no-repeat;
+                    height: 25px;
+                    width: 25px;
+                    position: absolute;
+                    left: 7px;
+                    top: 1px;
+                }
+                > ul {
+                    padding: 5px 0 0px 20px;
+                }
+            }
+        }  
     }
 }
 

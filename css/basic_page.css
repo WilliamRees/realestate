@@ -541,7 +541,7 @@ footer .logo-remax {
   display: block;
   overflow: hidden;
   width: 200px;
-  height: 65px;
+  height: 75px;
   text-indent: -99999px;
   background: url(../img/sprite.png) -18px -160px no-repeat;
 }
@@ -887,6 +887,28 @@ footer p {
 }
 .basic-page #ContentBody .btn-round {
   margin-right: 30px;
+}
+.basic-page #ContentBody .check-list {
+  list-style: none;
+  padding: 0 0 0 10px;
+}
+.basic-page #ContentBody .check-list > li {
+  padding: 5px 0 5px 40px;
+  position: relative;
+}
+.basic-page #ContentBody .check-list > li:before {
+  content: "";
+  display: block;
+  overflow: hidden;
+  background: url(../img/sprite.png) -28px -458px no-repeat;
+  height: 25px;
+  width: 25px;
+  position: absolute;
+  left: 7px;
+  top: 1px;
+}
+.basic-page #ContentBody .check-list > li > ul {
+  padding: 5px 0 0px 20px;
 }
 /* ==========================================================================
    Media Queries
