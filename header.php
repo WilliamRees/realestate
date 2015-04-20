@@ -6,6 +6,7 @@
     WebSecurity::sec_session_start();
 ?>
 <?php if (WebSecurity::isAuthenticated($mysqli)): ?>
+    <link href="<?php echo SITE_ROOT ?>secure/content/css/ladda-themeless.min.css" rel="stylesheet">
     <style>
         .admin {
             padding: 15px 0; 
@@ -34,7 +35,13 @@
             color: #fff;
             background-color: #337ab7;
             border-color: #2e6da4;
-            float:right;
+        }
+        .admin .admin-right {
+            float: right;
+            list-style: none;
+        }
+        .admin .admin-right li {
+            display: inline;
             margin-right: 20px;
         }
         .ephox-polish-editor-container {
@@ -48,7 +55,18 @@
         }
     </style>
     <div class="admin">
-        <a href="#" class="btn" id="SaveContentChanges">Save</a>
+        <ul class="admin-right">
+            <li>
+                <button id="SaveContentChanges" type="submit" class="btn ladda-button" data-style="expand-right">
+                    <span class="ladda-label">
+                        <span>Save</span>
+                    </span>
+                </button>
+            </li>
+            <li>
+                <a href="<?php echo(SITE_ROOT . 'includes/logout.php?ReturnUrl=' . SITE_ROOT); ?>" class="logout-btn">log out</a>
+            </li>
+        </ul>
     </div>
 <?php endif; ?>
 <header>
