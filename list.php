@@ -20,7 +20,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>#TODO</title>
+        <title><?php echo $listing->Address ?>, <?php echo $listing->City ?> | Mustafa Zia</title>
         <meta name="description" content="#TODO">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -41,7 +41,7 @@
 
         <section id="List-Heading">
             <div class="inner-wrapper">
-                <a class="back-link" href="#TODO">Back to Results</a>
+                <a class="back-link" href="featured_listings.php">Back to Results</a>
 
                 <h1><?php echo $listing->Address ?>, <?php echo $listing->City ?></h1>
                 <h2>$<?php echo(number_format($listing->Price, 0, '.', ',')); ?></h2>            
@@ -88,7 +88,7 @@
 
                     <p><?php echo $listing->Description ?></p>
                     
-                    <a class="back-link" href="#TODO">Back to Results</a>
+                    <a class="back-link" href="featured_listings.php">Back to Results</a>
 
                 </div>
                 <div class="right">
@@ -98,7 +98,7 @@
                         <p><span>Bedrooms:</span> <?php echo $listing->Bedrooms ?></p>
                         <p><span>Bathrooms:</span> <?php echo $listing->Bathrooms == 0 ? "" : $listing->Bathrooms?></p>
                         <p><span>Living space:</span> <?php echo $listing->LivingSpace == 0 ? "" : $listing->LivingSpace . " sq ft"?></p>
-                        <p><span>Land size:</span> <?php echo $listing->LandSize == 0 ? "" : $listing->LandSize . " sq ft"?></p>
+                        <p><span>Lot size:</span> <?php echo $listing->LandSize == 0 ? "" : $listing->LandSize . " sq ft"?></p>
                         <p><span>Tax Year:</span> <?php echo $listing->TaxYear == 0 ? "" : $listing->TaxYear?></p>
                         <p><span>Taxes:</span> <?php echo($listing->Taxes == 0 ? "" : "$".number_format($listing->Taxes, 0, '.', ',')); ?></p>
                         <p><span>Age of Building:</span> <?php echo $listing->BuildingAge == 0 ? "" : $listing->BuildingAge?></p>
