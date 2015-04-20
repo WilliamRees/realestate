@@ -45,3 +45,16 @@
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+
+<!-- CHECK IF USER IS AUTHENTICATED AND INITIALIZE WYSIWYG EDITOR -->
+<?php if (WebSecurity::isAuthenticated($mysqli)): ?>
+    <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script src="content/js/textboxio.js"></script> 
+    <?php 
+        echo('<script>var SITE_ROOT = "'. SITE_ROOT .'";</script>'); 
+    ?>
+    <script src="<?php echo(SITE_ROOT . 'secure/content/js/main.js') ?>"></script> 
+    <script>
+        re.views.secure.cms.init();
+    </script>
+<?php endif; ?>
