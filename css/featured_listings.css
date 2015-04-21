@@ -453,7 +453,8 @@ body {
 #Index-Page .home-link:after,
 #FeatList-Page .feature-link:after,
 #Contact-Page .contact-link:after,
-#Market-Update-Page .market-link:after {
+#Market-Update-Page .market-link:after,
+#About-Page .about-link:after {
   opacity: 1;
   top: 35px;
 }
@@ -610,13 +611,13 @@ footer p {
 }
 .btn-round {
   display: inline-block;
-  padding: 2px 40px 0px;
+  padding: 4px 44px 2px;
   font-size: 130%;
-  color: #d1d1d1;
+  color: white;
   background-color: #2e2e2e;
   text-decoration: none;
-  border: solid 2px #2e2e2e;
   border-radius: 3px;
+  border: none;
   -webkit-transition: all 0.2s ease-in-out;
   -moz-transition: all 0.2s ease-in-out;
   -ms-transition: all 0.2s ease-in-out;
@@ -624,11 +625,10 @@ footer p {
   transition: all 0.2s ease-in-out;
 }
 .btn-round:visited {
-  color: #d1d1d1;
+  color: white;
 }
 .btn-round:hover {
-  color: #2e2e2e;
-  background-color: #d1d1d1;
+  background: #7b6e66;
 }
 .call-bar {
   font-size: 187%;

@@ -2,7 +2,7 @@
 @import "_main";
 
 /* ==========================================================================
-   Contact
+   Basic Pages
    ========================================================================== */
 
 .basic-page {
@@ -33,7 +33,27 @@
         width: 100%;
         z-index: 1;
     }
-    #ContentBody {
+    .read-more-wrapper {
+        padding-bottom: 20px;
+        p:last-child {
+            margin-bottom: 0;
+        }
+    }
+    .read-more-switch {
+        font-size: 90%;
+        color: white;
+        cursor: pointer;
+        display: inline-block;
+        margin: 10px 0 0 0;
+        padding: 5px 10px 3px;
+        background: @color-dark-gray;
+        border-radius: 3px;
+        .animate(all 0.2s ease-in-out);     
+        &:hover {
+            background: @color-brown;
+        }
+    }    
+    #ContentBody, #About-Testimonials {
         overflow-y: hidden;
         padding-top: 20px;
         padding-bottom: 100px;
@@ -59,6 +79,9 @@
         p {
             font-size: 125%;
         }    
+        q {
+            font-style: italic;
+        }
         .btn-round {
             margin-right: 30px;
         }      
@@ -87,6 +110,15 @@
     }
 }
 
+#About-Page {
+    #ContentBody {
+        background-color: lighten(@color-light-gray, 10%);
+        padding: 30px 0px;
+    }
+    #About-Testimonials {
+        padding: 0 0 30px 0;
+    }
+}
 
 
 

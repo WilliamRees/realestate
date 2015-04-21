@@ -101,7 +101,8 @@ html, body {
 #Index-Page .home-link:after,
 #FeatList-Page .feature-link:after,
 #Contact-Page .contact-link:after,
-#Market-Update-Page .market-link:after {
+#Market-Update-Page .market-link:after,
+#About-Page .about-link:after {
     opacity: 1;
     top: 35px;  
 }
@@ -258,20 +259,19 @@ footer {
 
 .btn-round {
     display: inline-block;
-    padding: 2px 40px 0px;
+    padding: 4px 44px 2px;
     font-size: 130%;
-    color: @color-light-gray;
+    color: white;
     background-color: @color-dark-gray;
     text-decoration: none;
-    border: solid 2px @color-dark-gray;
     border-radius: 3px;
+    border: none;
     .animate(all 0.2s ease-in-out);
     &:visited {
-        color: @color-light-gray;
+        color: white;
     }
     &:hover {
-        color: @color-dark-gray;
-        background-color: @color-light-gray;
+        background: @color-brown;
     }
 }
 

@@ -242,4 +242,28 @@ mustafazia.contact = {
     }   
 }
 
+mustafazia.about = {
+    init : function () {
+
+        // Iniciate Read More Plugin
+        $(".read-more").each(function(index) {
+            $(this).readMore({
+                size            : 100,                   // container max height when closed
+                animation       : true,                 // animate it ?
+                gap             : 0,                    // specify a gap between the height and cut of point
+                wrapper         : {                     // wrapper options
+                    tag       : 'div',
+                    css_class : 'read-more-wrapper'
+                },
+                expand_button   : {                     // expand button caption
+                    more      : 'Read more...',
+                    less      : 'Show Less',
+                    ccs_class : 'read-more-switch'          // class for the switch button
+                }
+            });
+        });
+
+    }
+}
+
 $(document).ready(function() { mustafazia.shared.init(); });
