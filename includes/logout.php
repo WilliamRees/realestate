@@ -18,4 +18,9 @@ setcookie(session_name(),
  
 // Destroy session 
 session_destroy();
-header('Location: ' . SITE_ROOT . 'secure/login');
+
+if (isset($_GET["ReturnUrl"])) {
+	header('Location: ' . $_GET["ReturnUrl"]);
+} else {
+	header('Location: ' . SITE_ROOT . 'secure/login');	
+}

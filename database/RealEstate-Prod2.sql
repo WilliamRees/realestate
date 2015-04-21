@@ -19,7 +19,7 @@
 -- Table structure for table `Content`
 --
 
-USE RealEstate;
+USE mz_real_estate;
 
 DROP TABLE IF EXISTS `Content`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -45,7 +45,7 @@ UNLOCK TABLES;
 --
 -- Table structure for table `Listings`
 --
-
+DROP TABLE IF EXISTS `ListingImages`;
 DROP TABLE IF EXISTS `Listings`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;

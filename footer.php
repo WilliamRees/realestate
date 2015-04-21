@@ -50,6 +50,8 @@
 <?php if (WebSecurity::isAuthenticated($mysqli)): ?>
     <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
     <script src="content/js/textboxio.js"></script> 
+    <script src="<?php echo SITE_ROOT ?>secure/content/js/spin.min.js"></script>
+    <script src="<?php echo SITE_ROOT ?>secure/content/js/ladda.min.js"></script>
     <?php 
         echo('<script>var SITE_ROOT = "'. SITE_ROOT .'";</script>'); 
     ?>

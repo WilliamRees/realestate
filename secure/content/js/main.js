@@ -230,7 +230,9 @@ re.utilities = (function($) {
 		  	cache: false,
 		  	data: data,
 		  	success: function (response) {
-		  		if (response.Success) {
+		  		if (response.length === 0) {
+	  				deferred.resolve(response);
+		  		} else if (response.Success) {
 	  				handleSuccess(response, options);
 		  			deferred.resolve(response);	
 		  		} else {
@@ -492,9 +494,16 @@ re.views.secure.cms = (function($) {
 			//re.api.cms.update();
 			var nodeName = $('.cms-content').eq(i).data('nodename');
 			var content = editor.content.get();
+			var l = Ladda.create(document.querySelector('#SaveContentChanges'));
+			l.start();		
 			re.api.cms.update({
 				Name: nodeName,
 				Data: content
+			})
+			.always(function(){
+				setTimeout(function() {
+					l.stop();
+				}, 500);
 			});
 		}	
 	};
@@ -502,6 +511,11 @@ re.views.secure.cms = (function($) {
 	var init = function() {
 		$(function(){
 			editors = textboxio.inlineAll('.cms-content', config);
+
+			if (typeof(Ladda)!== typeof(undefined)) {
+				Ladda.bind('button');	
+			}
+
 			bindEvents();
 		});
 	};
