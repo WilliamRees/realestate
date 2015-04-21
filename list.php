@@ -58,7 +58,7 @@
                             $image = $listing->Images[$i];
                         ?>
                         <div class="item">
-                            <img src="<?php echo(SITE_ROOT . "uploads/" . $image) ?>" alt="#TODO">
+                            <img src="<?php echo(SITE_ROOT . "uploads/" . $image) ?>" alt="Home Image">
                         </div>                          
                         <?php
                         }
@@ -71,7 +71,7 @@
                             $image = $listing->Images[$i];
                         ?>
                         <div class="item">
-                            <img src="<?php echo(SITE_ROOT . "uploads/" . $image) ?>" alt="#TODO">
+                            <img src="<?php echo(SITE_ROOT . "uploads/" . $image) ?>" alt="Thumbnail for Home Image">
                         </div>                          
                         <?php
                         }

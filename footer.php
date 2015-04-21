@@ -2,7 +2,7 @@
     <div class="inner-wrapper">
         <div class="col1">
             <a class="logo-footer" href="index.php">Mustafa Zia Home Page</a>
-            <a class="logo-remax" target="_blank" href="http://www.remax.ca/" target="_blank">Remax.ca</a>
+            <a class="logo-remax" target="_blank" href="http://www.remax.ca/">Remax.ca</a>
         </div>
         <ul class="col2">
             <li><a href="#TODO">Mississauga Real Estate Listings</a></li>

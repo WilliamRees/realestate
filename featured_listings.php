@@ -90,7 +90,7 @@
                             <?php if ($listing->Sold): ?>
                             <span class="sold-sign">SOLD</span>
                             <?php endif; ?>    
-                            <img src="<?php echo(SITE_ROOT . "uploads/" . $listing->Images[0]) ?>">
+                            <img src="<?php echo(SITE_ROOT . "uploads/" . $listing->Images[0]) ?>" alt="Picture for <?php echo($listing->Address) ?>, <?php echo($listing->City) ?>">
                         </a>
                         <p class="price">$<?php echo(number_format($listing->Price, 0, '.', ',')); ?></p>
                         <h4><?php echo($listing->Address) ?>, <?php echo($listing->City) ?></h4>
