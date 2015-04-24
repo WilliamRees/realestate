@@ -29,7 +29,8 @@
         <p>©2015 MustafaZia.com   All Rights Reserved.<br>
         Not intended to solicit properties currently listed for sale<br>
         *Based on firm deals by Mustafa Zia within Remax Realty One Inc., Brokerage and Remax Legacy  Inc., Brokerage Dundas Office (independently owned and operated) in 2012.**Awarded by Remax Realty One Inc.,<br>
-        Brokerage for outstanding sales achievement for years 2009/2010/2011, Remax Legacy Inc., Brokerage for 2012.  ***Platinum award received for 2009 &amp;2010. Chairman’s award received for 2011 &amp; 2012. Hall of Fame award received for total commission earned in the years 2009, 2010, 2011.  Total worth of Real Estate sold in the years 2009, 2010, 2011, 2012 based on the purchase price. All awards are individual.</p>
+        Brokerage for outstanding sales achievement for years 2009/2010/2011, Remax Legacy Inc., Brokerage for 2012.  ***Platinum award received for 2009 &amp;2010. Chairman’s award received for 2011 &amp; 2012. Hall of Fame award received for total commission earned in the years 2009, 2010, 2011.  Total worth of Real Estate sold in the years 2009, 2010, 2011, 2012 based on the purchase price. All awards are individual.<br>
+        WebDesign by <a target="_blank" href="http://kauhaus.ca">&lt;&gt; kauhaus</a>.</p>
     </div>
 </footer>
 

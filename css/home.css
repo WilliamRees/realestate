@@ -520,6 +520,8 @@ header ul li a.active:after {
   top: 35px;
 }
 footer {
+  z-index: 1;
+  position: relative;
   display: block;
   overflow: hidden;
   clear: both;
@@ -590,6 +592,15 @@ footer p {
   font-size: 70%;
   line-height: 150%;
 }
+footer p a,
+footer p a:visited {
+  color: #d1d1d1;
+  text-decoration: none;
+}
+footer p a:hover,
+footer p a:visited:hover {
+  text-decoration: underline;
+}
 /* ==========================================================================
    Reusables
    ========================================================================== */
@@ -631,6 +642,8 @@ footer p {
   background: #7b6e66;
 }
 .call-bar {
+  position: relative;
+  z-index: 1;
   font-size: 187%;
   display: block;
   background-color: black;
@@ -969,6 +982,8 @@ footer p {
   background-color: black;
   overflow: hidden;
   padding-bottom: 50px;
+  position: relative;
+  z-index: 1;
 }
 #HomeCtas .inner-wrapper {
   padding: 0;
@@ -1085,7 +1100,7 @@ footer p {
   overflow: hidden;
   display: block;
   text-align: center;
-  padding: 20px 0 10px 0;
+  padding: 20px 5px 10px;
   -webkit-transition: all 0.2s ease-in-out;
   -moz-transition: all 0.2s ease-in-out;
   -ms-transition: all 0.2s ease-in-out;
@@ -1093,7 +1108,7 @@ footer p {
   transition: all 0.2s ease-in-out;
 }
 #HomeCtas .big-ctas a:hover {
-  padding: 15px 0 15px 0;
+  padding: 15px 5px 15px;
   background-color: rgba(255, 255, 255, 0.1);
 }
 #HomeCtas h3 {
@@ -1133,6 +1148,8 @@ footer p {
   font-size: 50%;
 }
 #HomeAbout {
+  position: relative;
+  z-index: 1;
   padding-top: 50px;
   font-size: 125%;
   color: #2e2e2e;

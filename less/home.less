@@ -115,6 +115,8 @@
     background-color: black;
     overflow: hidden;
     padding-bottom: 50px;
+    position: relative;
+    z-index: 1;
     .inner-wrapper {
         padding: 0;
     }
@@ -200,11 +202,11 @@
             overflow: hidden;
             display: block;
             text-align: center;
-            padding: 20px 0 10px 0;
+            padding: 20px 5px 10px;
             .animate;
 
             &:hover {
-                padding: 15px 0 15px 0;
+                padding: 15px 5px 15px;
                 background-color: rgba(255, 255, 255, 0.1)
             }
         }                  
@@ -248,6 +250,8 @@
 }
 
 #HomeAbout {
+    position: relative;
+    z-index: 1;
     padding-top: 50px;
     font-size: 125%;
     color: @color-dark-gray;

@@ -164,6 +164,8 @@ header {
 }
 
 footer {
+    z-index: 1;
+    position: relative;
     display: block;
     overflow: hidden;
     clear: both;
@@ -232,6 +234,13 @@ footer {
         clear: both;
         font-size: 70%;
         line-height: 150%;
+        a, a:visited {
+            color: @color-light-gray;
+            text-decoration: none;
+            &:hover {
+                text-decoration: underline;
+            }
+        }
     }    
 }
 
@@ -284,6 +293,8 @@ footer {
 }
 
 .call-bar {
+    position: relative;
+    z-index: 1;
     font-size: 187%;
     display: block;
     background-color: black;

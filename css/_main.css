@@ -148,6 +148,8 @@ header ul li a.active:after {
   top: 35px;
 }
 footer {
+  z-index: 1;
+  position: relative;
   display: block;
   overflow: hidden;
   clear: both;
@@ -218,6 +220,15 @@ footer p {
   font-size: 70%;
   line-height: 150%;
 }
+footer p a,
+footer p a:visited {
+  color: #d1d1d1;
+  text-decoration: none;
+}
+footer p a:hover,
+footer p a:visited:hover {
+  text-decoration: underline;
+}
 /* ==========================================================================
    Reusables
    ========================================================================== */
@@ -259,6 +270,8 @@ footer p {
   background: #7b6e66;
 }
 .call-bar {
+  position: relative;
+  z-index: 1;
   font-size: 187%;
   display: block;
   background-color: black;

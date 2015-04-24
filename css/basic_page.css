@@ -520,6 +520,8 @@ header ul li a.active:after {
   top: 35px;
 }
 footer {
+  z-index: 1;
+  position: relative;
   display: block;
   overflow: hidden;
   clear: both;
@@ -590,6 +592,15 @@ footer p {
   font-size: 70%;
   line-height: 150%;
 }
+footer p a,
+footer p a:visited {
+  color: #d1d1d1;
+  text-decoration: none;
+}
+footer p a:hover,
+footer p a:visited:hover {
+  text-decoration: underline;
+}
 /* ==========================================================================
    Reusables
    ========================================================================== */
@@ -631,6 +642,8 @@ footer p {
   background: #7b6e66;
 }
 .call-bar {
+  position: relative;
+  z-index: 1;
   font-size: 187%;
   display: block;
   background-color: black;
@@ -831,14 +844,36 @@ footer p {
 /* ==========================================================================
    Basic Pages
    ========================================================================== */
+#About-Page #TopBanner {
+  background: url(../img/banner1.jpg) top center;
+  background-size: 100%;
+  background-attachment: fixed;
+}
+#Market-Update-Page #TopBanner {
+  background: url(../img/banner5.jpg) top center;
+  background-size: 100%;
+  background-attachment: fixed;
+}
+#Buying-Home-Page #TopBanner {
+  background: url(../img/banner2.jpg) top center;
+  background-size: 100%;
+  background-attachment: fixed;
+}
+#Selling-Home-Page #TopBanner {
+  background: url(../img/banner3.jpg) top center;
+  background-size: 100%;
+  background-attachment: fixed;
+}
+#Investing-Page #TopBanner {
+  background: url(../img/banner4.jpg) top center;
+  background-size: 100%;
+  background-attachment: fixed;
+}
 .basic-page #TopBanner {
   width: 100%;
   display: black;
   overflow: hidden;
   height: 200px;
-  background: url(../img/87618868.jpg) top center;
-  background-size: 100%;
-  background-attachment: fixed;
   position: relative;
 }
 .basic-page #TopBanner h1 {
@@ -851,7 +886,7 @@ footer p {
   text-shadow: 0 3px 5px rgba(0, 0, 0, 0.5);
 }
 .basic-page .blind {
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.3);
   position: absolute;
   top: 0;
   height: 100%;
