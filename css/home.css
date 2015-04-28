@@ -1244,9 +1244,11 @@ footer p a:visited:hover {
   overflow: hidden;
   width: 65%;
   float: left;
+  margin-bottom: 50px;
 }
 #HomeAbout .left .btn {
   margin-top: 10px;
+  float: left;
   -webkit-transition: all 0.2s ease-in-out;
   -moz-transition: all 0.2s ease-in-out;
   -ms-transition: all 0.2s ease-in-out;
@@ -1258,10 +1260,11 @@ footer p a:visited:hover {
   background-color: #2e2e2e;
 }
 #HomeAbout .left img {
+  float: right;
   display: block;
-  margin: 40px 0;
+  margin: 10px 0;
   padding: 0;
-  width: 90%;
+  width: 50%;
 }
 #HomeAbout .right {
   display: block;
@@ -1272,15 +1275,17 @@ footer p a:visited:hover {
 #HomeAbout .right img {
   position: absolute;
   bottom: 0px;
-  right: -20px;
+  right: -100px;
   -webkit-transition: all 1s ease-out;
   -moz-transition: all 1s ease-out;
   -ms-transition: all 1s ease-out;
   -o-transition: all 1s ease-out;
   transition: all 1s ease-out;
+  opacity: 0;
 }
 #HomeAbout .right img.on {
-  right: 0px;
+  right: -80px;
+  opacity: 1;
 }
 .inner-wrapper {
   position: relative;
@@ -1289,14 +1294,6 @@ footer p a:visited:hover {
 /* ==========================================================================
    Media Queries
    ========================================================================== */
-/* ==========================================================================
-   Media Queries
-   ========================================================================== */
-@media screen and (max-width: 1100px) {
-  #Index-Page #HomeAbout .right img.on {
-    right: -50px;
-  }
-}
 @media screen and (max-width: 1000px) {
   #HomeCtas .big-ctas a {
     font-size: 130%;
@@ -1307,11 +1304,16 @@ footer p a:visited:hover {
   #Index-Page #HomeAbout h2 {
     font-size: 220%;
   }
+  #Index-Page #HomeAbout .left .btn {
+    float: none;
+  }
   #Index-Page #HomeAbout .left img {
+    float: none;
     width: 80%;
+    padding-top: 10px;
   }
   #Index-Page #HomeAbout .right img.on {
-    right: -100px;
+    right: -120px;
   }
   #HomeCtas .big-ctas a {
     font-size: 130%;
@@ -1323,8 +1325,12 @@ footer p a:visited:hover {
     width: 100%;
     float: none;
   }
+  #Index-Page #HomeAbout .left .btn {
+    margin-top: 20px;
+  }
   #Index-Page #HomeAbout .left img {
-    width: 70%;
+    padding-top: 20px;
+    width: 50%;
   }
   #Index-Page #HomeAbout .right {
     width: 100%;
@@ -1332,7 +1338,7 @@ footer p a:visited:hover {
   }
   #Index-Page #HomeAbout .right img.on {
     width: 200px;
-    right: -50px !important;
+    right: -30px;
   }
 }
 @media screen and (max-width: 710px) {

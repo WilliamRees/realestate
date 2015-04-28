@@ -47,8 +47,8 @@
                 <div class="left">
                     <div class="cms-content" data-nodename="HomeAbout">
                         <?php CMSUtility::ContentLiteral("HomeAbout"); ?>
+                        <img src="img/awards.png" alt="Mustafa's Awards">
                     </div>
-                    <img src="img/awards.png" alt="Mustafa's Awards">
                 </div>
                 <div class="right">
                     <img src="img/mustafa-pic.png" alt="Mustafa Zia Photo">
