@@ -15,8 +15,8 @@ define("SECURE", FALSE);    // FOR DEVELOPMENT ONLY!!!!
 /**
 * PATHS 
 */
-//define("SITE_ROOT", "http://172.16.102.129/DevBox/mustafa-backend/");
-define("SITE_ROOT", "http://172.16.158.129/VMLamp/realestate/");
+define("SITE_ROOT", "http://172.16.102.129/DevBox/git-mustafazia.com/");
+// define("SITE_ROOT", "http://172.16.158.129/VMLamp/realestate/");
 define("LOGIN_SUCCESS", SITE_ROOT . "secure/listing/");
 define("LOGIN_ERROR", SITE_ROOT . "secure/login/index.php?error");
 define("ERROR", SITE_ROOT . "error.php");

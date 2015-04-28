@@ -16,9 +16,9 @@
 
         <section id="HomeIntro">
 
-            <video autoplay loop poster="vid/video_home_bg.jpg" id="HomeBGVideo">
-                <source src="vid/040472783-inside-luxury-office-building-.mp4" type="video/mp4">
-                <source src="vid/home.ogv" type="video/ogg">
+            <video autoplay poster="img/vid-poster.jpg" id="HomeBGVideo">
+                <source src="vid/video.mp4" type="video/mp4">
+                <source src="vid/video.ogv" type="video/ogg">
             </video>
 
             <div class="blind"></div>

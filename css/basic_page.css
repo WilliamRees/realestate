@@ -445,11 +445,6 @@ body {
 * {
   box-sizing: border-box;
 }
-#Top {
-  width: 100%;
-  background-color: black;
-  padding-bottom: 5px;
-}
 #Index-Page .home-link:after,
 #FeatList-Page .feature-link:after,
 #Contact-Page .contact-link:after,
@@ -460,6 +455,7 @@ body {
 }
 header {
   overflow: hidden;
+  background-color: black;
 }
 header .logo {
   display: block;
@@ -468,7 +464,10 @@ header .logo {
   height: 100px;
   text-indent: -99999px;
   background: url(../img/sprite.png) -18px -19px no-repeat;
-  margin: 20px auto;
+  margin: 20px auto 10px;
+}
+header nav {
+  padding: 10px 0 5px 0;
 }
 header ul {
   margin: 0;
@@ -562,7 +561,8 @@ footer ul a {
   text-decoration: none;
   font-size: 125%;
   font-weight: 300;
-  padding: 0 5px;
+  padding: 0 15px;
+  display: block;
 }
 footer ul a:visited {
   color: #d1d1d1;
@@ -842,10 +842,62 @@ footer p a:visited:hover {
   }
 }
 /* ==========================================================================
+   Media Queries
+   ========================================================================== */
+@media screen and (max-width: 1100px) {
+  body {
+    font-size: 85%;
+  }
+  #Index-Page .home-link:after,
+  #FeatList-Page .feature-link:after,
+  #Contact-Page .contact-link:after,
+  #Market-Update-Page .market-link:after,
+  #About-Page .about-link:after {
+    opacity: 1;
+    top: 30px;
+  }
+  header ul li a:after {
+    top: 25px;
+  }
+  header ul li a:hover:after,
+  header ul li a.active:after {
+    top: 30px;
+  }
+}
+@media screen and (max-width: 740px) {
+  footer .col1 {
+    width: 50%;
+  }
+  footer .col2 {
+    width: 50%;
+    text-align: right;
+  }
+  footer .col3 {
+    display: none;
+  }
+}
+@media screen and (max-width: 560px) {
+  footer .col1 {
+    width: 100%;
+    float: none;
+  }
+  footer .col1 a {
+    margin: 0 auto 30px;
+  }
+  footer .col2 {
+    width: 100%;
+    float: none;
+    text-align: center;
+  }
+  footer .col2 a {
+    padding: 5px 10px;
+  }
+}
+/* ==========================================================================
    Basic Pages
    ========================================================================== */
 #About-Page #TopBanner {
-  background: url(../img/banner1.jpg) top center;
+  background: url(../img/vid-poster.jpg) top center;
   background-size: 100%;
   background-attachment: fixed;
 }
@@ -865,6 +917,11 @@ footer p a:visited:hover {
   background-attachment: fixed;
 }
 #Investing-Page #TopBanner {
+  background: url(../img/banner4.jpg) top center;
+  background-size: 100%;
+  background-attachment: fixed;
+}
+#Calculator-Page #TopBanner {
   background: url(../img/banner4.jpg) top center;
   background-size: 100%;
   background-attachment: fixed;
@@ -921,19 +978,23 @@ footer p a:visited:hover {
 .basic-page #About-Testimonials {
   overflow-y: hidden;
   padding-top: 20px;
-  padding-bottom: 100px;
+  padding-bottom: 70px;
+}
+.basic-page #ContentBody .inner-wrapper,
+.basic-page #About-Testimonials .inner-wrapper {
+  max-width: 1000px;
 }
 .basic-page #ContentBody .left,
 .basic-page #About-Testimonials .left {
   overflow: hidden;
-  width: 65%;
+  width: 55%;
   padding-right: 60px;
   float: left;
 }
 .basic-page #ContentBody .right,
 .basic-page #About-Testimonials .right {
   overflow: hidden;
-  width: 35%;
+  width: 45%;
   float: right;
 }
 .basic-page #ContentBody h2,
@@ -991,6 +1052,37 @@ footer p a:visited:hover {
 #About-Page #About-Testimonials {
   padding: 0 0 30px 0;
 }
+/* START - Simple Mortage Payment Calculator */
+.smpc-div input[type=text] {
+  padding: 5px 5px 3px;
+  border: none;
+  color: #2e2e2e;
+  background-color: #ebebeb;
+  transition: all 200ms ease-in;
+  border-bottom: 2px solid #ebebeb;
+  border-radius: 3px;
+}
+.smpc-error {
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 10px;
+  color: #ca0000;
+}
+.smpc-monthlypayment {
+  margin-top: 25px;
+  font-size: 24px;
+  color: #fefefe;
+  background-color: #525252;
+  padding: 10px 20px;
+  border-radius: 3px;
+  text-align: center;
+}
+.smpc-monthlypayment strong {
+  font-size: 120%;
+}
+.smpc-friendlyreminder {
+  display: none;
+}
+/* END - Simple Mortage Payment Calculator */
 /* ==========================================================================
    Media Queries
    ========================================================================== */

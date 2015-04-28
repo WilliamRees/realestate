@@ -16,11 +16,7 @@
     </head>
     <body id="Contact-Page">
 
-        <section id="Top">
-            <div class="inner-wrapper">
-                <?php include 'header.php';?>
-            </div>
-        </section>
+        <?php include 'header.php';?>
 
         <div id="TopBanner">
             <div class="inner-wrapper">

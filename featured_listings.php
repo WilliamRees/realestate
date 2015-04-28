@@ -26,12 +26,7 @@
     </head>
     <body id="FeatList-Page">
 
-        <section id="Top">
-            <div class="inner-wrapper">
-                <?php include 'header.php';?>
-            </div>
-        </section>
-
+        <?php include 'header.php';?>
 
         <section id="FeatList-Carousel" class="owl-carousel">
             <?php

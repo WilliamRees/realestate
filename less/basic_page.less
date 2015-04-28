@@ -5,12 +5,12 @@
    Basic Pages
    ========================================================================== */
 
-#About-Page #TopBanner          { background: url(../img/banner1.jpg) top center; background-size: 100%; background-attachment: fixed; }
+#About-Page #TopBanner          { background: url(../img/vid-poster.jpg) top center; background-size: 100%; background-attachment: fixed; }
 #Market-Update-Page #TopBanner  { background: url(../img/banner5.jpg) top center; background-size: 100%; background-attachment: fixed; }
 #Buying-Home-Page #TopBanner    { background: url(../img/banner2.jpg) top center; background-size: 100%; background-attachment: fixed; }
 #Selling-Home-Page #TopBanner   { background: url(../img/banner3.jpg) top center; background-size: 100%; background-attachment: fixed; }
 #Investing-Page #TopBanner      { background: url(../img/banner4.jpg) top center; background-size: 100%; background-attachment: fixed; }
-
+#Calculator-Page #TopBanner     { background: url(../img/banner4.jpg) top center; background-size: 100%; background-attachment: fixed; }
 
 .basic-page {
     #TopBanner {
@@ -58,18 +58,21 @@
         }
     }    
     #ContentBody, #About-Testimonials {
+        .inner-wrapper {
+            max-width: 1000px;
+        }
         overflow-y: hidden;
         padding-top: 20px;
-        padding-bottom: 100px;
+        padding-bottom: 70px;
         .left {
             overflow: hidden;
-            width: 65%;
+            width: 55%;
             padding-right: 60px;
             float: left;
         }
         .right {
             overflow: hidden;
-            width: 35%;
+            width: 45%;
             float: right;
         }    
         h2 {
@@ -124,6 +127,44 @@
     }
 }
 
+/* START - Simple Mortage Payment Calculator */
+
+.smpc-div {
+    input[type=text] {
+      padding: 5px 5px 3px;
+      border: none;
+      color: #2e2e2e;
+      background-color: #ebebeb;
+      transition: all 200ms ease-in;
+      border-bottom: 2px solid #ebebeb;
+      border-radius: 3px;
+    }
+}
+
+.smpc-error {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    color:#ca0000;
+}
+
+.smpc-monthlypayment {
+    margin-top:25px;
+    font-size:24px;
+    color: @color-white;
+    background-color: darken(@color-light-gray, 50%);
+    padding: 10px 20px;
+    border-radius: 3px;    
+    text-align: center;
+    strong {
+        font-size: 120%;
+    }
+}
+
+.smpc-friendlyreminder {
+display:none;
+}
+
+/* END - Simple Mortage Payment Calculator */
 
 
 /* ==========================================================================

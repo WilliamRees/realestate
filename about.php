@@ -12,11 +12,7 @@
     </head>
     <body id="About-Page" class="basic-page">
 
-        <section id="Top">
-            <div class="inner-wrapper">
-                <?php include 'header.php';?>
-            </div>
-        </section>
+        <?php include 'header.php';?>
 
         <div id="TopBanner">
             <div class="inner-wrapper">

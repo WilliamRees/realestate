@@ -445,11 +445,6 @@ body {
 * {
   box-sizing: border-box;
 }
-#Top {
-  width: 100%;
-  background-color: black;
-  padding-bottom: 5px;
-}
 #Index-Page .home-link:after,
 #FeatList-Page .feature-link:after,
 #Contact-Page .contact-link:after,
@@ -460,6 +455,7 @@ body {
 }
 header {
   overflow: hidden;
+  background-color: black;
 }
 header .logo {
   display: block;
@@ -468,7 +464,10 @@ header .logo {
   height: 100px;
   text-indent: -99999px;
   background: url(../img/sprite.png) -18px -19px no-repeat;
-  margin: 20px auto;
+  margin: 20px auto 10px;
+}
+header nav {
+  padding: 10px 0 5px 0;
 }
 header ul {
   margin: 0;
@@ -562,7 +561,8 @@ footer ul a {
   text-decoration: none;
   font-size: 125%;
   font-weight: 300;
-  padding: 0 5px;
+  padding: 0 15px;
+  display: block;
 }
 footer ul a:visited {
   color: #d1d1d1;
@@ -842,8 +842,63 @@ footer p a:visited:hover {
   }
 }
 /* ==========================================================================
+   Media Queries
+   ========================================================================== */
+@media screen and (max-width: 1100px) {
+  body {
+    font-size: 85%;
+  }
+  #Index-Page .home-link:after,
+  #FeatList-Page .feature-link:after,
+  #Contact-Page .contact-link:after,
+  #Market-Update-Page .market-link:after,
+  #About-Page .about-link:after {
+    opacity: 1;
+    top: 30px;
+  }
+  header ul li a:after {
+    top: 25px;
+  }
+  header ul li a:hover:after,
+  header ul li a.active:after {
+    top: 30px;
+  }
+}
+@media screen and (max-width: 740px) {
+  footer .col1 {
+    width: 50%;
+  }
+  footer .col2 {
+    width: 50%;
+    text-align: right;
+  }
+  footer .col3 {
+    display: none;
+  }
+}
+@media screen and (max-width: 560px) {
+  footer .col1 {
+    width: 100%;
+    float: none;
+  }
+  footer .col1 a {
+    margin: 0 auto 30px;
+  }
+  footer .col2 {
+    width: 100%;
+    float: none;
+    text-align: center;
+  }
+  footer .col2 a {
+    padding: 5px 10px;
+  }
+}
+/* ==========================================================================
    Contact
    ========================================================================== */
+#Contact-Page .inner-wrapper {
+  max-width: 1000px;
+}
 #Contact-Page #TopBanner {
   width: 100%;
   display: black;

@@ -92,12 +92,6 @@ html, body {
 
 * { box-sizing: border-box; } 
 
-#Top {
-    width: 100%;
-    background-color: black;
-    padding-bottom: 5px;
-}
-
 #Index-Page .home-link:after,
 #FeatList-Page .feature-link:after,
 #Contact-Page .contact-link:after,
@@ -109,6 +103,7 @@ html, body {
 
 header {
     overflow: hidden;
+    background-color: black;
     .logo {
         display: block;
         overflow: hidden;
@@ -116,7 +111,10 @@ header {
         height: 100px;
         text-indent: -99999px;
         background: url(../img/sprite.png) -18px -19px no-repeat;
-        margin: 20px auto;
+        margin: 20px auto 10px;
+    }
+    nav {
+        padding: 10px 0 5px 0;    
     }
     ul {
         margin: 0;
@@ -207,7 +205,8 @@ footer {
             text-decoration: none;
             font-size: 125%;
             font-weight: 300;
-            padding: 0 5px;
+            padding: 0 15px;
+            display: block;
             &:hover {
                 background-color: rgba(255, 255, 255, 0.1);
             }
@@ -507,4 +506,79 @@ footer {
     h3 {
         page-break-after: avoid;
     }
+}
+
+/* ==========================================================================
+   Media Queries
+   ========================================================================== */
+
+@media screen and (max-width: 1100px) {
+
+    body {
+        font-size: 85%;
+    }
+
+    #Index-Page .home-link:after,
+    #FeatList-Page .feature-link:after,
+    #Contact-Page .contact-link:after,
+    #Market-Update-Page .market-link:after,
+    #About-Page .about-link:after {
+        opacity: 1;
+        top: 30px;  
+    }    
+    header {
+        ul {
+            li {
+                a:after {
+                    top: 25px;  
+                }
+                a:hover:after,
+                a.active:after {
+                    top: 30px;                  
+                }
+            }
+        }
+    }
+
+
+}
+
+@media screen and (max-width: 740px) {
+
+    footer {
+        .col1 {
+            width: 50%;
+        }
+        .col2 {
+            width: 50%;
+            text-align: right;
+        }
+        .col3 {
+            display: none;
+        }
+    }
+
+}
+
+@media screen and (max-width: 560px) {
+
+    footer {
+        .col1 {
+            width: 100%;
+            float: none;
+            a {
+                margin: 0 auto 30px;
+            }
+
+        }
+        .col2 {
+            width: 100%;
+            float: none;
+            text-align: center;
+            a {
+                padding: 5px 10px;
+            }
+        }
+    }
+
 }

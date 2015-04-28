@@ -15,12 +15,6 @@
         overflow: hidden;
         z-index: 100;
         background-color: rgba(0, 0, 0, 0.8);
-        nav {
-            padding: 10px 0 5px 0;
-        }
-        .logo {
-            margin: 20px auto 10px;
-        }
     }
 }
 
@@ -32,7 +26,7 @@
     min-height: 700px;
     z-index: 1;
     position: relative;
-    background: url(../img/intro-img.jpg) center center no-repeat;
+    background: black url(../img/vid-poster.jpg) center center no-repeat;
     background-size: cover;    
     #HomeBGVideo {
         position: fixed; right: 0; bottom: 0;
@@ -128,8 +122,8 @@
         list-style: none;
         border-top: solid 1px #4d4d4d;
         width: 100%;
-
         li {
+            -webkit-backface-visibility: hidden;
             display: block;
             margin: 0;
             overflow: hidden;
@@ -321,3 +315,149 @@
 /* ==========================================================================
    Media Queries
    ========================================================================== */
+
+/* ==========================================================================
+   Media Queries
+   ========================================================================== */
+
+@media screen and (max-width: 1100px) {
+
+    #Index-Page #HomeAbout {
+        .right {
+            img.on {
+                right: -50px;
+            }
+        }
+    }
+
+}
+
+@media screen and (max-width: 1000px) {
+
+    #HomeCtas {
+        .big-ctas {
+            a {
+                font-size: 130%;
+                padding: 20px 10px 10px;
+            }
+        }
+    }
+
+}
+
+@media screen and (max-width: 930px) {
+
+
+    #Index-Page #HomeAbout {
+        h2 {
+            font-size: 220%;
+        }
+        .left {
+            img {
+                width: 80%;
+            }
+        }
+        .right {
+            img.on {
+                right: -100px;
+            }
+        }
+    }
+
+    #HomeCtas {
+        .big-ctas {
+            a {
+                font-size: 130%;
+                padding: 20px 10px 10px;
+            }
+        }
+    }
+
+}
+
+@media screen and (max-width: 780px) {
+
+    #Index-Page #HomeAbout {
+        .left {
+            width: 100%;
+            float: none;
+            img {
+                width: 70%;
+            }
+        }
+        .right {
+            width: 100%;
+            float: none;
+            img.on {
+                width: 200px;
+                right: -50px !important;
+            }
+        }
+    }
+
+}
+
+@media screen and (max-width: 710px) {
+    #HomeIntro {
+        h1 {
+            font-size: 350%;
+        }
+    }
+
+    #HomeCtas {
+        .big-ctas {
+            padding-bottom: 10px;
+            border-bottom: solid 1px #4d4d4d;
+            li {
+                width: 50%;
+                border: none;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 540px) {
+
+
+    #Index-Page #HomeAbout {
+        .left {
+            img {
+                width: 100%;
+            }
+            .btn {
+                text-align: center;
+                width: 100%;
+            }
+        }
+        .right {
+            text-align: center;
+            img.on {
+                width: 75%;
+                right: 0px !important;
+                position: relative;
+            }
+        }
+    }
+
+    #HomeCtas {
+        padding-bottom: 20px;
+        h3 {
+            margin-top: 20px;
+        }        
+        .small-ctas {
+            li {
+                display: block;
+                width: 100%;
+                a {
+                    padding: 5px 0;
+                    display: block;
+                }
+            }
+            .dot {
+                display: none;
+            }
+        }
+    }
+}
+
+

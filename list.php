@@ -33,11 +33,7 @@
     </head>
     <body id="List-Page">
 
-        <section id="Top">
-            <div class="inner-wrapper">
-                <?php include 'header.php';?>
-            </div>
-        </section>
+        <?php include 'header.php';?>
 
         <section id="List-Heading">
             <div class="inner-wrapper">
@@ -79,10 +75,10 @@
                     </div>
 
                     <?php if(isset($listing->VirtualTour) && strlen($listing->VirtualTour) > 0) : ?>
-                        <a href="<?php echo($listing->VirtualTour) ?>" class="btn-round btn-vt">Virtual Tour</a>        
+                        <a target="_blank"> href="<?php echo($listing->VirtualTour) ?>" class="btn-round btn-vt">Virtual Tour</a>        
                     <?php endif; ?>
                     
-                    <a href="#TODO" class="btn-round btn-mc">Mortgage Calculator</a>
+                    <a target="_blank" href="calculator.php" class="btn-round btn-mc">Mortgage Calculator</a>
 
                     <h3>Property Description</h3>
 
