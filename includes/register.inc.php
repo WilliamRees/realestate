@@ -87,6 +87,12 @@ if (isset($_POST['username'], $_POST['email'], $_POST['p'])) {
                 header('Location: ../error.php?err=Registration failure: INSERT');
             }
         }
-        header('Location: ./register_success.php');
+        if (isset($_SESSION['message'])) {
+            echo $_SESSION['message'];
+            unset($_SESSION['message']);
+        }
+        
+        $_SESSION['message'] = "<strong>Success!</strong> User \"" . $username . "\" was successfully created.";
+        header('Location: ' . SITE_ROOT . "secure/users/index.php");
     }
 }

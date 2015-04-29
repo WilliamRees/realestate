@@ -188,12 +188,12 @@ class Listing {
 
 		if (isset($page, $pageSize)) {
 			$sqlCommand = ($published) ? "SELECT Id, Address, City, Province, Country, Description, Price, PropertyType, Bedrooms, Bathrooms, LivingSpace, LandSize, TaxYear, Taxes, BuildingAge, Sold, Published, Latitude, Longitude, Created, Featured, Priority, PublishedDate, ShortDescription, VirtualTour FROM Listings WHERE Published = 1 ORDER BY Priority ASC, PublishedDate DESC LIMIT ?, ?" :
-			 "SELECT Id, Address, City, Province, Country, Description, Price, PropertyType, Bedrooms, Bathrooms, LivingSpace, LandSize, TaxYear, Taxes, BuildingAge, Sold, Published, Latitude, Longitude, Created, Featured, Priority, PublishedDate, ShortDescription, VirtualTour FROM Listings LIMIT ?, ? ORDER BY Created DESC";
+			 "SELECT Id, Address, City, Province, Country, Description, Price, PropertyType, Bedrooms, Bathrooms, LivingSpace, LandSize, TaxYear, Taxes, BuildingAge, Sold, Published, Latitude, Longitude, Created, Featured, Priority, PublishedDate, ShortDescription, VirtualTour FROM Listings LIMIT ?, ? ORDER BY Priority ASC";
 			if ($stmt = $conn->prepare($sqlCommand)) {
 				$stmt->bind_param("ii", $page, $pageSize);
 			}
 		} else {
-			$sqlCommand = "SELECT Id, Address, City, Province, Country, Description, Price, PropertyType, Bedrooms, Bathrooms, LivingSpace, LandSize, TaxYear, Taxes, BuildingAge, Sold, Published, Latitude, Longitude, Created, Featured, Priority, PublishedDate, ShortDescription, VirtualTour FROM Listings WHERE Id > ? ORDER BY Created DESC";
+			$sqlCommand = "SELECT Id, Address, City, Province, Country, Description, Price, PropertyType, Bedrooms, Bathrooms, LivingSpace, LandSize, TaxYear, Taxes, BuildingAge, Sold, Published, Latitude, Longitude, Created, Featured, Priority, PublishedDate, ShortDescription, VirtualTour FROM Listings WHERE Id > ? ORDER BY Priority ASC, Created DESC";
 			if (isset($published)) {
 				$sqlCommand = "SELECT Id, Address, City, Province, Country, Description, Price, PropertyType, Bedrooms, Bathrooms, LivingSpace, LandSize, TaxYear, Taxes, BuildingAge, Sold, Published, Latitude, Longitude, Created, Featured, Priority, PublishedDate, ShortDescription, VirtualTour FROM Listings WHERE Id > ? AND Published = " . $published . " ORDER BY Priority ASC, PublishedDate DESC";
 			}

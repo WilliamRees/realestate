@@ -15,6 +15,7 @@
             z-index: 3000; 
             width:100%; 
             border-bottom: 1px solid #e7e7e7; 
+            left:0;
         }
         .admin .btn {
             background-image: none;

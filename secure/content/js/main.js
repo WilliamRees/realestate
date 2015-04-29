@@ -110,6 +110,20 @@ re.views.secure.login = (function($){
 })(jQuery);
 
 re.views.secure.users = (function($) {
+
+	//Index user page.
+	//============================================
+	var init = function () {
+		$(function(){
+			$('*[data-user-remove]').on('user.removed', function (){
+				$this = $(this);
+				$('tr[data-user-id="' + $this.data('user-remove') + '"]').remove();
+			});
+		});
+	};
+
+	//User regestration.
+	//============================================	
 	var register = (function ($){
 		var init = function () {
 			var options = {
@@ -163,7 +177,8 @@ re.views.secure.users = (function($) {
 	})($);
 
 	return {
-		register: register
+		register: register,
+		init: init
 	}
 })(jQuery);
 
@@ -347,6 +362,20 @@ re.api.cms = (function($){
 	}
 })(jQuery);
 
+re.api.user = (function($) {
+
+	var uri = SITE_ROOT + 'api/user/'
+
+	var remove = function (id) {
+		return re.utilities.delete(uri + "index.php", {Id: id});
+	}
+
+	return {
+		remove: remove
+	}
+
+})(jQuery);
+
 re.api.listing = (function($) {
 	var uri = SITE_ROOT + 'api/listing/';
 
@@ -419,9 +448,26 @@ re.api.dataApi = (function($){
 	var init = function () {
 		listing.init();
 		listing.image.init();
+		user.init();
 	};
 
 	var $doc = $(document);
+
+	var user = {
+		init: function () {
+			$doc.on('click', '*[data-user-remove]', function (e) {
+				e.preventDefault();
+				$this = $(this);
+				re.api.user.remove($this.data('user-remove'))
+				.done(function(){
+					$this.trigger('user.removed');
+				})
+				.fail(function(){
+					$this.trigger('user.removed.error')
+				});
+			});	
+		}
+	}
 
 	var listing = {
 		init: function () {
@@ -671,9 +717,43 @@ re.views.secure.listing = (function($) {
 		$("img.lazy").lazyload({
 		    threshold : 200
 		});
-		$('*[data-listing-remove]').on('listing.removed', function() {
-			$this = $(this);
-			$this.parents('.thumbnail').parent().remove();
+
+		$('.remove').on('click', function(){
+			var $this = $(this);
+			$deleteModal = $('#DeleteConfirmation');
+			$deleteModal.find('button[data-listing-remove]').data('listing-remove', $this.data('listing-id'));
+			$deleteModal.modal('show');
+
+			//Bind click event to confirm button.
+			$deleteModal.find('button[data-listing-remove]').on('click', function(e){
+				e.preventDefault();
+				
+				var $this = $(this);
+				var listingId = $this.data('listing-remove');
+
+				//Show ajax spinner on button.
+				var l = Ladda.create(this);
+ 				l.start();		
+
+ 				//Remove the listing.
+				re.api.listing.remove(listingId)
+				.done(function() {
+					//Stop ajax spinner
+					setTimeout(function(){
+						l.stop();
+					}, 1000);
+					
+					//Hide modal
+					setTimeout(function(){
+						$deleteModal.modal('hide');
+						//Remove listing from DOM.
+						$('.thumbnail[data-listing-id="' + listingId + '"]').parent().fadeOut('slow', function() {
+							$(this).remove();
+						});
+					}, 1500);
+					
+				});
+			});
 		});
 	};
 
@@ -757,6 +837,8 @@ re.views.secure.listing = (function($) {
 					value = $this.prop("checked") ? 1 : 0;	
 				} else if ($this.attr('type') === "number") {
 					value = $this.val();	
+				} else if ($this.attr('type') === "hidden") {
+					value = $this.val();
 				}
 				
 				
@@ -779,7 +861,7 @@ re.views.secure.listing = (function($) {
 							        	if (listing[property].length === 0) {
 							        		errors.push(property);
 							        	}
-							        } else if (property !== "FeaturedImage") {
+							        } else if (property !== "FeaturedImage" && property !== "PublishedDate") {
 							        	if (listing[property] === null || listing[property].length === 0) {
 							        		errors.push(property);
 							        	}

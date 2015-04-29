@@ -50,7 +50,7 @@ include_once '../../includes/WebSecurity.php';
         </li>
       </ul>
       <ul class="nav navbar-nav pull-right">
-        <li><p class="navbar-text"><?php echo($_SESSION['username']); ?></p></li>
+        <li><p class="navbar-text"><?php echo($_SESSION['user']->Username); ?></p></li>
         <li><a href="<?php echo(SITE_ROOT . 'includes/logout.php'); ?>">log out</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->

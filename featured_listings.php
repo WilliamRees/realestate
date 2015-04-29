@@ -11,6 +11,8 @@
     $totalListings = Listing::count(true);
 
     $featuredListings = Listing::getFeaturedListings();
+
+    $_SESSION['LastPage'] = $page + 1;
 ?>
 <!doctype html>
 <html class="no-js" lang="en">

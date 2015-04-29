@@ -2,6 +2,20 @@
 include_once 'config.php';
 include_once 'db_connect.php';
 
+class User {
+
+    public $Id;
+    public $Username;
+    public $Email;
+
+    function __construct($Id, $Username, $Email) 
+    {
+       $this->Id = $Id;
+       $this->Username = $Username;
+       $this->Email = $Email;
+    }
+} 
+
 class WebSecurity {
     
     public function sec_session_start() {
@@ -25,6 +39,63 @@ class WebSecurity {
         session_name($session_name);
         session_start();            // Start the PHP session 
         session_regenerate_id();    // regenerated the session, delete the old one. 
+    }
+
+    public function deleteUser($id) {
+        $conn = self::conn();
+        $result = false;
+        $sqlCommand = "DELETE FROM members WHERE id = ?";
+
+        if (isset($id)) {    
+            if ($stmt = $conn->prepare($sqlCommand)) {
+                $stmt->bind_param("i", $id);
+                if ($stmt->execute()) {
+                    $result = true;
+                    $stmt->close();
+                }
+            }            
+        }
+
+        $conn->close();
+        return $result;
+    }
+
+    public function users($id) {
+        $conn = self::conn();
+
+        if (isset($id)) {
+
+            $sqlCommand = "SELECT id, username, email from members where id = ?";
+            $user = null;
+            if ($stmt = $conn->prepare($sqlCommand)) {
+                $stmt->bind_param("i", $id);
+                if ($stmt->execute()) {
+                    $stmt->bind_result($Id, $Username, $Email);
+                    while ($row = $stmt->fetch()) {
+                        $user = new User($Id, $Username, $Email);
+                    }
+                    
+                    $stmt->close();
+                }
+            }
+
+            $conn->close();
+            return $user;
+        } else {
+            $sqlCommand = "SELECT id, username, email from members";
+            $results = $conn->query($sqlCommand);
+            
+            $users = array();
+            if ($results->num_rows > 0) {
+                while($result = $results->fetch_assoc()) {
+                    $user = new User($result["id"], $result["username"], $result["email"]);
+                    array_push($users, $user);
+                }
+            }
+
+            $conn->close();
+            return $users;    
+        }
     }
 
     public function login($email, $password, $mysqli) {
@@ -63,7 +134,7 @@ class WebSecurity {
                         $username = preg_replace("/[^a-zA-Z0-9_\-]+/", 
                                                                     "", 
                                                                     $username);
-                        $_SESSION['username'] = $username;
+                        $_SESSION['user'] = self::users($user_id);
                         $_SESSION['login_string'] = hash('sha512', 
                                   $password . $user_browser);
                         // Login successful.
@@ -87,12 +158,12 @@ class WebSecurity {
     public function isAuthenticated($mysqli) {
         // Check if all session variables are set 
         if (isset($_SESSION['user_id'], 
-                            $_SESSION['username'], 
+                            $_SESSION['user'], 
                             $_SESSION['login_string'])) {
      
             $user_id = $_SESSION['user_id'];
             $login_string = $_SESSION['login_string'];
-            $username = $_SESSION['username'];
+            $user = $_SESSION['user'];
      
             // Get the user-agent string of the user.
             $user_browser = $_SERVER['HTTP_USER_AGENT'];
@@ -130,6 +201,18 @@ class WebSecurity {
             // Not logged in 
             return false;
         }
+    }
+
+    private static function conn() {
+
+        $conn = new mysqli(HOST, USER, PASSWORD, DATABASE);
+
+        if (mysqli_connect_errno())
+        {
+            echo "Failed to connect to MySql: " . mysqli_connect_error();
+        }
+        
+        return $conn;
     }
 }
 

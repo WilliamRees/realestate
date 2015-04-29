@@ -264,6 +264,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 <?php include_once '../footerscripts.php' ?>
 <script>
 	re.views.secure.listing.editlisting.init();
+
+	$(window).keypress(function(event) {
+	    if (!(event.which == 115 && event.ctrlKey) && !(event.which == 19)) return true;
+	    $("#Submit").click();
+	    event.preventDefault();
+	    return false;
+	});
 </script>
 <?php include_once '../footer.php' ?>
 <?php  
