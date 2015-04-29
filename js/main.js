@@ -2,7 +2,12 @@ window.mustafazia = window.mustafazia || {};
 
 mustafazia.shared = {
     init : function () {
-		
+		// Mobile Menu
+        $(".mobile-menu").click(function (e) {
+            e.preventDefault();
+            $("header nav").toggleClass("on");
+        });
+
     },  
     formLabels : function() {
         $( "form input[type=text], form input[type=email], form textarea" ).focusin(function() {

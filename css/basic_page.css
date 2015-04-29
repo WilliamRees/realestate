@@ -457,6 +457,9 @@ header {
   overflow: hidden;
   background-color: black;
 }
+header .mobile-menu {
+  display: none;
+}
 header .logo {
   display: block;
   overflow: hidden;
@@ -864,6 +867,75 @@ footer p a:visited:hover {
     top: 30px;
   }
 }
+@media screen and (max-width: 870px) {
+  header .mobile-menu {
+    display: block;
+    position: absolute;
+    top: 20px;
+    right: 10px;
+    height: 40px;
+    width: 40px;
+    text-indent: -999999px;
+    overflow: hidden;
+    float: right;
+    background: url(../img/sprite.png) -88px -453px no-repeat;
+    margin: 0;
+    opacity: 0.9;
+  }
+  header .logo {
+    display: block;
+    overflow: hidden;
+    width: 140px;
+    height: 63px;
+    text-indent: -99999px;
+    background: url(../img/sprite.png) -7px -6px no-repeat;
+    background-size: 520px;
+    margin: 5px auto 0;
+    -webkit-backface-visibility: hidden;
+  }
+  header nav {
+    padding: 0;
+    display: block;
+    clear: both;
+    height: 10px;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+  }
+  header nav.on {
+    height: 270px;
+  }
+  header ul {
+    padding: 15px 0 0 0;
+  }
+  header ul li {
+    text-align: center;
+    display: block;
+    padding: 0 15px;
+    margin: 0;
+  }
+  header ul li a {
+    border-top: 1px solid #848484;
+    color: #d1d1d1;
+    display: block;
+    padding: 9px 10px 7px;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  header ul li a:visited {
+    color: #d1d1d1;
+  }
+  header ul li a:after {
+    display: none;
+  }
+  header ul li a:hover:after,
+  header ul li a.active:after {
+    display: none;
+  }
+}
 @media screen and (max-width: 740px) {
   footer .col1 {
     width: 50%;
@@ -1086,3 +1158,8 @@ footer p a:visited:hover {
 /* ==========================================================================
    Media Queries
    ========================================================================== */
+@media screen and (max-width: 870px) {
+  .basic-page #TopBanner {
+    background-size: cover !important;
+  }
+}

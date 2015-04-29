@@ -104,6 +104,9 @@ html, body {
 header {
     overflow: hidden;
     background-color: black;
+    .mobile-menu {
+        display: none;
+    }
     .logo {
         display: block;
         overflow: hidden;
@@ -540,6 +543,76 @@ footer {
         }
     }
 
+
+}
+
+@media screen and (max-width: 870px) {
+
+    header {
+        .mobile-menu {
+            display: block;
+            position: absolute;
+            top: 20px;
+            right: 10px;
+            height: 40px;
+            width: 40px;
+            text-indent: -999999px;
+            overflow: hidden;
+            float: right;
+            background: url(../img/sprite.png) -88px -453px no-repeat;
+            margin: 0;
+            opacity: 0.9;
+        }
+        .logo {
+            display: block;
+            overflow: hidden;
+            width: 140px;
+            height: 63px;
+            text-indent: -99999px;
+            background: url(../img/sprite.png) -7px -6px no-repeat;
+            background-size: 520px;
+            margin: 5px auto 0;
+            -webkit-backface-visibility: hidden;
+        }
+        nav {
+            padding: 0;    
+            display: block;
+            clear: both;
+            height: 10px;
+            .animate(all 0.5s ease-in-out);
+        }
+        nav.on {
+            height: 270px;
+        }        
+        ul {
+            padding: 15px 0 0 0;
+            li {
+                text-align: center;
+                display: block;
+                padding: 0 15px;
+                margin: 0;
+                a {
+                    border-top: 1px solid darken(@color-light-gray, 30%);
+                    color: @color-light-gray;
+                    display: block;
+                    padding: 9px 10px 7px;
+                    margin: 0;
+                    text-transform: uppercase;
+                    letter-spacing: 2px;
+                }
+                a:visited {
+                    color: @color-light-gray;
+                }
+                a:after {
+                    display: none;
+                }
+                a:hover:after,
+                a.active:after {
+                    display: none;                
+                }
+            }
+        }
+    }
 
 }
 

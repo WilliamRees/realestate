@@ -71,6 +71,7 @@
 <?php endif; ?>
 <header>
     <a class="logo" href="index.php">Home</a>
+    <a class="mobile-menu" href="#">Menu</a>
     <nav>
         <ul>
             <li><a class="home-link" href="index.php">Home</a></li>
