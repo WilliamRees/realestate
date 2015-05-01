@@ -1272,6 +1272,7 @@ footer p a:visited:hover {
   padding-top: 50px;
   font-size: 125%;
   color: #2e2e2e;
+  overflow: hidden;
   background: #d1d1d1;
   /* Old browsers */
 
@@ -1378,6 +1379,7 @@ footer p a:visited:hover {
   }
   #Index-Page #HomeAbout .left .btn {
     float: none;
+    font-size: 100%;
   }
   #Index-Page #HomeAbout .left img {
     float: none;
@@ -1419,6 +1421,9 @@ footer p a:visited:hover {
     min-height: initial;
     padding-bottom: 30px;
   }
+  #HomeIntro video {
+    display: none;
+  }
   #HomeIntro h1 {
     font-size: 350%;
     margin: 110px 0 40px 0;
@@ -1433,6 +1438,9 @@ footer p a:visited:hover {
   }
 }
 @media screen and (max-width: 540px) {
+  #Index-Page #HomeAbout h2 {
+    font-size: 180%;
+  }
   #Index-Page #HomeAbout .left img {
     width: 100%;
   }
