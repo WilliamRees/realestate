@@ -75,7 +75,7 @@
                     </div>
 
                     <?php if(isset($listing->VirtualTour) && strlen($listing->VirtualTour) > 0) : ?>
-                        <a target="_blank"> href="<?php echo($listing->VirtualTour) ?>" class="btn-round btn-vt">Virtual Tour</a>        
+                        <a target="_blank" href="<?php echo($listing->VirtualTour) ?>" class="btn-round btn-vt">Virtual Tour</a>        
                     <?php endif; ?>
                     
                     <a target="_blank" href="calculator.php" class="btn-round btn-mc">Mortgage Calculator</a>
