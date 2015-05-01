@@ -357,6 +357,26 @@ class Listing {
 		return $result;
 	}
 
+	public static function setFeaturedImageById($name, $id) {
+		$conn = self::conn();
+		$result;
+		
+		if ($stmt = $conn->prepare("UPDATE ListingImages SET Featured = 0 WHERE ListingId = ?")) {
+			$stmt->bind_param("i", $id);
+			$result = $stmt->execute();
+			$stmt->close();
+		}
+
+		if ($result && $stmt = $conn->prepare("UPDATE ListingImages SET Featured = 1 WHERE Name = ? AND ListingId = ?")) {
+			$stmt->bind_param("si", $name, $id);
+			$result = $stmt->execute();
+			$stmt->close();
+		}
+
+		$conn->close();
+		return $result;
+	}
+
 	public static function addImagesById($id, $filename) {
 		$conn = self::conn();
 		$result;

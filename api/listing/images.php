@@ -30,6 +30,11 @@
 			if (gettype($result) != 'string') {
 				ImageHandler::filename("file");
 				Listing::addImagesById($_POST["ListingId"], ImageHandler::filename("file"));
+
+				if (isset($_POST['FeaturedImage']) && $_POST['FeaturedImage'] == "true") {
+					Listing::setFeaturedImageById($_POST["ListingId"] . "-" . ImageHandler::filename("file"), $_POST["ListingId"]);
+				}
+
 				header('Content-Type: application/json');
 				echo json_encode(true);
 				exit;

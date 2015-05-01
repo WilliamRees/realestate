@@ -148,9 +148,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 						        <img data-dz-thumbnail />
 							    
 							    <div>
-							        <p class="name" data-dz-name></p>
 							        <strong class="error text-danger" data-dz-errormessage></strong>
-							        <p class="size" data-dz-size></p>
+							        <!--<p class="size" data-dz-size></p>-->
+							    </div>
+							    <div>
+							    	<label class="radio-button">
+							    		Featured
+							    		<input type="radio" name="FeaturedImage" data-image-name="" />
+							    	</label>
+							        <p class="name" data-dz-name></p>
 							    </div>
 							    <div>
 					    			<button data-dz-remove class="btn btn-warning cancel">
@@ -166,6 +172,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 								<img src="" />
 							</div>
 						    <div>
+						    	<label class="radio-button">
+						    		Featured
+						    		<input type="radio" name="FeaturedImage" data-image-name="" />
+						    	</label>
 						        <p class="name" data-dz-name><?php echo($img); ?></p>
 						    </div>
 						    <div>
@@ -263,7 +273,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
 <?php include_once '../footerscripts.php' ?>
 <script>
-	re.views.secure.listing.editlisting.init();
+	re.views.secure.listing.editlisting.init({
+		ListingId: <?php echo $listing->Id ?>
+	});
 
 	$(window).keypress(function(event) {
 	    if (!(event.which == 115 && event.ctrlKey) && !(event.which == 19)) return true;

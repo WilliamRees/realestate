@@ -667,7 +667,7 @@ re.views.secure.listing = (function($) {
 		  			dropzone.on("sending", function (file, xhr, formData) {
 						formData.append("ListingId", id);
 						var $previewElement = $(file.previewElement);
-						if ($('#Featured').prop('checked') && $previewElement.find('input[name="FeaturedImage"]').prop('checked')){
+						if ($previewElement.find('input[name="FeaturedImage"]').prop('checked') && $previewElement.find('input[name="FeaturedImage"]').prop('checked')){
 							formData.append("FeaturedImage", true);
 						} else {
 							formData.append("FeaturedImage", false);
@@ -852,7 +852,6 @@ re.views.secure.listing = (function($) {
 						var deferred = $.Deferred();
 						if (response.Success) {
 							var listing = response.Data;
-							console.log(listing);
 							var errors = [];
 							for (var property in listing) {
 							    if (listing.hasOwnProperty(property)) {
@@ -1048,8 +1047,9 @@ re.views.secure.listing = (function($) {
 		
 		var myDropzone;
 		var uploadStatus;
-
-		var init = function() {
+		var context;
+		var init = function(options) {
+			context = options;
 			myDropzone = helpers.dropzone.init()
 			.done(function(dropzone) {
 				myDropzone = dropzone;
@@ -1108,8 +1108,11 @@ re.views.secure.listing = (function($) {
 				var filename = file.name;
 				var $template = $('#ListingImageTemplate').clone();
 				$template.attr('id', (parseInt($template.attr('id')) + 1));
-				$template.find('img').attr('src', SITE_ROOT + '/uploads/' + filename);
+				$template.find('img').attr('src', SITE_ROOT + '/uploads/' + context.ListingId + '-' + filename);
 				$template.find('.name').html(filename);
+				if ($(file.previewElement).find('input[name="FeaturedImage"]').prop('checked')) {
+					$template.find('input[name="FeaturedImage"]').prop('checked', true);
+				}
 				$button = $template.find('button');
 				$button.attr('data-listing-image-remove-target', '#' + (parseInt($template.attr('id')) + 1));
 				$button.attr('data-listing-image-remove', filename);
@@ -1120,6 +1123,11 @@ re.views.secure.listing = (function($) {
 				}
 				
 				myDropzone.removeFile(file);
+			});
+
+			myDropzone.on('addedfile', function(file) {
+				$preview = $(file.previewElement);
+				$preview.find('input[name="FeaturedImage"]').data('image-name', context.ListingId + "-" + file.name).attr('data-image-name', context.ListingId + "-" + file.name);
 			});
 		}
 
