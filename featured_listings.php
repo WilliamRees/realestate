@@ -36,7 +36,7 @@
                 $featuredListing = $featuredListings[$i];
             ?>
             <div class="item">
-                <div class="bg-feature" style="background-image: url(<?php echo(SITE_ROOT . "uploads/" . $featuredListing->FeaturedImage) ?>);">
+                <div class="bg-feature" style="background-image: url('<?php echo(SITE_ROOT . "uploads/" . $featuredListing->FeaturedImage) ?>');">
                 <div class="blind">
                     <h3><?php echo $featuredListing->Address ?></h3>
                     <p><?php echo $featuredListing->ShortDescription ?></p>
