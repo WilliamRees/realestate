@@ -39,7 +39,7 @@ class Listing {
 		$this->Images = array();
 		$this->Bedrooms = $bedrooms;
 		$this->Bathrooms = (int)$bathrooms;
-		$this->LivingSpace = (int)$livingSpace;
+		$this->LivingSpace = $livingSpace;
 
 		$this->PropertyType = null;
 		$this->LandSize = null;
@@ -66,7 +66,7 @@ class Listing {
 		$result = null;
 		if($stmt = $conn->prepare("INSERT INTO Listings (Address, City, Province, Country, Description, Price, PropertyType, Bedrooms, Bathrooms, LivingSpace, LandSize, TaxYear, Taxes, BuildingAge, Sold, Published, Latitude, Longitude, Featured, ShortDescription, VirtualTour) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)")) {
 			//$this->bindParams($stmt);
-			$stmt->bind_param("sssssdssiiiidiiiddiss", 
+			$stmt->bind_param("sssssdssissidsiiddiss", 
 			$this->Address, 
 			$this->City, 
 			$this->Province, 
@@ -438,7 +438,7 @@ class Listing {
 	}
 
 	private function bindParams(&$stmt) {
-		$stmt->bind_param("sssssdssiiiidiiiddiss", 
+		$stmt->bind_param("sssssdssissidsiiddiss", 
 			$this->Address, 
 			$this->City, 
 			$this->Province, 
@@ -475,67 +475,7 @@ class Listing {
 	}
 
 	private static function isListingValid($listing) {
-		//Validation for Bathrooms property
-		if (isset($listing->Bathrooms) && !is_int($listing->Bathrooms)) {
-			throw new Exception('Bathrooms must be of type int');
-		}
-		if (isset($listing->Bathrooms) && $listing->Bathrooms < 0) {
-			throw new Exception('Bathrooms must be greater than or equal to zero');
-		}
-
-		//Validation for LivingSpace property
-		if (isset($listing->LivingSpace) && !is_numeric($listing->LivingSpace)) {
-			throw new Exception('LivingSpace must be of type float');
-		}
-		if (isset($listing->LivingSpace) && $is_float->LivingSpace < 0) {
-			throw new Exception('LivingSpace must be greater than or equal to zero');
-		}
-
-		//Validation for LandSize property
-		if (isset($listing->LandSize) && !is_float($listing->LandSize)) {
-			throw new Exception('LandSize must be of type float');
-		}
-		if (isset($listing->LandSize) && $is_float->LandSize < 0) {
-			throw new Exception('LandSize must be greater than or equal to zero');
-		}
-		
-		//Validation for TaxYear property
-		if (isset($listing->TaxYear) && !is_int($listing->TaxYear)) {
-			throw new Exception('TaxYear must be of type int');
-		}
-		if (isset($listing->TaxYear) && $listing->TaxYear < 0) {
-			throw new Exception('TaxYear must be greater than or equal to zero');
-		}
-
-		//Validation for Taxes property
-		if (isset($listing->Taxes) && !is_float($listing->Taxes)) {
-			throw new Exception('Taxes must be of type float');
-		}
-		if (isset($listing->Taxes) && $is_float->Taxes < 0) {
-			throw new Exception('Taxes must be greater than or equal to zero');
-		}
-		
-		//Validation for BuildingAge property
-		if (isset($listing->BuildingAge) && !is_int($listing->BuildingAge)) {
-			throw new Exception('BuildingAge must be of type int');
-		}
-		if (isset($listing->BuildingAge) && $listing->BuildingAge < 0) {
-			throw new Exception('BuildingAge must be greater than or equal to zero');
-		}
-		
-
-		//Validation for Sold property
-		if (isset($listing->Sold) && !is_bool($listing->Sold)) {
-			throw new Exception('Sold must be of type bool');
-		}
-
-		//Validation for Published property
-		if (isset($listing->Published) && !is_bool($listing->Published)) {
-			throw new Exception('Published must be of type bool');
-		}
-
 		return true;
-
 	}
 
 	public function isValid() {

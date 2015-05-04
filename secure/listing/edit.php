@@ -78,12 +78,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 				</div>
 				<div class="form-group">
 					<label for="LivingSpace">Living Space</label>
-					<input type="number" id="LivingSpace" name="LivingSpace" class="form-control" 
+					<input type="text" id="LivingSpace" name="LivingSpace" class="form-control" 
 					value="<?php echo($listing->LivingSpace); ?>"/>
 				</div>
 				<div class="form-group">
 					<label for="LandSize">Lot Size</label>
-					<input type="number" id="LandSize" name="LandSize" class="form-control" 
+					<input type="text" id="LandSize" name="LandSize" class="form-control" 
 					value="<?php echo($listing->LandSize); ?>"/>
 				</div>
 				<div class="form-group">
@@ -98,7 +98,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 				</div>
 				<div class="form-group">
 					<label for="BuildingAge">Building Age</label>
-					<input type="number" id="BuildingAge" name="BuildingAge" class="form-control" 
+					<input type="text" id="BuildingAge" name="BuildingAge" class="form-control" 
 					value="<?php echo($listing->BuildingAge); ?>"/>
 				</div>
 				<div class="form-group">
