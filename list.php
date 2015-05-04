@@ -97,7 +97,7 @@
                         <p><span>Lot size:</span> <?php echo $listing->LandSize == 0 ? "" : $listing->LandSize . " sq ft"?></p>
                         <p><span>Tax Year:</span> <?php echo $listing->TaxYear == 0 ? "" : $listing->TaxYear?></p>
                         <p><span>Taxes:</span> <?php echo($listing->Taxes == 0 ? "" : "$".number_format($listing->Taxes, 0, '.', ',')); ?></p>
-                        <p><span>Age of Building:</span> <?php echo $listing->BuildingAge == 0 ? "" : $listing->BuildingAge?></p>
+                        <p><span>Age of Building:</span> <?php echo $listing->BuildingAge ?></p>
                     </div>
 
                     <div id="Map">
