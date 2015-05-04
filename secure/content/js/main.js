@@ -826,7 +826,7 @@ re.views.secure.listing = (function($) {
 					});
 			});
 
-			$('#StatusForms form input').on('change', function(e) {
+			$('.status-forms form input').on('change', function(e) {
 				var $this = $(this);
 				var $form = $this.parents('form');
 				

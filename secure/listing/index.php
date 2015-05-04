@@ -55,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 				?>
 				<div class="col-sm-6 col-md-4">
 					<div class="thumbnail" data-listing-id="<?php echo($listing->Id) ?>" data-address="<?php echo($listing->Address); ?>">
-						<div id="StatusForms">
+						<div class="status-forms">
 							<form class="form-inline pull-left">
 								<div class="checkbox">
 									<label for="Sold">
@@ -84,7 +84,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 								</div>
 							</form>
 						</div>
-						<img class="lazy" data-original="<?php echo(SITE_ROOT . "uploads/" . $listing->Images[0]) ?>" alt="...">
+						<div class="image-wrapper">
+							<img class="lazy" data-original="<?php echo(SITE_ROOT . "uploads/" . $listing->Images[0]) ?>" alt="...">
+						</div>
 						<div class="caption">
 							<h3>$<?php echo(number_format($listing->Price, 0, '.', ',')); ?></h3>
 							<p>

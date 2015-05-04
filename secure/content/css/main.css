@@ -140,9 +140,19 @@ label.radio-button {
   padding-bottom: 55px;
   position: relative;
 }
+.thumbnail .status-forms {
+  padding: 9px;
+}
+.thumbnail .image-wrapper {
+  clear: both;
+  max-height: 230px;
+  overflow: hidden;
+}
 .thumbnail img {
   width: 100%;
   height: auto;
+  margin: 0;
+  padding: 9px;
 }
 .thumbnail .buttons {
   position: absolute;
