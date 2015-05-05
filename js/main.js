@@ -200,6 +200,7 @@ mustafazia.listings = {
                 nav: true,
                 dots: false,
                 autoplay: true,
+                autoHeight: true,
                 autoplayTimeout: 5000,
                 autoplayHoverPause: true
             })
@@ -216,6 +217,7 @@ mustafazia.listings = {
                 margin: 10,
                 items: 6,
                 nav: false,
+                autoHeight: true,
                 dots: false
             })
             .on('click', '.owl-item', function () {
