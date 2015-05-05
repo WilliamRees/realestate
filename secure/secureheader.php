@@ -8,13 +8,14 @@ include_once '../../includes/WebSecurity.php';
 <!DOCTYPE html>
 <html> 
 	<head>   
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" />
         <link href="../content/css/jquery.typeahead.css" type="text/css" rel="stylesheet" />
         <link href="../content/css/ladda-themeless.min.css" rel="stylesheet">
         <link href="../content/css/textboxio.css" rel="stylesheet">
 		    <link href="../content/css/main.css" type="text/css" rel="stylesheet" />
-        
-
  	</head>
 	<body>
 		<nav class="navbar navbar-default">
