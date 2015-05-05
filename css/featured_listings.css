@@ -1337,9 +1337,11 @@ footer p a:visited:hover {
   padding: 0 0 40px 0;
   width: 30%;
   float: left;
+  margin-left: 5%;
 }
-#FeatList-Listings .listings li:nth-child(3n+2) {
-  margin: 0 5%;
+#FeatList-Listings .listings li:nth-child(3n-2) {
+  margin: 0;
+  clear: both;
 }
 #FeatList-Listings .listings li .sold-sign {
   display: block;
