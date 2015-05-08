@@ -94,7 +94,7 @@
                         <p>
                         <?php echo($listing->Bedrooms == "" ? "" : $listing->Bedrooms . " bed /") ?>
                         <?php echo($listing->Bathrooms == 0 ? "" : $listing->Bathrooms . " bath /")  ?>
-                        <?php echo($listing->LivingSpace == "" ? "" : $listing->LivingSpace) ?>
+                        <?php echo($listing->LivingSpace == "" ? "0 sq. ft" : $listing->LivingSpace . " sq. ft") ?>
                         </p>                        
                     </li>                                                      
                     <?php

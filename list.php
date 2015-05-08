@@ -93,7 +93,7 @@
                         <p><span>Property Type:</span> <?php echo $listing->PropertyType == "" ? "-" : $listing->PropertyType ?></p>
                         <p><span>Bedrooms:</span> <?php echo $listing->Bedrooms == "" ? "-" : $listing->Bedrooms?></p>
                         <p><span>Bathrooms:</span> <?php echo $listing->Bathrooms == 0 ? "-" : $listing->Bathrooms?></p>
-                        <p><span>Living space:</span> <?php echo $listing->LivingSpace == "" ? "-" : $listing->LivingSpace ?></p>
+                        <p><span>Living space:</span> <?php echo $listing->LivingSpace == "" ? "-" : $listing->LivingSpace ?> sq. ft</p>
                         <p><span>Lot size:</span> <?php echo $listing->LandSize == 0 ? "-" : $listing->LandSize?></p>
                         <p><span>Tax Year:</span> <?php echo $listing->TaxYear == 0 ? "-" : $listing->TaxYear?></p>
                         <p><span>Taxes:</span> <?php echo($listing->Taxes == 0 ? "-" : "$".number_format($listing->Taxes, 0, '.', ',')); ?></p>
