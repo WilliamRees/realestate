@@ -91,7 +91,11 @@
                         </a>
                         <p class="price">$<?php echo(number_format($listing->Price, 0, '.', ',')); ?></p>
                         <h4><?php echo($listing->Address) ?>, <?php echo($listing->City) ?></h4>
-                        <p><?php echo($listing->Bedrooms) ?> bed / <?php echo($listing->Bathrooms) ?> bath / <?php echo($listing->LivingSpace) ?> sq. ft</p>                        
+                        <p>
+                        <?php echo($listing->Bedrooms == "" ? "" : $listing->Bedrooms . " bed /") ?>
+                        <?php echo($listing->Bathrooms == 0 ? "" : $listing->Bathrooms . " bath /")  ?>
+                        <?php echo($listing->LivingSpace == "" ? "" : $listing->LivingSpace) ?>
+                        </p>                        
                     </li>                                                      
                     <?php
                     } 
