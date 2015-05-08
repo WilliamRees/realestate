@@ -7,10 +7,10 @@
         <ul class="col2">
             <li><a href="index.php">Home Page</a></li>
             <li><a href="featured_listings.php">Browse our Featured Listings</a></li>
-            <li><a href="#TODO">Search Properties on the Map</a></li>
+            <li><a href="http://search.mustafazia.com/" target="_blank">Search Properties on the Map</a></li>
             <li><a href="market_update.php">Market Update</a></li>
             <li><a href="about.php">About Mustafa Zia</a></li>
-            <li><a href="#TODO">Home value estimator</a></li>
+            <li><a href="http://search.mustafazia.com/images/landing/homeworth/index.asp" target="_blank">Home value estimator</a></li>
             <li><a href="calculator.php">Mortgage Calculator</a></li>
             <li><a href="selling_a_home.php">Selling with Mustafa Zia</a></li>
         </ul>
