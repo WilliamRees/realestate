@@ -5,31 +5,32 @@
             <a class="logo-remax" target="_blank" href="http://www.remax.ca/">Remax.ca</a>
         </div>
         <ul class="col2">
-            <li><a href="#TODO">Mississauga Real Estate Listings</a></li>
-            <li><a href="#TODO">Toronto Condo Listings</a></li>
-            <li><a href="#TODO">Mississauga MLS</a></li>
-            <li><a href="#TODO">Buy a House in Mississauga</a></li>
-            <li><a href="#TODO">Sell a House in Mississauga</a></li>
-            <li><a href="#TODO">Milton Realtors</a></li>
-            <li><a href="#TODO">Useful Real Estate Resources</a></li>
-            <li><a href="#TODO">About Mustafa Zia</a></li>
-            <li><a href="#TODO">Contact Us</a></li>
+            <li><a href="index.php">Home Page</a></li>
+            <li><a href="featured_listings.php">Browse our Featured Listings</a></li>
+            <li><a href="#TODO">Search Properties on the Map</a></li>
+            <li><a href="market_update.php">Market Update</a></li>
+            <li><a href="about.php">About Mustafa Zia</a></li>
+            <li><a href="#TODO">Home value estimator</a></li>
+            <li><a href="calculator.php">Mortgage Calculator</a></li>
+            <li><a href="selling_a_home.php">Selling with Mustafa Zia</a></li>
         </ul>
         <ul class="col3">
-            <li><a href="#TODO">Mississauga Real Estate Listings</a></li>
-            <li><a href="#TODO">Toronto Condo Listings</a></li>
-            <li><a href="#TODO">Mississauga MLS</a></li>
-            <li><a href="#TODO">Buy a House in Mississauga</a></li>
-            <li><a href="#TODO">Sell a House in Mississauga</a></li>
-            <li><a href="#TODO">Milton Realtors</a></li>
-            <li><a href="#TODO">Useful Real Estate Resources</a></li>
-            <li><a href="#TODO">About Mustafa Zia</a></li>
-            <li><a href="#TODO">Contact Us</a></li>
+            <li><a href="investing_real_estate.php">Investing in Real Estate</a></li>
+            <li><a href="featured_listings.php#condos">Toronto Condo Listings</a></li>
+            <li><a href="featured_listings.php#mississauga">Mississauga Listings</a></li>
+            <li><a href="buying_a_home.php">Buy a House in Mississauga</a></li>
+            <li><a href="selling_a_home.php">Sell a House in Mississauga</a></li>
+            <li><a href="featured_listings.php#milton">Milton Listings</a></li>
+            <li><a href="featured_listings.php#oakvile">Oakville Listings</a></li>
+            <li><a href="contact.php">Contact Us</a></li>
         </ul>                    
-        <p>©2015 MustafaZia.com   All Rights Reserved.<br>
+        <p>© 2015 MustafaZia.com - All Rights Reserved.<br>
         Not intended to solicit properties currently listed for sale<br>
-        *Based on firm deals by Mustafa Zia within Remax Realty One Inc., Brokerage and Remax Legacy  Inc., Brokerage Dundas Office (independently owned and operated) in 2012.**Awarded by Remax Realty One Inc.,<br>
-        Brokerage for outstanding sales achievement for years 2009/2010/2011, Remax Legacy Inc., Brokerage for 2012.  ***Platinum award received for 2009 &amp;2010. Chairman’s award received for 2011 &amp; 2012. Hall of Fame award received for total commission earned in the years 2009, 2010, 2011.  Total worth of Real Estate sold in the years 2009, 2010, 2011, 2012 based on the purchase price. All awards are individual.<br>
+        * Awarded by Remax Realty One Inc., Brokerage for outstanding sales achievement for years 2009/2010/2011, Remax Legacy/Remax Real Estate Centre for 2012/2013/2014<br>
+        ** Based on closed deals by Mustafa Zia within Remax Realty One Inc., Brokerage (independently owned and operated) in 2011/2012 and Remax Legacy Realty Inc., Brokerage Dundas Office 2013. Remax Legacy/Remax Real Estate Centre 2014.
+        Platinum award received for 2009 /2010. Chairman’s award received for 2011/2012/2013.  Diamond award 2014. Hall of Fame award received for total commission earned in the years 2009, 2010, 2011.
+        #1 Agent based on closed deals with Remax Real Estate Centre 2014 (independently owned and operated). All awards are individual.<br>
+        Mustafa Zia does not guarantee the accuracy of any information available on this site, and is not responsible for any errors, omissions, or misrepresentations.<br>
         WebDesign by <a target="_blank" href="http://kauhaus.ca">&lt;&gt; kauhaus</a>.</p>
     </div>
 </footer>

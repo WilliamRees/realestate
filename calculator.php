@@ -38,7 +38,7 @@
                     </div>
                     <div class="right">
                         <p class="smpc-monthlypayment" id="monthlyPayment"><small>Instructions: Enter numbers and decimal points. No commas or other characters.</small></p>
-                        <p class="smpc-friendlyreminder" id="friendlyReminder">This is your principal + interest payment, or in other words, what you send to the bank each month. But remember, you will also have to budget for homeowners insurance, real estate taxes, and if you are unable to afford a 20% down payment, Private Mortgage Insurance (PMI). These additional costs could increase your monthly outlay by as much 50%, sometimes more.</p>
+                        <small class="smpc-friendlyreminder" id="friendlyReminder">Results received from this calculator are designed for comparative purposes only, and accuracy is not guaranteed.<br>Please <a href="contact.php">contact us</a> to address your mortgage needs.</small>
                     </div>
                 </div>                
             </div>            

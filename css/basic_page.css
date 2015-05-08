@@ -998,6 +998,11 @@ footer p a:visited:hover {
   background-size: 100%;
   background-attachment: fixed;
 }
+#Living-GTA-Page #TopBanner {
+  background: url(../img/banner7.jpg) top center;
+  background-size: 100%;
+  background-attachment: fixed;
+}
 .basic-page #TopBanner {
   width: 100%;
   display: black;
