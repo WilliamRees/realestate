@@ -38,7 +38,7 @@
                     <li>And We Never Settle until You Find the Dream Home</li>
                 </ul>
 
-                <a class="btn-round" href="featured_listings.php">Check our Exclusive Listings</a>
+                <a class="btn-round" href="featured_listings.php">Check our Featured Listings</a>
 
             </div>            
         </section>
