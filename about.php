@@ -24,7 +24,7 @@
         <section id="ContentBody">
             <div class="inner-wrapper">
 
-                <p><i>To excel in any field you need drive, motivation and the dedication it requires to see your vision materialize. Since Mustafa began his journey into the world of Real Estate his impact was quickly felt.</i></p>
+                <p><q>To excel in any field you need drive, motivation and the dedication it requires to see your vision materialize. Since Mustafa began his journey into the world of Real Estate his impact was quickly felt.</i></q>
                 <p>Mustafa is a graduate from the University of Toronto, with an honors joint specialist degree in Economics and Political Science. He is constantly evolving his expertise in the real estate industry, keeping up with the latest developments and provides a wealth of knowledge and expertise to your service. In just 6 short years Mustafa has accumulated an astounding resume and achievements that take most of his peers a life time to achieve. Receiver of the Platinum award in 2009 and 2010, Chairman’s awards in 2011, 2012, and 2013, and one of the highest feats that can be achieved throughout the entire Real Estate industry, the Diamond award, in 2014. </p>
                 <p>Mustafa has reached the pinnacles of Real Estate by bringing a comprehensive level of professionalism with his honest and direct approach with genuine regard for all of his clients while forming strong relationships with trust that your best interests are always held in the highest priority.</p>
 
