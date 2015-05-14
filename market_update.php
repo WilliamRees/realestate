@@ -48,9 +48,9 @@
 
                 <h3>Looking for more information?</h3>
 
-                <a class="btn-round" href="TODO#">Buying a home</a>
+                <a class="btn-round" href="buying_a_home.php">Buying a home</a>
 
-                <a class="btn-round"  href="TODO#">Selling a home</a>
+                <a class="btn-round"  href="selling_a_home.php">Selling a home</a>
 
             </div>            
         </section>
