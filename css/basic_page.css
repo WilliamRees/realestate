@@ -1064,14 +1064,14 @@ footer p a:visited:hover {
 .basic-page #ContentBody .left,
 .basic-page #About-Testimonials .left {
   overflow: hidden;
-  width: 55%;
-  padding-right: 60px;
+  width: 60%;
+  padding-right: 40px;
   float: left;
 }
 .basic-page #ContentBody .right,
 .basic-page #About-Testimonials .right {
   overflow: hidden;
-  width: 45%;
+  width: 40%;
   float: right;
 }
 .basic-page #ContentBody h2,
@@ -1087,6 +1087,7 @@ footer p a:visited:hover {
 .basic-page #ContentBody p,
 .basic-page #About-Testimonials p {
   font-size: 125%;
+  word-wrap: break-word;
 }
 .basic-page #ContentBody q,
 .basic-page #About-Testimonials q {
@@ -1094,7 +1095,8 @@ footer p a:visited:hover {
 }
 .basic-page #ContentBody .btn-round,
 .basic-page #About-Testimonials .btn-round {
-  margin-right: 30px;
+  margin: 0 30px 10px 0;
+  outline: none;
 }
 .basic-page #ContentBody .check-list,
 .basic-page #About-Testimonials .check-list {
@@ -1163,8 +1165,36 @@ footer p a:visited:hover {
 /* ==========================================================================
    Media Queries
    ========================================================================== */
+@media screen and (max-width: 1100px) {
+  .basic-page #ContentBody .check-list > li {
+    font-size: 120%;
+  }
+}
 @media screen and (max-width: 870px) {
   .basic-page #TopBanner {
     background-size: cover !important;
+  }
+}
+@media screen and (max-width: 830px) {
+  .basic-page #ContentBody img.awards {
+    width: 100%;
+    max-width: 708px;
+  }
+  .basic-page #ContentBody .right {
+    width: 100%;
+    float: none;
+  }
+  .basic-page #ContentBody .left {
+    width: 100%;
+    float: none;
+  }
+}
+@media screen and (max-width: 450px) {
+  .basic-page #TopBanner {
+    height: auto;
+  }
+  .basic-page #TopBanner h1 {
+    margin-top: 50px;
+    margin-bottom: 55px;
   }
 }
