@@ -3,11 +3,20 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Mustafa Zia | Home Page</title>
-        <meta name="description" content="#TODO">
+        <title>Mustafa Zia - Top Producer Realtor serving  Mississauga, Brampton, Milton, Oakville and Toronto.</title>
+        <meta name="description" content="Mustafa Zia is an award wining, top producer realtor serving Mississauga, Brampton, Milton, Oakville and Toronto. Mustafa helps people buying or selling a home, investing in real estate or simply providing helpful advice on real estate matters.">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta property="og:type"  content="website" />
+        <meta property="og:url"   content="http://mustafazia.com/" />
+        <meta property="og:title" content="Mustafa Zia | Top Producer Realtor" />
+        <meta property="og:image" content="http://mustafazia.com/img/facebook.jpg" />
+        <meta property="og:description" content="Mustafa Zia is an award wining, top producer realtor serving Mississauga, Brampton, Milton, Oakville and Toronto. Mustafa helps people buying or selling a home, investing in real estate or simply providing helpful advice on real estate matters." />        
+
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
         <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+        <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+
         <link rel="stylesheet" href="css/home.css">
         <script src="js/vendor/modernizr-2.8.3.min.js"></script>
     </head>
