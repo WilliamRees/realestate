@@ -12,7 +12,7 @@
             padding: 15px 0; 
             background-color: rgba(248, 248, 248, 0.5);
             position: fixed; 
-            z-index: 3000; 
+            z-index: 300000; 
             width:100%; 
             border-bottom: 1px solid #e7e7e7; 
             left:0;
@@ -53,6 +53,9 @@
             opacity: 1 !important;
             position: relative;
             z-index: 3002;
+        }
+        .ephox-polish-editor-container.ephox-polish-inline-editor-container {
+            z-index: 30000; 
         }
     </style>
     <div class="admin">
