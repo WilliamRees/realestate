@@ -16,35 +16,18 @@
 
         <div id="TopBanner">
             <div class="inner-wrapper">
-                <h1>Investing in Real Estate</h1>
+                <div class="cms-content" data-nodename="InvestingInREHeadline">
+                    <?php CMSUtility::ContentLiteral("InvestingInREHeadline"); ?>
+                </div>
             </div>
             <div class="blind"></div>
         </div>
 
         <section id="ContentBody">
             <div class="inner-wrapper">
-
-
-            <p>Mustafa offers comprehensive acquisition, disposition, leasing and management services across a broad portfolio of residential, commercial, industrial, retail, multi-family and development properties. He brings a highly customized, integrated approach to the private and institutional investment arena that delivers distinct advantages to his clients.</p>
-
-            <p>He brings a wealth of expertise to help you achieve your investment goals. Whether you are looking for an additional residential property for market appreciation or large commercial plaza, Mustafa’s access to exclusive, off the market properties gives you the advantage of best investment solutions.</p>
-
-            <p>For Mustafa it not enough to just deliver great real estate services.  He is working want to accelerate the success of everyone he works with.</p>
-
-            <h3>Services we provide:</h3>
-
-            <ul class="check-list">
-                <li>Purchase of second, third and additional residential properties</li>
-                <li>Purchase of multi-family residential properties</li>
-                <li>Purchase of commercial investments: plazas, medical buildings, industrial units</li>
-                <li>Leasing</li>
-                <li>Management</li>
-                <li>Access to off-market properties</li>
-                <li>Access to mortgage solutions and private financing</li>
-            </ul>          
-
-            <a class="btn-round" href="contact.php">Contact us for more information</a>
-
+                <div class="cms-content" data-nodename="InvestingInRE">
+                    <?php CMSUtility::ContentLiteral("InvestingInRE"); ?>
+                </div>
             </div>            
         </section>
          

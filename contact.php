@@ -29,29 +29,15 @@
 
             <div class="inner-wrapper">
                 <div class="left">
-                    
-                    <h3>Address</h3>
-
-                    <p>Remax Real Estate Centre Inc., Brokerage<br>
-                    100 City Centre Drive, Unit 1-702<br>
-                    Mississauga ON L5B 2C9</p>
-
-                    <h3>Office Phone</h3>
-                    <p>905.272.5000</p>
-
-                    <h3>Office Fax</h3>
-                    <p>905.272.5088</p>
-
-                    <h3>Mustafa’s Direct</h3>
-                    <p>647.892.2474</p>       
+                    <div class="cms-content" data-nodename="Contact">
+                        <?php CMSUtility::ContentLiteral("Contact"); ?>
+                    </div>       
                 </div>
 
                 <div class="right">
-
-                    <h3>E-Mail</h3>
-
-                    <p>You can e-mail me at <a href="mailto:mustafazia@gmail.com">mustafazia@gmail.com</a> or use the form below to connect with me:</p>
-
+                    <div class="cms-content" data-nodename="ContactRight">
+                        <?php CMSUtility::ContentLiteral("ContactRight"); ?>
+                    </div>
                     <div class="form-wrapper">
 
                         <div id="FormError"></div>
