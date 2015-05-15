@@ -1,3 +1,5 @@
+-- Remove the below comment and change DBNAME to your database
+-- USE DBNAME;
 LOCK TABLES `Content` WRITE;
 /*!40000 ALTER TABLE `Content` DISABLE KEYS */;
 DELETE FROM `Content`;
