@@ -27,7 +27,12 @@
         <meta property="og:type"  content="website" />
         <meta property="og:url"   content="<?php echo "http://" . $_SERVER[HTTP_HOST] . $_SERVER[REQUEST_URI]; ?>" />
         <meta property="og:title" content="Mustafa Zia | <?php echo $listing->Address ?>, <?php echo $listing->City ?>" />
-        <meta property="og:image" content="http://mustafazia.com/img/facebook.jpg" />
+        <?php if (count($listing->Images) == 0): ?>
+            <meta property="og:image" content="<?php echo SITE_ROOT . "img/image_not_avail.jpg" ?>" />
+        <?php endif; ?>   
+        <?php if (count($listing->Images) > 0): ?>
+            <meta property="og:image" content="<?php echo SITE_ROOT . "uploads/" . $listing->Images[0] ?>" />    
+        <?php endif; ?>
         <meta property="og:description" content="Listing for <?php echo $listing->Address ?>, <?php echo $listing->City ?> | Mustafa Zia" />        
 
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
