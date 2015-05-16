@@ -142,6 +142,7 @@
                 opacity: 0.9;
                 font-size: 125%;
                 padding: 10px 30px 7px;
+                -webkit-transform: translate3d(0, 0, 0);
             }
         }
         li {
@@ -174,6 +175,7 @@
                 font-weight: 800;
                 letter-spacing: 5px;
                 z-index: 1;
+                -webkit-transform: translate3d(0, 0, 0);
             }
             a {
                 display: block;
@@ -187,12 +189,13 @@
                 width: 100%;
                 max-height: 240px;
                 .animate(all 0.5s ease-in);
+                -webkit-transform: translate3d(0, 0, 0);
                 &:hover {
                     -moz-transform: scale(1.2);
                     -webkit-transform: scale(1.2);
                     -o-transform: scale(1.2);
                     -ms-transform: scale(1.2);
-                    transform: scale(1.2);                    
+                    transform: scale(1.2);              
                 }
             }
             .price {
@@ -300,6 +303,9 @@
             h3 {
                 font-size: 250%;
                 margin: 20px;
+            }
+            p {
+                padding: 0px 20px 40px;
             }
             .btn {
                 text-align: center;

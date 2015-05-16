@@ -1173,6 +1173,7 @@ footer p a:visited:hover {
 @media screen and (max-width: 870px) {
   .basic-page #TopBanner {
     background-size: cover !important;
+    background-attachment: scroll !important;
   }
 }
 @media screen and (max-width: 830px) {

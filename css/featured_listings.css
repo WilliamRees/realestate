@@ -1329,6 +1329,7 @@ footer p a:visited:hover {
   opacity: 0.9;
   font-size: 125%;
   padding: 10px 30px 7px;
+  -webkit-transform: translate3d(0, 0, 0);
 }
 #FeatList-Listings .listings li {
   display: block;
@@ -1361,6 +1362,7 @@ footer p a:visited:hover {
   font-weight: 800;
   letter-spacing: 5px;
   z-index: 1;
+  -webkit-transform: translate3d(0, 0, 0);
 }
 #FeatList-Listings .listings li a {
   display: block;
@@ -1378,6 +1380,7 @@ footer p a:visited:hover {
   -ms-transition: all 0.5s ease-in;
   -o-transition: all 0.5s ease-in;
   transition: all 0.5s ease-in;
+  -webkit-transform: translate3d(0, 0, 0);
 }
 #FeatList-Listings .listings li img:hover {
   -moz-transform: scale(1.2);
@@ -1484,6 +1487,9 @@ footer p a:visited:hover {
   #FeatList-Carousel .item h3 {
     font-size: 250%;
     margin: 20px;
+  }
+  #FeatList-Carousel .item p {
+    padding: 0px 20px 40px;
   }
   #FeatList-Carousel .item .btn {
     text-align: center;
