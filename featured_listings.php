@@ -71,7 +71,7 @@
             <div class="inner-wrapper">
                 <h2>Featured opportunities you might love</h2>
                 <?php if ($totalListings/$pageSize > 1): ?>
-                <ul class="pagination">
+                <ul class="pagination top">
                     <?php
                     for ($i = 0; $i < ($totalListings/$pageSize); $i++) {
                         $listing = $listings[$i];

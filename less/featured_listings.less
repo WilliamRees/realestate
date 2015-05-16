@@ -278,3 +278,40 @@
 /* ==========================================================================
    Media Queries
    ========================================================================== */
+
+@media screen and (max-width: 790px) {
+    #FeatList-Listings {
+        h2 {
+            font-size: 200%;
+            margin: 0 0 30px;
+        }
+        .pagination.top {
+            display: none;
+        }
+    }         
+}
+
+@media screen and (max-width: 600px) {
+    #FeatList-Carousel {
+        .item {
+            .bg-feature {
+                height: 300px;
+            }
+            h3 {
+                font-size: 250%;
+                margin: 20px;
+            }
+            .btn {
+                text-align: center;
+                width: 280px;
+                position: absolute;
+                bottom: 0px;
+                left: 50%;
+                margin-left: -140px;
+            }
+        }
+        .owl-controls {
+            display: none;
+        }   
+    }       
+}
