@@ -99,7 +99,7 @@
 
                     <p><?php echo $listing->Description ?></p>
                     
-                    <a class="back-link" href="featured_listings.php<?php echo(isset($_SESSION['LastPage']) ? "?page=" . $_SESSION['LastPage'] . "#FeatList-Listings" : "" ) ?>">Back to Results</a>
+                    <a class="back-link bottom" href="featured_listings.php<?php echo(isset($_SESSION['LastPage']) ? "?page=" . $_SESSION['LastPage'] . "#FeatList-Listings" : "" ) ?>">Back to Results</a>
 
                 </div>
                 <div class="right">

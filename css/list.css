@@ -1360,6 +1360,12 @@ footer p a:visited:hover {
     width: 100%;
     padding: 0;
   }
+  #List-Body .left h3 {
+    padding-top: 0;
+  }
+  #List-Body .left .back-link.bottom {
+    display: none;
+  }
   #List-Body .left .btn-mc {
     float: none;
     width: 100%;
@@ -1370,6 +1376,10 @@ footer p a:visited:hover {
     width: 100%;
     text-align: center;
     margin-bottom: 10px;
+  }
+  #List-Body .listing-info {
+    border-top: 2px solid #AAA;
+    padding-top: 15px;
   }
   #List-Body .right {
     float: none;

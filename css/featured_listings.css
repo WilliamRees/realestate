@@ -1480,6 +1480,20 @@ footer p a:visited:hover {
     display: none;
   }
 }
+@media screen and (max-width: 790px) {
+  #FeatList-Listings .listings li {
+    width: 48%;
+    margin-left: 4%;
+  }
+  #FeatList-Listings .listings li:nth-child(3n-2) {
+    clear: none;
+    margin-left: 4%;
+  }
+  #FeatList-Listings .listings li:nth-child(2n-1) {
+    margin-left: 0;
+    clear: both;
+  }
+}
 @media screen and (max-width: 600px) {
   #FeatList-Carousel .item .bg-feature {
     height: 300px;
@@ -1501,5 +1515,22 @@ footer p a:visited:hover {
   }
   #FeatList-Carousel .owl-controls {
     display: none;
+  }
+}
+@media screen and (max-width: 580px) {
+  #FeatList-Listings .listings li {
+    width: 100%;
+    margin-left: 0;
+  }
+  #FeatList-Listings .listings li:nth-child(3n-2) {
+    clear: both;
+    margin-left: 0;
+  }
+  #FeatList-Listings .listings li:nth-child(2n-1) {
+    margin-left: 0;
+    clear: both;
+  }
+  #FeatList-Listings .listings li img {
+    max-height: none;
   }
 }
