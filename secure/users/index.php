@@ -40,7 +40,7 @@ $users = WebSecurity::users();
 	    			<th></th>
 	    		</tr>
 	    		<?php foreach($users as $key=>$value): ?>
-    			<?php if($users[$key]->Id != $_SESSION['user']->Id) : ?>
+    			
 	    		<tr valign="center" data-user-id="<?php echo $users[$key]->Id ?>">
 	    			<td><?php echo $users[$key]->Id ?></td>
 	    			<td><?php echo $users[$key]->Username ?></td>
@@ -50,7 +50,7 @@ $users = WebSecurity::users();
 	    				<a href="#delete" class="btn btn-warning" role="button" data-user-remove="<?php echo $users[$key]->Id ?>"><span class="glyphicon glyphicon-trash"></span> Remove</a>
     				</td>
 	    		<tr>
-	    	<?php endif; ?>
+	    	
 	    		<?php endforeach; ?>
 	    	</table>
     	</div>

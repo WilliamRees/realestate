@@ -122,6 +122,70 @@ re.views.secure.users = (function($) {
 		});
 	};
 
+	//User update.
+	//============================================
+	var update = (function ($) {
+
+		var init = function () {
+			options = {
+				rules: {
+			        password: 'required',
+			        confirmpwd: {
+			            equalTo: '#password'
+			        }
+		    	}
+			}
+			re.views.shared.forms.init(options);
+			bindEvents();
+		}
+
+		function bindEvents() {
+			$('#UpdatePasswordForm').on('submit', function (e) {
+				var $this = $(this);
+		        var isvalidate= $this.valid();
+		        if(isvalidate)
+		        {
+		            e.preventDefault();
+		            regformhash($this[0], $this[0].username, $this[0].email, $this[0].password, $this[0].confirmpwd);	            
+		            $this[0].submit();
+		        }
+			});
+
+			$(function () {
+		        if ($('*[role="alert"]')) {
+		            setTimeout(function(){
+		                $('*[role="alert"]').fadeOut('slow', function() {
+		                    $(this).remove();
+		                });
+		            }, 5000 );
+		        }
+		    });
+		}
+
+		function regformhash(form, uid, email, password, conf) {
+		    // Create a new element input, this will be our hashed password field. 
+		    var p = document.createElement("input");
+		 
+		    // Add the new element to our form. 
+		    form.appendChild(p);
+		    p.name = "p";
+		    p.type = "hidden";
+		    p.value = hex_sha512(password.value);
+		 
+		    // Make sure the plaintext password doesn't get sent. 
+		    password.value = "";
+		    conf.value = "";
+		 
+		    // Finally submit the form. 
+		    form.submit();
+		    return true;
+		};
+
+		return {
+			init: init
+		};
+	})(jQuery);
+
 	//User regestration.
 	//============================================	
 	var register = (function ($){
@@ -178,7 +242,8 @@ re.views.secure.users = (function($) {
 
 	return {
 		register: register,
-		init: init
+		init: init,
+		update: update
 	}
 })(jQuery);
 

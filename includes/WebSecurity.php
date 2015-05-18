@@ -60,6 +60,44 @@ class WebSecurity {
         return $result;
     }
 
+    public function updateUser($user) {
+        $conn = self::conn();
+        $sqlCommand = "UPDATE members SET username = ?, email = ? where id = ?";
+        if ($stmt = $conn->prepare($sqlCommand)) {
+            $stmt->bind_param("ssi", $user->Username, $user->Email, $user->Id);
+            if ($stmt->execute()) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public function updateUserPassword($id) {
+        $password = $_POST['p'];
+        
+        if (strlen($password) != 128) {
+            // The hashed pwd should be 128 characters long.
+            // If it's not, something really odd has happened
+            
+            return false;
+        }
+
+        $random_salt = hash('sha512', uniqid(mt_rand(1, mt_getrandmax()), true));
+        $password = hash('sha512', $password . $random_salt);
+
+        $conn = self::conn();
+        $sqlCommand = "UPDATE members SET password = ?, salt = ? where id = ?";
+        if ($stmt = $conn->prepare($sqlCommand)) {
+            $stmt->bind_param("ssi", $password, $random_salt, $id);
+            if ($stmt->execute()) {
+                return true;
+            }
+        }
+        
+        return false;
+    }
+
     public function users($id) {
         $conn = self::conn();
 
