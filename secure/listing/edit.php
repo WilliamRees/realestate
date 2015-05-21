@@ -56,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 				</div>
 				<div class="form-group">
 					<label for="Price">Price</label>
-					<input type="number" id="Price" name="Price" required class="form-control" 
+					<input type="text" id="Price" name="Price" required class="form-control" 
 					value="<?php echo($listing->Price); ?>"/>
 				</div>
 				<div class="form-group">

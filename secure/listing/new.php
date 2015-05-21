@@ -53,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 				<div class="col-md-12">
 					<div class="form-group">
 						<label for="Price">Price</label>
-						<input type="number" id="Price" name="Price" required class="form-control" />
+						<input type="text" id="Price" name="Price" required class="form-control" />
 					</div>
 					<div class="form-group">
 						<label for="PropertyType">Property Type</label>

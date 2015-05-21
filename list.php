@@ -55,7 +55,7 @@
                 <a class="back-link" href="featured_listings.php<?php echo(isset($_SESSION['LastPage']) ? "?page=" . $_SESSION['LastPage'] . "#FeatList-Listings" : "" ) ?>">Back to Results</a>
 
                 <h1><?php echo $listing->Address ?>, <?php echo $listing->City ?></h1>
-                <h2>$<?php echo(number_format($listing->Price, 0, '.', ',')); ?></h2>            
+                <h2>$<?php echo( $listing->Price ); ?></h2>            
             </div>
         </section>
 
