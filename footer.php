@@ -49,6 +49,22 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
 
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 1006084198;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+</script>
+<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+</script>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/1006084198/?value=0&amp;guid=ON&amp;script=0"/>
+</div>
+</noscript>
+
+
 <!-- CHECK IF USER IS AUTHENTICATED AND INITIALIZE WYSIWYG EDITOR -->
 <?php if (WebSecurity::isAuthenticated($mysqli)): ?>
     <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
