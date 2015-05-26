@@ -105,7 +105,7 @@
                             <?php endif; ?> 
 
                         </a>
-                        <p class="price">$<?php echo(number_format($listing->Price, 0, '.', ',')); ?></p>
+                        <p class="price">$<?php echo $listing->Price  ?></p>
                         <h4><?php echo($listing->Address) ?>, <?php echo($listing->City) ?></h4>
                         <p>
                             <?php echo($listing->Bedrooms == "" ? "" : $listing->Bedrooms . " bed /") ?>

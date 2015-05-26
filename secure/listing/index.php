@@ -88,7 +88,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 							<img class="lazy" data-original="<?php echo(SITE_ROOT . "uploads/" . $listing->Images[0]) ?>" alt="...">
 						</div>
 						<div class="caption">
-							<h3>$<?php echo(number_format($listing->Price, 0, '.', ',')); ?></h3>
+							<h3>$<?php echo($listing->Price); ?></h3>
 							<p>
 								<?php echo($listing->Address) ?>, <?php echo($listing->City) ?><br>
 								<?php echo($listing->Bedrooms) ?> bed / <?php echo($listing->Bathrooms) ?> bath / <?php echo($listing->LivingSpace) ?> sq. ft
