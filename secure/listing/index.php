@@ -97,6 +97,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 								<a href="edit.php?Id=<?php echo($listing->Id) ?>" class="btn btn-primary" role="button">
 									<span class="glyphicon glyphicon-edit"></span> Edit
 								</a> 
+								<a href="image-order.php?Id=<?php echo($listing->Id) ?>" class="btn btn-primary" role="button">
+									<span class="glyphicon glyphicon-sort"></span> Sort Images
+								</a><br/></br/>
 								<a href="#" class="btn btn-warning remove" role="button" data-listing-id="<?php echo($listing->Id) ?>">
 									<span class="glyphicon glyphicon-trash"></span> Remove
 								</a>
@@ -164,6 +167,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 <script>
 	re.views.secure.listing.init();
 	$(function(){
+
+		re.api.listing.image.order(0, [{filename: "Test1.jpg", order: 1}, {filename: "Test2.jpg", order: 0}]);
+
+
+
 		$('#ListingsGrid').sortable({
 			beforeStop: function(event, ui) {
 				console.log('before stop');

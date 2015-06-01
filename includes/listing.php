@@ -180,6 +180,23 @@ class Listing {
 		return $result;
 	}
 
+	public static function setImageOrder($listingId, $filename, $order) {
+		$conn = self::conn();
+		$sqlCommand = "UPDATE ListingImages SET ImgOrder = ? WHERE Name = ? AND ListingId = ?";
+		$result = false;
+
+		if ($stmt = $conn->prepare($sqlCommand)) {
+			$stmt->bind_param("isi", $order, $filename, $listingId);
+			if ($stmt->execute()) {
+				$stmt->close();
+				$result = true;
+			}
+		}
+
+		$conn->close();
+		return $result;
+	}
+
 	public static function getListings($page, $pageSize, $published) {
 		mysqli_report();
 		$conn = self::conn();
@@ -300,7 +317,7 @@ class Listing {
 			$listing->VirtualTour = $VirtualTour;
 
 			$conn = self::conn();
-			$images = $conn->query("SELECT Name FROM ListingImages WHERE ListingId = " . $listing->Id . " AND Featured = 0");
+			$images = $conn->query("SELECT Name FROM ListingImages WHERE ListingId = " . $listing->Id . " AND Featured = 0 ORDER BY ImgOrder DESC");
 			$listingImages = array();
 	    	if ($images->num_rows > 0) {
 	    		while($img = $images->fetch_assoc()) {

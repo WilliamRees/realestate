@@ -486,14 +486,23 @@ re.api.listing = (function($) {
 	}
 
 	var image = {
-		uri: SITE_ROOT + 'api/listing/images.php',
+		uri: SITE_ROOT + 'api/listing',
 		remove: function (listingId, fileName) {
 
 			var data = {
 				Id: listingId,
 				FileName: fileName
 			}
-			return re.utilities.delete(this.uri, data);
+			return re.utilities.delete(this.uri + '/images.php', data);
+		}, 
+		order: function (listingId, order) {
+
+			var data = {
+				ListingId: listingId,
+				ImageOrder : order
+			}
+
+			return re.utilities.post(this.uri + '/images-order.php', data)
 		}
 	};
 
